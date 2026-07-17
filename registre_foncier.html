@@ -92,7 +92,22 @@ td.num { font-family:var(--mono); font-variant-numeric:tabular-nums; }
   .gauge { min-width:100px; } .gauge .bar { width:56px; }
   .btn { margin:14px 4%; }
 }
+
+
+.topnav { position:sticky; top:0; z-index:5000; display:flex; flex-wrap:wrap; gap:0;
+  background:#1F2A28; padding:0 4%; border-bottom:2px solid #D9481F; }
+.navtab { font-family:'Bahnschrift','Segoe UI Semibold',Arial,sans-serif; font-size:12.5px;
+  letter-spacing:.08em; text-transform:uppercase; color:#F4F6F2; text-decoration:none;
+  padding:12px 14px 10px; border-bottom:3px solid transparent; }
+.navtab:hover { background:#33695B; }
+.navtab.active { border-bottom-color:#D9481F; color:#fff; }
+@media (max-width:700px) {
+  .topnav { flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
+  .topnav::-webkit-scrollbar { display:none; }
+  .navtab { white-space:nowrap; padding:12px 10px 10px; font-size:11px; }
+}
 </style></head><body>
+<nav class="topnav"><a href="dashboard.html" class="navtab">Feuille de garde</a><a href="synthese.html" class="navtab">Note d'analyse</a><a href="lens_promoteur.html" class="navtab">Promoteur</a><a href="lens_commercant.html" class="navtab">Commerçant</a><a href="lens_agence.html" class="navtab">Agence</a><a href="lens_industriel.html" class="navtab">Industriel</a><a href="leads.html" class="navtab">Flux d'affaires</a><a href="registre_foncier.html" class="navtab active">Registre foncier</a><a href="titre_lookup.html" class="navtab">Recherche titre</a><a href="indice_btp.html" class="navtab">Indice BTP</a></nav>
 <header class="sheet">
   <span class="cross" style="top:14px;left:6%;">+</span>
   <span class="cross" style="top:14px;right:6%;">+</span>

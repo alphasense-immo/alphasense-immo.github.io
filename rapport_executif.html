@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8"><title>AlphaSense Immo · Rapport exécutif</title>
+<style>
+:root {
+  --paper:#FFFFFF; --ink:#1F2A28; --dim:#64756E; --line:#C7D2C9;
+  --hair:#E2E7E0; --survey:#33695B; --flag:#D9481F;
+  --display:'Bahnschrift','Arial Narrow',Arial,sans-serif;
+  --mono:'Consolas',monospace; --body:'Segoe UI',Arial,sans-serif;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+@page { size:A4; margin:14mm 13mm; }
+body { font-family:var(--body); color:var(--ink); font-size:10.5pt; line-height:1.5; }
+.page { page-break-after:always; }
+.page:last-child { page-break-after:auto; }
+.eyeb { font-family:var(--mono); font-size:7.5pt; letter-spacing:.16em; color:var(--survey); margin-bottom:2mm; }
+h1 { font-family:var(--display); font-size:26pt; text-transform:uppercase; letter-spacing:.03em; line-height:1.05; }
+h2 { font-family:var(--display); font-size:14pt; margin:0 0 2mm; }
+p { margin:0 0 3mm; max-width:170mm; }
+.cartouche { display:inline-grid; grid-auto-flow:column; border:1.2pt solid var(--ink); font-family:var(--mono); font-size:8pt; margin:6mm 0; }
+.cartouche > div { padding:2mm 5mm; border-right:.5pt solid var(--line); }
+.cartouche > div:last-child { border-right:none; }
+.cartouche b { display:block; font-size:6.5pt; letter-spacing:.1em; color:var(--dim); font-weight:400; }
+.kpis { display:flex; gap:10mm; margin:5mm 0 2mm; }
+.kpi .v { font-family:var(--mono); font-size:17pt; font-weight:700; }
+.kpi .l { font-size:7.5pt; color:var(--dim); text-transform:uppercase; letter-spacing:.05em; }
+table { border-collapse:collapse; width:100%; font-size:8.8pt; margin:2mm 0 5mm; }
+th { font-family:var(--mono); font-weight:400; font-size:7pt; letter-spacing:.08em; text-transform:uppercase;
+     color:var(--dim); text-align:left; padding:1.6mm 2mm; border-bottom:.8pt solid var(--ink); }
+td { padding:1.5mm 2mm; border-bottom:.4pt solid var(--hair); }
+td.num, th.num { text-align:right; font-family:var(--mono); }
+.hot { color:var(--flag); font-weight:700; }
+.cover { padding-top:40mm; }
+.cover .grid { border-top:2pt solid var(--ink); margin-top:8mm; padding-top:4mm; }
+.note { color:var(--dim); font-size:8.5pt; max-width:170mm; }
+.sec { margin-bottom:7mm; }
+.footer { font-family:var(--mono); font-size:7pt; color:var(--dim); letter-spacing:.08em; margin-top:6mm; }
+</style></head><body>
+
+<div class="page cover">
+  <div class="eyeb">ALPHASENSE IMMO · RAPPORT EXÉCUTIF</div>
+  <h1>Le cadastre vivant<br>du Maroc</h1>
+  <p style="font-size:12pt;margin-top:4mm;">Chaque permis de construire et d'habiter du pays, lu, situé et transformé en signal d'investissement.</p>
+  <div class="cartouche">
+    <div><b>Données analysées le</b>2026-07-15</div>
+    <div><b>Permis</b>555 327</div>
+    <div><b>Communes</b>1 548</div>
+    <div><b>Source</b>Rokhas · geoportail national</div>
+  </div>
+  <div class="grid">
+    <div class="kpis">
+      <div class="kpi"><div class="v">179.9</div><div class="l">Indice BTP 2026-06 · base 100 = 2023</div></div>
+      <div class="kpi"><div class="v">+42.8%</div><div class="l">activité sur un an</div></div>
+      <div class="kpi"><div class="v">5 646</div><div class="l">logements attendus sous 12 mois · zone n°1</div></div>
+    </div>
+  </div>
+  <div class="footer">DOCUMENT DE SYNTHÈSE · LA VERSION INTERACTIVE (CARTES, RECHERCHE PAR TITRE FONCIER, 802 QUARTIERS) EST DISPONIBLE SÉPARÉMENT</div>
+</div>
+
+<div class="page">
+  <div class="sec">
+    <div class="eyeb">MÉTHODE</div>
+    <h2>Ce que fait l'outil</h2>
+    <p>AlphaSense Immo lit l'intégralité des autorisations d'urbanisme déposées sur la plateforme nationale.
+    Chaque permis est interprété (le texte de la consistance devient type de bâti, hauteur, logements, équipements),
+    géolocalisé sur une maille d'un kilomètre, daté, et relié : quand un permis d'habiter répond à un permis de
+    construire, la durée réelle du chantier est mesurée.</p>
+    <p>Quatre lectures métier en sortent : où le foncier se prépare (promoteur), où les habitants arrivent
+    (commerce), ce qui arrive sur le marché dans 12 à 24 mois (agences et banques), où les pôles d'activité
+    poussent (industriels). Trois produits les complètent : un flux d'affaires qualifié, un registre foncier
+    interrogeable titre par titre, et un indice mensuel du BTP.</p>
+  </div>
+  <div class="sec">
+    <div class="eyeb">MESURÉ SUR 109 412 PAIRES RÉELLES PC VERS PH</div>
+    <h2>Les délais de construction réels du Maroc</h2>
+    <table><thead><tr><th>Typologie</th><th class="num">Médiane (mois)</th><th class="num">Chantiers mesurés</th></tr></thead><tbody><tr><td>villa</td><td class="num">11.7</td><td class="num">74 244</td></tr><tr><td>immeuble</td><td class="num">12.2</td><td class="num">23 447</td></tr><tr><td>autre</td><td class="num">10.9</td><td class="num">3 245</td></tr><tr><td>commerce</td><td class="num">7.1</td><td class="num">2 989</td></tr><tr><td>social</td><td class="num">10.5</td><td class="num">1 103</td></tr><tr><td>industriel</td><td class="num">14.4</td><td class="num">905</td></tr></tbody></table>
+    <p class="note">Nous n'avons identifié aucune base publique offrant ces mesures à cette granularité.</p>
+  </div>
+</div>
+
+<div class="page">
+  <div class="sec">
+    <div class="eyeb">LECTURE · 2026-07-15</div>
+    <h2>Ce qui bouge au Maroc</h2>
+    <p><b>Le pays construit comme jamais.</b> L'indice AlphaSense du BTP atteint 179.9 points
+    (+42.8% sur un an, corrigé de la saisonnalité). La dynamique est dans les couronnes et les
+    villes moyennes, pas dans les centres.</p>
+    <p><b>La couronne sud de Casablanca est la machine résidentielle du pays</b> (Deroua, Berrechid, Settat,
+    Had Soualem), et le commerce n'y a pas suivi. <b>Le foncier se prépare loin des projecteurs</b> : El Jadida,
+    l'axe Khouribga-Beni Mellal. <b>L'informel reste structurel</b> : 17.7% des permis
+    sont délivrés sur du foncier non-immatriculé.</p>
+  </div>
+  <div class="sec">
+    <div class="eyeb">FENÊTRE 12 MOIS GLISSANTS</div>
+    <h2>Le cycle par région</h2>
+    <table><thead><tr><th>Région</th><th class="num">Permis 12 mois</th><th class="num">Variation (%)</th></tr></thead><tbody><tr><td>DARAA-TAFILALET</td><td class="num">4 032</td><td class="num">50.5</td></tr><tr><td>GUELMIM-OUED NOUN</td><td class="num">651</td><td class="num">41.8</td></tr><tr><td>LAAYOUNE-SAKIA EL HAMRA</td><td class="num">794</td><td class="num">36.0</td></tr><tr><td>SOUSS-MASSA</td><td class="num">3 767</td><td class="num">27.9</td></tr><tr><td>BENI MELLAL-KHENIFRA</td><td class="num">8 429</td><td class="num">26.5</td></tr><tr><td>RABAT-SALE-KENITRA</td><td class="num">12 333</td><td class="num">26.0</td></tr><tr><td>MARRAKECH-SAFI</td><td class="num">12 656</td><td class="num">25.5</td></tr><tr><td>FES-MEKNES</td><td class="num">10 917</td><td class="num">13.6</td></tr><tr><td>L'ORIENTALE</td><td class="num">6 392</td><td class="num">10.7</td></tr><tr><td>CASABLANCA-SETTAT</td><td class="num">15 869</td><td class="num">7.7</td></tr><tr><td>TANGER-TETOUAN-AL HOCEIMA</td><td class="num">6 109</td><td class="num">5.5</td></tr></tbody></table>
+  </div>
+</div>
+
+<div class="page">
+  <div class="eyeb">LENTILLE PROMOTEUR · FENÊTRE 24 MOIS</div>
+  <h2>Où le foncier se prépare</h2>
+  <p class="note">Morcellements + lotissements récents en percentile national : le sol se découpe des années avant les grues.
+  Le pipeline concurrent compte les grands projets autorisés non encore livrés.</p>
+  <table><thead><tr><th>Commune</th><th>Préfecture</th><th class="num">Prép. foncière</th><th class="num">Morc.+Lot. 24m</th><th class="num">Pipeline concurrent</th><th class="num">Délai adm. méd. (j)</th></tr></thead><tbody><tr><td>COMMUNE EL JADIDA</td><td>PROVINCE EL JADIDA</td><td class="num hot">100.0</td><td class="num">71</td><td class="num">44</td><td class="num">28.0</td></tr><tr><td>COMMUNE D'AIN JOHRA-SIDI BOUKHALKHAL</td><td>PROVINCE DE KHEMISSAT</td><td class="num hot">99.9</td><td class="num">68</td><td class="num">0</td><td class="num">58.0</td></tr><tr><td>COMMUNE D'AHL ANGAD</td><td>PREFECTURE D'OUJDA-ANGAD</td><td class="num hot">99.9</td><td class="num">65</td><td class="num">1</td><td class="num">31.0</td></tr><tr><td>COMMUNE D'OULAD ABDOUNE</td><td>PROVINCE DE KHOURIBGA</td><td class="num hot">99.8</td><td class="num">53</td><td class="num">1</td><td class="num">23.0</td></tr><tr><td>COMMUNE DE KHEMIS SIDI YAHYA</td><td>PROVINCE DE KHEMISSAT</td><td class="num hot">99.7</td><td class="num">53</td><td class="num">0</td><td class="num">42.0</td></tr><tr><td>COMMUNE DE BENI MELLAL</td><td>PROVINCE DE BENI MELLAL</td><td class="num hot">99.7</td><td class="num">50</td><td class="num">45</td><td class="num">33.0</td></tr><tr><td>COMMUNE DE TASSOULTANTE</td><td>PREFECTURE DE MARRAKECH</td><td class="num hot">99.6</td><td class="num">48</td><td class="num">294</td><td class="num">53.0</td></tr><tr><td>COMMUNE DE KHOURIBGA</td><td>PROVINCE DE KHOURIBGA</td><td class="num hot">99.5</td><td class="num">43</td><td class="num">3</td><td class="num">23.0</td></tr><tr><td>COMMUNE LAGHDIRA</td><td>PROVINCE EL JADIDA</td><td class="num hot">99.5</td><td class="num">41</td><td class="num">0</td><td class="num">61.0</td></tr><tr><td>COMMUNE D'ISLY</td><td>PREFECTURE D'OUJDA-ANGAD</td><td class="num hot">99.4</td><td class="num">37</td><td class="num">0</td><td class="num">32.0</td></tr></tbody></table>
+  <div class="eyeb" style="margin-top:5mm;">FRICTION ADMINISTRATIVE</div>
+  <h2>Délai de délivrance : de 13 à 115 jours selon la commune</h2>
+  <p class="note">Communes les plus rapides : Commune De Berkane, Commune D'El Kelaa Des Sraghna, Commune De Sidi Slimane Echcharraa.
+  Les plus lentes : Commune De Taznakht, Commune De Tamezmoute, Commune De Lamjaara. Un coût de portage rarement chiffré.</p>
+</div>
+
+<div class="page">
+  <div class="eyeb">LENTILLE AGENCE · PROJECTION VIA DÉLAIS RÉELS</div>
+  <h2>Ce qui arrive sur le marché sous 12 mois</h2>
+  <table><thead><tr><th>Zone (maille 1 km)</th><th class="num">Unités 0-12 mois</th><th class="num">Déjà livrables</th><th class="num">% villa</th><th class="num">% immeuble</th></tr></thead><tbody><tr><td>COMMUNE DE KENITRA, secteur nord</td><td class="num">5 646</td><td class="num">3 011</td><td class="num">76.7</td><td class="num">13.0</td></tr><tr><td>COMMUNE DEROUA, secteur est</td><td class="num">4 166</td><td class="num">2 920</td><td class="num">9.4</td><td class="num">83.0</td></tr><tr><td>ARRONDISSEMENT DE MENARA, secteur est</td><td class="num">4 112</td><td class="num">1 282</td><td class="num">45.9</td><td class="num">34.8</td></tr><tr><td>COMMUNE DE BENI MELLAL, secteur est</td><td class="num">3 506</td><td class="num">2 110</td><td class="num">57.8</td><td class="num">35.3</td></tr><tr><td>COMMUNE SETTAT, secteur est</td><td class="num">3 368</td><td class="num">1 521</td><td class="num">43.1</td><td class="num">48.8</td></tr><tr><td>ARRONDISSEMENT DE ZOUAGUA, secteur est</td><td class="num">3 206</td><td class="num">828</td><td class="num">66.5</td><td class="num">26.8</td></tr><tr><td>ARRONDISSEMENT DE BNI MAKADA, secteur nord</td><td class="num">2 932</td><td class="num">2 032</td><td class="num">69.3</td><td class="num">24.5</td></tr><tr><td>COMMUNE BERRECHID, secteur est</td><td class="num">2 846</td><td class="num">1 226</td><td class="num">19.9</td><td class="num">72.4</td></tr><tr><td>COMMUNE HAD SOUALEM, secteur nord</td><td class="num">2 648</td><td class="num">1 106</td><td class="num">11.4</td><td class="num">79.7</td></tr><tr><td>COMMUNE BOUZNIKA, secteur nord</td><td class="num">2 222</td><td class="num">723</td><td class="num">19.7</td><td class="num">67.6</td></tr></tbody></table>
+  <div class="eyeb" style="margin-top:4mm;">SIGNAL CANNIBALISATION</div>
+  <p class="note">Zones où l'offre entrante dépasse 15% du stock estimé :
+  COMMUNE MEJJATIA OULED TALEB, secteur est 2 (94%), COMMUNE D'AIT MALEK, secteur est (71%), COMMUNE D'OULAD TEIMA, secteur nord (55%), COMMUNE MEJJATIA OULED TALEB, secteur nord (49%).</p>
+</div>
+
+<div class="page">
+  <div class="eyeb">LENTILLE COMMERÇANT · LIVRAISONS 24 MOIS</div>
+  <h2>Les habitants arrivent, le commerce est en retard</h2>
+  <table><thead><tr><th>Zone (maille 1 km)</th><th class="num">Unités par commerce</th><th class="num">Unités livrées 24m</th><th class="num">Commerces autorisés</th></tr></thead><tbody><tr><td>COMMUNE DE TOULAL, secteur est</td><td class="num">543.0</td><td class="num">1 086</td><td class="num">1</td></tr><tr><td>COMMUNE D'AZROU, secteur est</td><td class="num">532.5</td><td class="num">532</td><td class="num">0</td></tr><tr><td>COMMUNE D'AL AAROUI, secteur centre</td><td class="num">485.5</td><td class="num">486</td><td class="num">0</td></tr><tr><td>COMMUNE D'EL HAJEB, secteur est</td><td class="num">456.5</td><td class="num">456</td><td class="num">0</td></tr><tr><td>COMMUNE D'OUEZZANE, secteur est</td><td class="num">454.0</td><td class="num">454</td><td class="num">0</td></tr><tr><td>COMMUNE DE SAIDIA, secteur est</td><td class="num">447.0</td><td class="num">447</td><td class="num">0</td></tr><tr><td>COMMUNE DE MARTIL, secteur centre</td><td class="num">402.7</td><td class="num">1 208</td><td class="num">2</td></tr><tr><td>COMMUNE DE GUERCIF, secteur est</td><td class="num">387.7</td><td class="num">1 163</td><td class="num">2</td></tr></tbody></table>
+  <div class="eyeb" style="margin-top:4mm;">LENTILLE INDUSTRIEL · FENÊTRE 36 MOIS</div>
+  <h2>Les pôles d'activité qui poussent</h2>
+  <table><thead><tr><th>Zone (maille 1 km)</th><th class="num">Permis non-résidentiels</th><th class="num">PC 24m</th></tr></thead><tbody><tr><td>COMMUNE DE KENITRA, secteur nord</td><td class="num">386</td><td class="num">5 477</td></tr><tr><td>ARRONDISSEMENT DE MENARA, secteur est</td><td class="num">372</td><td class="num">2 187</td></tr><tr><td>ARRONDISSEMENT DE GUELIZ, secteur est</td><td class="num">267</td><td class="num">838</td></tr><tr><td>COMMUNE EL JADIDA, secteur nord</td><td class="num">215</td><td class="num">1 587</td></tr><tr><td>COMMUNE DE MEKNES, secteur est</td><td class="num">185</td><td class="num">1 612</td></tr><tr><td>COMMUNE DE TEMARA, secteur est</td><td class="num">177</td><td class="num">954</td></tr><tr><td>COMMUNE DAR BOUAZZA, secteur nord</td><td class="num">151</td><td class="num">1 149</td></tr><tr><td>COMMUNE DE SAFI, secteur centre</td><td class="num">137</td><td class="num">2 452</td></tr></tbody></table>
+</div>
+
+<div class="page">
+  <div class="eyeb">REGISTRE FONCIER · FENÊTRE 24 MOIS · COMMUNES À 100+ PC</div>
+  <h2>L'informalité foncière, commune par commune</h2>
+  <p class="note">Part des permis délivrés sur du foncier non-immatriculé (17.7% au national).
+  Pour une banque : la carte du risque de garantie. Le registre permet aussi d'interroger l'historique de
+  n'importe quel titre foncier (297 000 titres indexés).</p>
+  <table><thead><tr><th>Commune</th><th>Région</th><th class="num">Taux d'informalité (%)</th><th class="num">PC 24m</th></tr></thead><tbody><tr><td>COMMUNE DE HSSYIA</td><td>REGION DE DARAA-TAFILALET</td><td class="num">100.0</td><td class="num">158</td></tr><tr><td>COMMUNE DE DIR EL KSIBA</td><td>REGION DE BENI MELLAL-KHENIFRA</td><td class="num">95.5</td><td class="num">288</td></tr><tr><td>COMMUNE DE TALSINT</td><td>REGION DE L'ORIENTALE</td><td class="num">95.3</td><td class="num">129</td></tr><tr><td>COMMUNE D'AGHBALA</td><td>REGION DE BENI MELLAL-KHENIFRA</td><td class="num">93.5</td><td class="num">108</td></tr><tr><td>COMMUNE D'EL KSIBA</td><td>REGION DE BENI MELLAL-KHENIFRA</td><td class="num">92.3</td><td class="num">130</td></tr><tr><td>COMMUNE DE ZAOUIAT CHEIKH</td><td>REGION DE BENI MELLAL-KHENIFRA</td><td class="num">92.0</td><td class="num">113</td></tr><tr><td>COMMUNE DE DEMNATE</td><td>REGION DE BENI MELLAL-KHENIFRA</td><td class="num">91.9</td><td class="num">135</td></tr><tr><td>COMMUNE DE BOUARG</td><td>REGION DE L'ORIENTALE</td><td class="num">90.8</td><td class="num">141</td></tr><tr><td>COMMUNE EL BROUJ</td><td>REGION DE CASABLANCA-SETTAT</td><td class="num">87.7</td><td class="num">114</td></tr><tr><td>COMMUNE D'OULAD SAID LOUED</td><td>REGION DE BENI MELLAL-KHENIFRA</td><td class="num">87.5</td><td class="num">128</td></tr></tbody></table>
+  <div class="eyeb" style="margin-top:4mm;">FLUX D'AFFAIRES · 6 MOIS</div>
+  <p><b>2 754 projets qualifiés en prospects</b> : 776 grands
+  projets résidentiels, 723 lotissements, 499 équipements,
+  467 sites industriels, 289 hôtels. Export CRM disponible.</p>
+</div>
+
+<div class="page">
+  <div class="eyeb">HONNÊTETÉ MÉTHODOLOGIQUE</div>
+  <h2>Ce que la donnée dit, et ne dit pas</h2>
+  <p>Tout repose sur les autorisations d'urbanisme : c'est l'offre qui vient, pas les prix ni la demande.
+  Un permis n'est pas un chantier, un chantier n'est pas une vente. Les biais connus sont traités :
+  dédoublonnage national, coordonnées par défaut du géoportail exclues des cartes, croissances amorties et
+  pondérées par le volume, comparaisons ancrées après la généralisation de la plateforme (2022), année en cours
+  annualisée et jamais comparée en brut, couverture variable affichée partout, score décomposable en huit
+  contributions dont la somme redonne le score.</p>
+  <div class="eyeb" style="margin-top:5mm;">PERSPECTIVE</div>
+  <h2>Chaque croisement de données devient un produit</h2>
+  <p>Prix et transactions : prédire les zones de compression de marge. Propriété (ANCFCC) : la due diligence
+  complète en un clic. Crédit bancaire : superposer exposition, pipeline et informalité. Mobilité et satellite :
+  vérifier que les chantiers autorisés sortent de terre. Le socle est construit ; chaque source s'y branche.</p>
+  <div class="footer">ALPHASENSE IMMO · RAPPORT EXÉCUTIF · CHIFFRES RECALCULÉS À CHAQUE MISE À JOUR · VERSION INTERACTIVE DISPONIBLE (CARTES, 802 QUARTIERS, RECHERCHE PAR TITRE)</div>
+</div>
+
+</body></html>
