@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AlphaSense Immo · Note d'analyse</title>
+<style>
+:root {
+  --paper:#F4F6F2; --paper2:#ECEFE8; --ink:#1F2A28; --dim:#64756E;
+  --line:#C7D2C9; --hair:#D9E0D7; --survey:#33695B; --flag:#D9481F;
+  --display:'Bahnschrift','Segoe UI Semibold','Arial Narrow',Arial,sans-serif;
+  --mono:'Consolas','Cascadia Mono',Menlo,monospace;
+  --body:'Segoe UI',system-ui,sans-serif;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:var(--body); background:var(--paper); color:var(--ink); font-size:14.5px; line-height:1.55; }
+a { color:var(--survey); }
+a:focus-visible { outline:2px solid var(--flag); outline-offset:2px; }
+
+/* ── Feuille: en-tête carroyée + cartouche ─────────────────────────── */
+.sheet {
+  position:relative; padding:52px 6% 30px; border-bottom:2px solid var(--ink);
+  background:
+    repeating-linear-gradient(0deg, transparent 0 34px, rgba(51,105,91,.10) 34px 35px),
+    repeating-linear-gradient(90deg, transparent 0 34px, rgba(51,105,91,.10) 34px 35px),
+    var(--paper2);
+}
+.sheet .fiche { font-family:var(--mono); font-size:11.5px; letter-spacing:.14em; color:var(--survey); }
+.sheet h1 {
+  font-family:var(--display); font-size:clamp(26px,4.4vw,44px); font-weight:600;
+  text-transform:uppercase; letter-spacing:.035em; margin:10px 0 4px; line-height:1.06;
+}
+.sheet .q { font-size:clamp(15px,1.9vw,19px); color:var(--ink); max-width:620px; }
+.cartouche {
+  margin-top:26px; display:inline-grid; grid-auto-flow:column; gap:0;
+  border:1.5px solid var(--ink); background:var(--paper); font-family:var(--mono); font-size:11.5px;
+}
+.cartouche > div { padding:7px 16px 8px; border-right:1px solid var(--line); }
+.cartouche > div:last-child { border-right:none; }
+.cartouche b { display:block; font-size:9.5px; letter-spacing:.12em; color:var(--dim); font-weight:400; }
+.cross { position:absolute; color:var(--survey); opacity:.5; font-family:var(--mono); font-size:13px; pointer-events:none; }
+
+/* ── Relevés (KPI) ─────────────────────────────────────────────────── */
+.kpis { display:flex; flex-wrap:wrap; gap:0; padding:0 6%; border-bottom:1px solid var(--line); background:var(--paper); }
+.kpi { padding:18px 28px 16px 0; margin-right:28px; }
+.kpi .v { font-family:var(--mono); font-size:26px; font-weight:700; letter-spacing:-.01em; }
+.kpi .l { font-size:11px; color:var(--dim); letter-spacing:.06em; text-transform:uppercase; margin-top:1px; }
+
+/* ── Planches (sections) ───────────────────────────────────────────── */
+.section { padding:30px 6% 4px; }
+.eyeb { font-family:var(--mono); font-size:10.5px; letter-spacing:.16em; color:var(--survey); }
+.section h2 { font-family:var(--display); font-size:20px; font-weight:600; letter-spacing:.01em; margin:3px 0 4px; }
+.section .note { color:var(--dim); font-size:12.5px; max-width:760px; margin-bottom:12px; }
+.card { background:#fff; border:1px solid var(--line); border-top:2px solid var(--ink); padding:4px 14px 8px; margin-bottom:14px; overflow-x:auto; }
+
+/* ── Registre (tables) ─────────────────────────────────────────────── */
+table { border-collapse:collapse; width:100%; font-size:13px; }
+th { text-align:left; font-family:var(--mono); font-weight:400; font-size:10.5px; letter-spacing:.1em;
+     text-transform:uppercase; color:var(--dim); padding:10px 10px 6px; border-bottom:1px solid var(--ink); white-space:nowrap; }
+td { padding:7px 10px; border-bottom:1px solid var(--hair); vertical-align:middle; }
+tbody tr:hover td { background:var(--paper2); }
+td.num, th.num { text-align:right; }
+td.num { font-family:var(--mono); font-variant-numeric:tabular-nums; }
+.zn { font-weight:600; }
+.sect { display:inline-block; font-family:var(--mono); font-size:10px; color:var(--survey);
+        border:1px solid var(--line); padding:0 5px; margin-left:6px; letter-spacing:.05em; }
+
+/* Barre d'échelle: percentile 0-100 rendu comme une échelle de carte */
+.gauge { display:inline-flex; align-items:center; gap:8px; min-width:130px; justify-content:flex-end; }
+.gauge .bar { width:84px; height:7px; border:1px solid var(--ink); background:
+  repeating-linear-gradient(90deg, transparent 0 20px, var(--hair) 20px 21px), #fff; position:relative; }
+.gauge .bar i { position:absolute; inset:0; right:auto; background:var(--survey); }
+.gauge.hot .bar i { background:var(--flag); }
+.gauge b { font-family:var(--mono); font-weight:700; font-size:12.5px; min-width:34px; text-align:right; }
+.gauge.hot b { color:var(--flag); }
+
+.btn { display:inline-block; font-family:var(--display); text-transform:uppercase; letter-spacing:.08em;
+       font-size:13px; padding:11px 20px; background:var(--ink); color:var(--paper); text-decoration:none; margin:18px 6%; }
+.btn:hover { background:var(--survey); }
+.mapframe { width:100%; height:460px; border:none; display:block; }
+.maplink { font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; }
+.footer { font-family:var(--mono); text-align:center; color:var(--dim); font-size:11px; padding:26px 6% 30px;
+          border-top:1px solid var(--line); margin-top:26px; }
+@media (max-width:700px) {
+  .cartouche { grid-auto-flow:row; }
+  .cartouche > div { border-right:none; border-bottom:1px solid var(--line); }
+  .cartouche > div:last-child { border-bottom:none; }
+  .sheet { padding:30px 4% 20px; }
+  .section { padding:20px 4% 4px; }
+  .kpis { padding:0 4%; }
+  .kpi { padding:12px 14px 10px 0; margin-right:14px; }
+  .kpi .v { font-size:19px; }
+  .mapframe { height:320px; }
+  .gauge { min-width:100px; } .gauge .bar { width:56px; }
+  .btn { margin:14px 4%; }
+}
+</style></head><body>
+<header class="sheet">
+  <span class="cross" style="top:14px;left:6%;">+</span>
+  <span class="cross" style="top:14px;right:6%;">+</span>
+  <div class="fiche">ALPHASENSE IMMO · NOTE D'ANALYSE · <a href="dashboard.html">TABLEAU DE BORD</a></div>
+  <h1>Note d'analyse</h1>
+  <p class="q">Ce que 555 000 permis disent du Maroc, et comment cet outil les fait parler.</p>
+  <div class="cartouche">
+    <div><b>Référence des données</b>2026-07-15</div>
+    <div><b>Source</b>permis de construire et d'habiter</div>
+    <div><b>Couverture</b>1 548 communes · 802 quartiers</div>
+  </div>
+</header>
+
+<div class="section">
+  <div class="eyeb">MÉTHODE</div>
+  <h2>Ce que fait l'outil</h2>
+  <p style="max-width:760px;margin:0 0 14px;">AlphaSense Immo lit l'intégralité des permis de construire et d'habiter déposés sur la plateforme nationale : <b>555 327 autorisations</b>, 1 548 communes, mises à jour en continu. Chaque permis est lu (le texte de la consistance devient type de bâti, hauteur, logements, équipements), situé (maille de 1 km, 802 quartiers reconstruits), daté et relié : quand un permis d'habiter répond à un permis de construire, on mesure la durée réelle du chantier. Sur 109 412 paires mesurées : 11.7 mois pour une villa, 12.2 pour un immeuble. Nous n'avons identifié aucune base publique offrant ces mesures à cette granularité.</p>
+  <p style="max-width:760px;margin:0 0 14px;">Quatre lentilles traduisent cette matière en décisions : le promoteur (où le foncier se prépare), le commerçant (où les habitants arrivent), l'agence (ce qui arrive sur le marché dans 12-24 mois), l'industriel (où les pôles d'activité poussent). Trois produits en sortent : un flux d'affaires qualifié, un registre foncier interrogeable titre par titre, et un indice mensuel du BTP.</p>
+</div>
+<div class="section">
+  <div class="eyeb">LECTURE · 2026-07-15</div>
+  <h2>Ce qui bouge au Maroc</h2>
+  <p style="max-width:760px;margin:0 0 14px;"><b>Le pays construit comme jamais.</b> L'indice AlphaSense du BTP atteint <b>179.9 points</b> en 2026-06 (base 100 = moyenne 2023), soit <b>+42.8% sur un an</b>. La dynamique n'est pas là où on la cherche : elle est dans les couronnes et les villes moyennes, pas dans les centres.</p>
+  <p style="max-width:760px;margin:0 0 14px;"><b>La couronne sud de Casablanca est la machine résidentielle du pays.</b> Deroua, Berrechid, Settat, Had Soualem : des milliers d'unités livrées en 24 mois, et le commerce n'a pas suivi. <b>Commune De Kenitra</b> attend à elle seule 5 646 logements dans les 12 prochains mois.</p>
+  <p style="max-width:760px;margin:0 0 14px;"><b>Le foncier se prépare loin des projecteurs.</b> Commune El Jadida est la commune où le sol se découpe le plus vite (71 morcellements et lotissements en 24 mois) : les grues arrivent dans deux à trois ans. L'axe Khouribga, Oulad Abdoune, Beni Mellal raconte une urbanisation de l'intérieur que personne ne couvre. Et là où le sol manque, on le voit : les quartiers à forte tension construisent vers le haut, surélévation après surélévation.</p>
+  <p style="max-width:760px;margin:0 0 14px;"><b>L'informel reste structurel.</b> 17.7% des permis sont délivrés sur du foncier non-immatriculé, avec des écarts énormes d'une commune à l'autre : une carte du risque de garantie que les banques n'ont pas.</p>
+</div>
+<div class="section">
+  <div class="eyeb">HONNÊTETÉ MÉTHODOLOGIQUE</div>
+  <h2>Ce que la donnée ne dit pas</h2>
+  <p style="max-width:760px;margin:0 0 14px;">Tout ici repose sur une seule source : les autorisations d'urbanisme. C'est l'OFFRE qui vient, pas les prix, pas les transactions, pas la demande. Un permis n'est pas un chantier, un chantier n'est pas une vente. La plateforme de dépôt s'est généralisée en 2020-2021 : les comparaisons s'arrêtent volontairement là, et la couverture de quelques communes progresse encore.</p>
+</div>
+<div class="section">
+  <div class="eyeb">PERSPECTIVE</div>
+  <h2>Allié à d'autres données, chaque croisement devient un produit</h2>
+  <p style="max-width:760px;margin:0 0 14px;"><b>Prix et transactions</b> : croiser l'offre entrante avec les prix, c'est prédire les zones de compression de marge avant tout le monde. <b>Propriété (ANCFCC)</b> : relier les titres à leurs détenteurs, c'est la due diligence complète en un clic. <b>Crédit bancaire</b> : superposer l'exposition au pipeline et à l'informalité, c'est un outil de risque territorial dont nous n'avons trouvé aucun équivalent public. <b>Mobilité et satellite</b> : vérifier que les chantiers autorisés sortent réellement de terre. Le socle est là : chaque nouvelle source s'y branche et démultiplie la valeur.</p>
+</div>
+<div class="section">
+  <div class="eyeb">MÉTHODOLOGIE · BIAIS CONNUS ET TRAITÉS</div>
+  <h2>Comment les chiffres sont fiabilisés</h2>
+  <p style="max-width:760px;margin:0 0 14px;"><b>Dédoublonnage national</b> : chaque dossier compte une fois (identifiant national pour les PC, référence pour les PH ; ~2 500 dossiers servis en double par la source sont neutralisés). <b>Coordonnées par défaut</b> : ~41 600 permis pointent sur des coordonnées génériques du géoportail ; ils sont exclus de la maille et des cartes (trois filtres successifs) mais comptent dans les statistiques communales. <b>Effet petite base</b> : les croissances sont amorties (échelle logarithmique) et pondérées par le volume ; une commune qui passe de 8 à 55 permis ne surclasse pas mécaniquement une commune qui passe de 4 000 à 5 000. <b>Adoption de la plateforme</b> : les volumes antérieurs à 2022 reflètent le déploiement de l'e-dépôt, pas le marché ; aucune comparaison n'est ancrée avant. <b>Année partielle</b> : l'année en cours est annualisée, jamais comparée en brut, et aucune projection n'est publiée avec moins de 30 jours de recul. <b>Couverture variable</b> : la présence des communes sur la plateforme est inégale ; les classements sensibles sont filtrés par des seuils de volume et un facteur de couverture des données, affiché partout. <b>Score explicable</b> : l'Alpha de chaque commune se décompose en 8 contributions dont la somme redonne le score, visibles dans sa fiche.</p>
+</div>
+
+<div class="footer">ALPHASENSE IMMO · NOTE D'ANALYSE · CHIFFRES RECALCULÉS À CHAQUE MISE À JOUR DES DONNÉES</div>
+</body></html>

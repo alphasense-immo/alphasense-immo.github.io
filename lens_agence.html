@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AlphaSense Immo · Lentille Agence immobilière</title>
+<style>
+:root {
+  --paper:#F4F6F2; --paper2:#ECEFE8; --ink:#1F2A28; --dim:#64756E;
+  --line:#C7D2C9; --hair:#D9E0D7; --survey:#33695B; --flag:#D9481F;
+  --display:'Bahnschrift','Segoe UI Semibold','Arial Narrow',Arial,sans-serif;
+  --mono:'Consolas','Cascadia Mono',Menlo,monospace;
+  --body:'Segoe UI',system-ui,sans-serif;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:var(--body); background:var(--paper); color:var(--ink); font-size:14.5px; line-height:1.55; }
+a { color:var(--survey); }
+a:focus-visible { outline:2px solid var(--flag); outline-offset:2px; }
+
+/* ── Feuille: en-tête carroyée + cartouche ─────────────────────────── */
+.sheet {
+  position:relative; padding:52px 6% 30px; border-bottom:2px solid var(--ink);
+  background:
+    repeating-linear-gradient(0deg, transparent 0 34px, rgba(51,105,91,.10) 34px 35px),
+    repeating-linear-gradient(90deg, transparent 0 34px, rgba(51,105,91,.10) 34px 35px),
+    var(--paper2);
+}
+.sheet .fiche { font-family:var(--mono); font-size:11.5px; letter-spacing:.14em; color:var(--survey); }
+.sheet h1 {
+  font-family:var(--display); font-size:clamp(26px,4.4vw,44px); font-weight:600;
+  text-transform:uppercase; letter-spacing:.035em; margin:10px 0 4px; line-height:1.06;
+}
+.sheet .q { font-size:clamp(15px,1.9vw,19px); color:var(--ink); max-width:620px; }
+.cartouche {
+  margin-top:26px; display:inline-grid; grid-auto-flow:column; gap:0;
+  border:1.5px solid var(--ink); background:var(--paper); font-family:var(--mono); font-size:11.5px;
+}
+.cartouche > div { padding:7px 16px 8px; border-right:1px solid var(--line); }
+.cartouche > div:last-child { border-right:none; }
+.cartouche b { display:block; font-size:9.5px; letter-spacing:.12em; color:var(--dim); font-weight:400; }
+.cross { position:absolute; color:var(--survey); opacity:.5; font-family:var(--mono); font-size:13px; pointer-events:none; }
+
+/* ── Relevés (KPI) ─────────────────────────────────────────────────── */
+.kpis { display:flex; flex-wrap:wrap; gap:0; padding:0 6%; border-bottom:1px solid var(--line); background:var(--paper); }
+.kpi { padding:18px 28px 16px 0; margin-right:28px; }
+.kpi .v { font-family:var(--mono); font-size:26px; font-weight:700; letter-spacing:-.01em; }
+.kpi .l { font-size:11px; color:var(--dim); letter-spacing:.06em; text-transform:uppercase; margin-top:1px; }
+
+/* ── Planches (sections) ───────────────────────────────────────────── */
+.section { padding:30px 6% 4px; }
+.eyeb { font-family:var(--mono); font-size:10.5px; letter-spacing:.16em; color:var(--survey); }
+.section h2 { font-family:var(--display); font-size:20px; font-weight:600; letter-spacing:.01em; margin:3px 0 4px; }
+.section .note { color:var(--dim); font-size:12.5px; max-width:760px; margin-bottom:12px; }
+.card { background:#fff; border:1px solid var(--line); border-top:2px solid var(--ink); padding:4px 14px 8px; margin-bottom:14px; overflow-x:auto; }
+
+/* ── Registre (tables) ─────────────────────────────────────────────── */
+table { border-collapse:collapse; width:100%; font-size:13px; }
+th { text-align:left; font-family:var(--mono); font-weight:400; font-size:10.5px; letter-spacing:.1em;
+     text-transform:uppercase; color:var(--dim); padding:10px 10px 6px; border-bottom:1px solid var(--ink); white-space:nowrap; }
+td { padding:7px 10px; border-bottom:1px solid var(--hair); vertical-align:middle; }
+tbody tr:hover td { background:var(--paper2); }
+td.num, th.num { text-align:right; }
+td.num { font-family:var(--mono); font-variant-numeric:tabular-nums; }
+.zn { font-weight:600; }
+.sect { display:inline-block; font-family:var(--mono); font-size:10px; color:var(--survey);
+        border:1px solid var(--line); padding:0 5px; margin-left:6px; letter-spacing:.05em; }
+
+/* Barre d'échelle: percentile 0-100 rendu comme une échelle de carte */
+.gauge { display:inline-flex; align-items:center; gap:8px; min-width:130px; justify-content:flex-end; }
+.gauge .bar { width:84px; height:7px; border:1px solid var(--ink); background:
+  repeating-linear-gradient(90deg, transparent 0 20px, var(--hair) 20px 21px), #fff; position:relative; }
+.gauge .bar i { position:absolute; inset:0; right:auto; background:var(--survey); }
+.gauge.hot .bar i { background:var(--flag); }
+.gauge b { font-family:var(--mono); font-weight:700; font-size:12.5px; min-width:34px; text-align:right; }
+.gauge.hot b { color:var(--flag); }
+
+.btn { display:inline-block; font-family:var(--display); text-transform:uppercase; letter-spacing:.08em;
+       font-size:13px; padding:11px 20px; background:var(--ink); color:var(--paper); text-decoration:none; margin:18px 6%; }
+.btn:hover { background:var(--survey); }
+.mapframe { width:100%; height:460px; border:none; display:block; }
+.maplink { font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; }
+.footer { font-family:var(--mono); text-align:center; color:var(--dim); font-size:11px; padding:26px 6% 30px;
+          border-top:1px solid var(--line); margin-top:26px; }
+@media (max-width:700px) {
+  .cartouche { grid-auto-flow:row; }
+  .cartouche > div { border-right:none; border-bottom:1px solid var(--line); }
+  .cartouche > div:last-child { border-bottom:none; }
+  .sheet { padding:30px 4% 20px; }
+  .section { padding:20px 4% 4px; }
+  .kpis { padding:0 4%; }
+  .kpi { padding:12px 14px 10px 0; margin-right:14px; }
+  .kpi .v { font-size:19px; }
+  .mapframe { height:320px; }
+  .gauge { min-width:100px; } .gauge .bar { width:56px; }
+  .btn { margin:14px 4%; }
+}
+</style></head><body>
+<header class="sheet">
+  <span class="cross" style="top:14px;left:6%;">+</span>
+  <span class="cross" style="top:14px;right:6%;">+</span>
+  <span class="cross" style="bottom:10px;right:22%;">+</span>
+  <div class="fiche">ALPHASENSE IMMO · FICHE 3/4 · <a href="dashboard.html">TABLEAU DE BORD</a></div>
+  <h1>Agence immobilière</h1>
+  <p class="q">Qu'est-ce qui arrive sur le marché dans 12-24 mois, et où ?</p>
+  <div class="cartouche"><div><b>Référence des données</b>2026-07-15</div><div><b>Permis analysés</b>515 241</div><div><b>Quartiers (maille 1 km)</b>802</div><div><b>Source</b>Rokhas · geoportail national</div></div>
+</header>
+<div class="kpis"><div class="kpi"><div class="v">132 350</div><div class="l">unités attendues sous 12 mois</div></div><div class="kpi"><div class="v">135 122</div><div class="l">unités attendues sous 24 mois</div></div><div class="kpi"><div class="v">11.7 / 12.2</div><div class="l">délai réel villa / immeuble · mois</div></div></div>
+<div class="section">
+  <div class="eyeb">CARTE · MAILLE 1 KM · <a class="maplink" href="lens_agence_map.html" target="_blank">PLEIN ÉCRAN</a></div>
+  <h2>Offre entrante par quartier</h2>
+  <div class="card" style="padding:6px;">
+    <iframe src="lens_agence_map.html" class="mapframe" loading="lazy" title="Offre entrante par quartier"></iframe>
+  </div>
+  <div class="note" style="margin-top:8px;">"Quartier" désigne ici une zone construite par agrégation de cellules d'un kilomètre (regroupement spatial), pas une entité administrative ou vécue.</div>
+</div>
+<div class="section"><div class="eyeb">MAILLE 1 KM · PROJECTION DE LIVRAISON</div><h2>Top 15 quartiers · offre entrante 12 mois</h2><div class="note">PC des 24 derniers mois sans permis d'habiter en face, projetés en date de livraison via les délais réels calibrés sur 109 412 paires PC vers PH.</div><div class="card"><table><thead><tr><th>Quartier</th><th class="num">Unités 0-12 mois</th><th class="num">Déjà livrables</th><th class="num">% villa</th><th class="num">% immeuble</th><th class="num">% piscine</th></tr></thead><tbody><tr><td><span class="zn">COMMUNE DE KENITRA</span><span class="sect" title="secteur nord">N</span></td><td class="num">5 646</td><td class="num">3 011</td><td class="num">76.7</td><td class="num">13.0</td><td class="num">0.1</td></tr><tr><td><span class="zn">COMMUNE DEROUA</span><span class="sect" title="secteur est">E</span></td><td class="num">4 166</td><td class="num">2 920</td><td class="num">9.4</td><td class="num">83.0</td><td class="num">0.0</td></tr><tr><td><span class="zn">ARRONDISSEMENT DE MENARA</span><span class="sect" title="secteur est">E</span></td><td class="num">4 112</td><td class="num">1 282</td><td class="num">45.9</td><td class="num">34.8</td><td class="num">0.1</td></tr><tr><td><span class="zn">COMMUNE DE BENI MELLAL</span><span class="sect" title="secteur est">E</span></td><td class="num">3 506</td><td class="num">2 110</td><td class="num">57.8</td><td class="num">35.3</td><td class="num">0.1</td></tr><tr><td><span class="zn">COMMUNE SETTAT</span><span class="sect" title="secteur est">E</span></td><td class="num">3 368</td><td class="num">1 521</td><td class="num">43.1</td><td class="num">48.8</td><td class="num">0.0</td></tr><tr><td><span class="zn">ARRONDISSEMENT DE ZOUAGUA</span><span class="sect" title="secteur est">E</span></td><td class="num">3 206</td><td class="num">828</td><td class="num">66.5</td><td class="num">26.8</td><td class="num">0.1</td></tr><tr><td><span class="zn">ARRONDISSEMENT DE BNI MAKADA</span><span class="sect" title="secteur nord">N</span></td><td class="num">2 932</td><td class="num">2 032</td><td class="num">69.3</td><td class="num">24.5</td><td class="num">0.0</td></tr><tr><td><span class="zn">COMMUNE BERRECHID</span><span class="sect" title="secteur est">E</span></td><td class="num">2 846</td><td class="num">1 226</td><td class="num">19.9</td><td class="num">72.4</td><td class="num">0.0</td></tr><tr><td><span class="zn">COMMUNE HAD SOUALEM</span><span class="sect" title="secteur nord">N</span></td><td class="num">2 648</td><td class="num">1 106</td><td class="num">11.4</td><td class="num">79.7</td><td class="num">0.0</td></tr><tr><td><span class="zn">COMMUNE BOUZNIKA</span><span class="sect" title="secteur nord">N</span></td><td class="num">2 222</td><td class="num">723</td><td class="num">19.7</td><td class="num">67.6</td><td class="num">0.4</td></tr><tr><td><span class="zn">ARRONDISSEMENT DE SAISS</span><span class="sect" title="secteur est">E</span></td><td class="num">1 804</td><td class="num">716</td><td class="num">64.8</td><td class="num">27.4</td><td class="num">0.0</td></tr><tr><td><span class="zn">ARRONDISSEMENT HAY HASSANI</span><span class="sect" title="secteur nord">N</span></td><td class="num">1 789</td><td class="num">1 283</td><td class="num">23.8</td><td class="num">50.6</td><td class="num">0.2</td></tr><tr><td><span class="zn">COMMUNE BEN SLIMANE</span><span class="sect" title="secteur est">E</span></td><td class="num">1 751</td><td class="num">844</td><td class="num">32.3</td><td class="num">53.9</td><td class="num">0.4</td></tr><tr><td><span class="zn">COMMUNE DE MARTIL</span><span class="sect" title="secteur centre">C</span></td><td class="num">1 692</td><td class="num">986</td><td class="num">35.5</td><td class="num">59.7</td><td class="num">0.0</td></tr><tr><td><span class="zn">COMMUNE DE KHOURIBGA</span><span class="sect" title="secteur est">E</span></td><td class="num">1 666</td><td class="num">708</td><td class="num">89.6</td><td class="num">5.5</td><td class="num">0.0</td></tr></tbody></table></div></div><div class="section"><div class="eyeb">MAILLE 1 KM · PROJECTION DE LIVRAISON</div><h2>Top 15 quartiers · offre entrante 24 mois</h2><div class="card"><table><thead><tr><th>Quartier</th><th class="num">Unités 0-24 mois</th><th class="num">PC en pipe</th><th class="num">% du stock</th><th class="num">% sous-sol</th></tr></thead><tbody><tr><td><span class="zn">COMMUNE DE KENITRA</span><span class="sect" title="secteur nord">N</span></td><td class="num">5 737</td><td class="num">4 672</td><td class="num">30.5</td><td class="num">3.3</td></tr><tr><td><span class="zn">ARRONDISSEMENT DE MENARA</span><span class="sect" title="secteur est">E</span></td><td class="num">4 257</td><td class="num">1 881</td><td class="num">42.6</td><td class="num">7.9</td></tr><tr><td><span class="zn">COMMUNE DEROUA</span><span class="sect" title="secteur est">E</span></td><td class="num">4 218</td><td class="num">743</td><td class="num">12.6</td><td class="num">1.7</td></tr><tr><td><span class="zn">COMMUNE DE BENI MELLAL</span><span class="sect" title="secteur est">E</span></td><td class="num">3 580</td><td class="num">1 775</td><td class="num">25.0</td><td class="num">55.3</td></tr><tr><td><span class="zn">COMMUNE SETTAT</span><span class="sect" title="secteur est">E</span></td><td class="num">3 486</td><td class="num">1 316</td><td class="num">21.2</td><td class="num">7.1</td></tr><tr><td><span class="zn">ARRONDISSEMENT DE ZOUAGUA</span><span class="sect" title="secteur est">E</span></td><td class="num">3 248</td><td class="num">1 467</td><td class="num">24.0</td><td class="num">11.7</td></tr><tr><td><span class="zn">ARRONDISSEMENT DE BNI MAKADA</span><span class="sect" title="secteur nord">N</span></td><td class="num">3 003</td><td class="num">1 934</td><td class="num">25.7</td><td class="num">7.7</td></tr><tr><td><span class="zn">COMMUNE BERRECHID</span><span class="sect" title="secteur est">E</span></td><td class="num">2 868</td><td class="num">919</td><td class="num">17.0</td><td class="num">12.4</td></tr><tr><td><span class="zn">COMMUNE HAD SOUALEM</span><span class="sect" title="secteur nord">N</span></td><td class="num">2 749</td><td class="num">801</td><td class="num">21.7</td><td class="num">6.1</td></tr><tr><td><span class="zn">COMMUNE BOUZNIKA</span><span class="sect" title="secteur nord">N</span></td><td class="num">2 232</td><td class="num">756</td><td class="num">19.5</td><td class="num">15.9</td></tr><tr><td><span class="zn">ARRONDISSEMENT HAY HASSANI</span><span class="sect" title="secteur nord">N</span></td><td class="num">1 885</td><td class="num">844</td><td class="num">9.9</td><td class="num">45.3</td></tr><tr><td><span class="zn">ARRONDISSEMENT DE SAISS</span><span class="sect" title="secteur est">E</span></td><td class="num">1 852</td><td class="num">924</td><td class="num">22.9</td><td class="num">20.9</td></tr><tr><td><span class="zn">COMMUNE BEN SLIMANE</span><span class="sect" title="secteur est">E</span></td><td class="num">1 806</td><td class="num">753</td><td class="num">25.3</td><td class="num">13.5</td></tr><tr><td><span class="zn">COMMUNE DE MARTIL</span><span class="sect" title="secteur centre">C</span></td><td class="num">1 722</td><td class="num">637</td><td class="num">26.7</td><td class="num">31.4</td></tr><tr><td><span class="zn">COMMUNE DE KHOURIBGA</span><span class="sect" title="secteur est">E</span></td><td class="num">1 678</td><td class="num">1 718</td><td class="num">23.7</td><td class="num">1.0</td></tr></tbody></table></div></div><div class="section"><div class="eyeb">OFFRE ENTRANTE RAPPORTÉE AU STOCK ESTIMÉ</div><h2>Signal cannibalisation</h2><div class="note">Quartiers où l'offre entrante 24 mois dépasse 15% du stock estimé : le neuf va peser sur l'ancien (au moins 200 unités en pipe).</div><div class="card"><table><thead><tr><th>Quartier</th><th class="num">% du stock</th><th class="num">Unités 24m</th><th class="num">Stock estimé</th></tr></thead><tbody><tr><td><span class="zn">COMMUNE MEJJATIA OULED TALEB</span><span class="sect" title="secteur est 2">E 2</span></td><td class="num">93.8</td><td class="num">270</td><td class="num">288</td></tr><tr><td><span class="zn">COMMUNE D'AIT MALEK</span><span class="sect" title="secteur est">E</span></td><td class="num">70.9</td><td class="num">279</td><td class="num">394</td></tr><tr><td><span class="zn">COMMUNE D'OULAD TEIMA</span><span class="sect" title="secteur nord">N</span></td><td class="num">55.2</td><td class="num">304</td><td class="num">551</td></tr><tr><td><span class="zn">COMMUNE MEJJATIA OULED TALEB</span><span class="sect" title="secteur nord">N</span></td><td class="num">49.4</td><td class="num">1 128</td><td class="num">2 283</td></tr><tr><td><span class="zn">COMMUNE DE SEBAA ROUADI</span><span class="sect" title="secteur est">E</span></td><td class="num">46.4</td><td class="num">410</td><td class="num">884</td></tr><tr><td><span class="zn">COMMUNE D'AIT MELLOUL</span><span class="sect" title="secteur est">E</span></td><td class="num">45.5</td><td class="num">360</td><td class="num">790</td></tr><tr><td><span class="zn">ARRONDISSEMENT DE MENARA</span><span class="sect" title="secteur est">E</span></td><td class="num">42.6</td><td class="num">4 257</td><td class="num">9 992</td></tr><tr><td><span class="zn">COMMUNE SIDI HAJJAJ OUED HASSAR</span><span class="sect" title="secteur est">E</span></td><td class="num">36.7</td><td class="num">423</td><td class="num">1 152</td></tr><tr><td><span class="zn">COMMUNE DE TIFLET</span><span class="sect" title="secteur centre">C</span></td><td class="num">35.7</td><td class="num">468</td><td class="num">1 310</td></tr><tr><td><span class="zn">COMMUNE DE SIDI YAHYA EL GHARB</span><span class="sect" title="secteur nord">N</span></td><td class="num">35.5</td><td class="num">670</td><td class="num">1 888</td></tr><tr><td><span class="zn">COMMUNE D'EL KELAA DES SRAGHNA</span><span class="sect" title="secteur est">E</span></td><td class="num">35.3</td><td class="num">821</td><td class="num">2 326</td></tr><tr><td><span class="zn">COMMUNE D'AZILAL</span><span class="sect" title="secteur centre">C</span></td><td class="num">34.4</td><td class="num">626</td><td class="num">1 818</td></tr></tbody></table></div></div><div class="section"><div class="eyeb">MESURÉ SUR LES PAIRES RÉELLES PC VERS PH</div><h2>Délais de construction réels</h2><div class="note">Médianes mesurées entre la délivrance du permis de construire et celle du permis d'habiter.</div><div class="card"><table><thead><tr><th>Typologie</th><th class="num">Médiane (mois)</th><th class="num">Paires mesurées</th><th>Source</th></tr></thead><tbody><tr><td>villa</td><td class="num">11.7</td><td class="num">74 244</td><td>calibrated</td></tr><tr><td>immeuble</td><td class="num">12.2</td><td class="num">23 447</td><td>calibrated</td></tr><tr><td>autre</td><td class="num">10.9</td><td class="num">3 245</td><td>calibrated</td></tr><tr><td>commerce</td><td class="num">7.1</td><td class="num">2 989</td><td>calibrated</td></tr><tr><td>social</td><td class="num">10.5</td><td class="num">1 103</td><td>calibrated</td></tr><tr><td>industriel</td><td class="num">14.4</td><td class="num">905</td><td>calibrated</td></tr><tr><td>education</td><td class="num">8.2</td><td class="num">870</td><td>calibrated</td></tr><tr><td>bureau</td><td class="num">16.1</td><td class="num">621</td><td>calibrated</td></tr><tr><td>agricole</td><td class="num">13.2</td><td class="num">496</td><td>calibrated</td></tr><tr><td>lotissement</td><td class="num">12.3</td><td class="num">387</td><td>calibrated</td></tr></tbody></table></div></div>
+<div class="footer">ALPHASENSE IMMO · FICHE 3/4 · AGENCE IMMOBILIÈRE · PERMIS DE CONSTRUIRE ET D'HABITER · TRAITEMENT PROPRIÉTAIRE</div>
+</body></html>

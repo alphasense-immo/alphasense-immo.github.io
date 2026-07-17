@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AlphaSense Immo · Indice BTP</title>
+<script src="plotly.min.js"></script>
+<script>window.Plotly || document.write('<script src="https://cdn.plot.ly/plotly-2.27.0.min.js"><\/script>');</script>
+<style>
+:root {
+  --paper:#F4F6F2; --paper2:#ECEFE8; --ink:#1F2A28; --dim:#64756E;
+  --line:#C7D2C9; --hair:#D9E0D7; --survey:#33695B; --flag:#D9481F;
+  --display:'Bahnschrift','Segoe UI Semibold','Arial Narrow',Arial,sans-serif;
+  --mono:'Consolas','Cascadia Mono',Menlo,monospace;
+  --body:'Segoe UI',system-ui,sans-serif;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:var(--body); background:var(--paper); color:var(--ink); font-size:14.5px; line-height:1.55; }
+a { color:var(--survey); }
+a:focus-visible { outline:2px solid var(--flag); outline-offset:2px; }
+
+/* ── Feuille: en-tête carroyée + cartouche ─────────────────────────── */
+.sheet {
+  position:relative; padding:52px 6% 30px; border-bottom:2px solid var(--ink);
+  background:
+    repeating-linear-gradient(0deg, transparent 0 34px, rgba(51,105,91,.10) 34px 35px),
+    repeating-linear-gradient(90deg, transparent 0 34px, rgba(51,105,91,.10) 34px 35px),
+    var(--paper2);
+}
+.sheet .fiche { font-family:var(--mono); font-size:11.5px; letter-spacing:.14em; color:var(--survey); }
+.sheet h1 {
+  font-family:var(--display); font-size:clamp(26px,4.4vw,44px); font-weight:600;
+  text-transform:uppercase; letter-spacing:.035em; margin:10px 0 4px; line-height:1.06;
+}
+.sheet .q { font-size:clamp(15px,1.9vw,19px); color:var(--ink); max-width:620px; }
+.cartouche {
+  margin-top:26px; display:inline-grid; grid-auto-flow:column; gap:0;
+  border:1.5px solid var(--ink); background:var(--paper); font-family:var(--mono); font-size:11.5px;
+}
+.cartouche > div { padding:7px 16px 8px; border-right:1px solid var(--line); }
+.cartouche > div:last-child { border-right:none; }
+.cartouche b { display:block; font-size:9.5px; letter-spacing:.12em; color:var(--dim); font-weight:400; }
+.cross { position:absolute; color:var(--survey); opacity:.5; font-family:var(--mono); font-size:13px; pointer-events:none; }
+
+/* ── Relevés (KPI) ─────────────────────────────────────────────────── */
+.kpis { display:flex; flex-wrap:wrap; gap:0; padding:0 6%; border-bottom:1px solid var(--line); background:var(--paper); }
+.kpi { padding:18px 28px 16px 0; margin-right:28px; }
+.kpi .v { font-family:var(--mono); font-size:26px; font-weight:700; letter-spacing:-.01em; }
+.kpi .l { font-size:11px; color:var(--dim); letter-spacing:.06em; text-transform:uppercase; margin-top:1px; }
+
+/* ── Planches (sections) ───────────────────────────────────────────── */
+.section { padding:30px 6% 4px; }
+.eyeb { font-family:var(--mono); font-size:10.5px; letter-spacing:.16em; color:var(--survey); }
+.section h2 { font-family:var(--display); font-size:20px; font-weight:600; letter-spacing:.01em; margin:3px 0 4px; }
+.section .note { color:var(--dim); font-size:12.5px; max-width:760px; margin-bottom:12px; }
+.card { background:#fff; border:1px solid var(--line); border-top:2px solid var(--ink); padding:4px 14px 8px; margin-bottom:14px; overflow-x:auto; }
+
+/* ── Registre (tables) ─────────────────────────────────────────────── */
+table { border-collapse:collapse; width:100%; font-size:13px; }
+th { text-align:left; font-family:var(--mono); font-weight:400; font-size:10.5px; letter-spacing:.1em;
+     text-transform:uppercase; color:var(--dim); padding:10px 10px 6px; border-bottom:1px solid var(--ink); white-space:nowrap; }
+td { padding:7px 10px; border-bottom:1px solid var(--hair); vertical-align:middle; }
+tbody tr:hover td { background:var(--paper2); }
+td.num, th.num { text-align:right; }
+td.num { font-family:var(--mono); font-variant-numeric:tabular-nums; }
+.zn { font-weight:600; }
+.sect { display:inline-block; font-family:var(--mono); font-size:10px; color:var(--survey);
+        border:1px solid var(--line); padding:0 5px; margin-left:6px; letter-spacing:.05em; }
+
+/* Barre d'échelle: percentile 0-100 rendu comme une échelle de carte */
+.gauge { display:inline-flex; align-items:center; gap:8px; min-width:130px; justify-content:flex-end; }
+.gauge .bar { width:84px; height:7px; border:1px solid var(--ink); background:
+  repeating-linear-gradient(90deg, transparent 0 20px, var(--hair) 20px 21px), #fff; position:relative; }
+.gauge .bar i { position:absolute; inset:0; right:auto; background:var(--survey); }
+.gauge.hot .bar i { background:var(--flag); }
+.gauge b { font-family:var(--mono); font-weight:700; font-size:12.5px; min-width:34px; text-align:right; }
+.gauge.hot b { color:var(--flag); }
+
+.btn { display:inline-block; font-family:var(--display); text-transform:uppercase; letter-spacing:.08em;
+       font-size:13px; padding:11px 20px; background:var(--ink); color:var(--paper); text-decoration:none; margin:18px 6%; }
+.btn:hover { background:var(--survey); }
+.mapframe { width:100%; height:460px; border:none; display:block; }
+.maplink { font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; }
+.footer { font-family:var(--mono); text-align:center; color:var(--dim); font-size:11px; padding:26px 6% 30px;
+          border-top:1px solid var(--line); margin-top:26px; }
+@media (max-width:700px) {
+  .cartouche { grid-auto-flow:row; }
+  .cartouche > div { border-right:none; border-bottom:1px solid var(--line); }
+  .cartouche > div:last-child { border-bottom:none; }
+  .sheet { padding:30px 4% 20px; }
+  .section { padding:20px 4% 4px; }
+  .kpis { padding:0 4%; }
+  .kpi { padding:12px 14px 10px 0; margin-right:14px; }
+  .kpi .v { font-size:19px; }
+  .mapframe { height:320px; }
+  .gauge { min-width:100px; } .gauge .bar { width:56px; }
+  .btn { margin:14px 4%; }
+}
+
+#chart { width:100%; height:430px; }</style></head><body>
+<header class="sheet">
+  <span class="cross" style="top:14px;left:6%;">+</span>
+  <span class="cross" style="top:14px;right:6%;">+</span>
+  <div class="fiche">ALPHASENSE IMMO · PRODUIT · INDICE BTP · <a href="dashboard.html">TABLEAU DE BORD</a></div>
+  <h1>Indice AlphaSense du BTP</h1>
+  <p class="q">Les permis précèdent les grues. L'indicateur avancé mensuel de la construction marocaine.</p>
+  <div class="cartouche">
+    <div><b>Référence des données</b>2026-07-15</div>
+    <div><b>Période</b>2022-01 au 2026-06</div>
+    <div><b>Base</b>100 = moyenne 2023</div>
+    <div><b>Correction</b>saisonnalité (facteurs médians)</div>
+  </div>
+</header>
+<div class="kpis"><div class="kpi"><div class="v">179.9</div><div class="l">indice 06/2026 · base 100 = 2023</div></div><div class="kpi"><div class="v">6 867</div><div class="l">permis délivrés en 06/2026</div></div><div class="kpi"><div class="v">+42.8%</div><div class="l">variation sur un an</div></div></div>
+<div class="section">
+  <div class="eyeb">SÉRIE MENSUELLE · CORRIGÉE DE LA SAISONNALITÉ</div>
+  <h2>Indice national</h2>
+  <div class="note">Trait plein : indice CVS (base 100 = moyenne 2023). Trait pointillé : tendance 3 mois. Barres : permis bruts.
+  La plateforme de dépôt a été généralisée en 2020-2021 : les volumes antérieurs mesurent son adoption, pas le marché.
+  L'indice démarre donc en 2022, et mesure l'activité enregistrée sur la plateforme (la couverture de quelques communes progresse encore).</div>
+  <div class="card"><div id="chart"></div></div>
+</div>
+<div class="section">
+  <div class="eyeb">FENÊTRE 12 MOIS GLISSANTS · RÉGIONS À 2000+ PC</div>
+  <h2>Le cycle par région</h2>
+  <div class="card"><table><thead><tr><th>Région</th><th class="num">PC · 12 derniers mois</th><th class="num">Variation vs 12 mois précédents (%)</th></tr></thead><tbody><tr><td>DARAA-TAFILALET</td><td class="num">4 032</td><td class="num">50.5</td></tr><tr><td>GUELMIM-OUED NOUN</td><td class="num">651</td><td class="num">41.8</td></tr><tr><td>LAAYOUNE-SAKIA EL HAMRA</td><td class="num">794</td><td class="num">36.0</td></tr><tr><td>SOUSS-MASSA</td><td class="num">3 767</td><td class="num">27.9</td></tr><tr><td>BENI MELLAL-KHENIFRA</td><td class="num">8 429</td><td class="num">26.5</td></tr><tr><td>RABAT-SALE-KENITRA</td><td class="num">12 333</td><td class="num">26.0</td></tr><tr><td>MARRAKECH-SAFI</td><td class="num">12 656</td><td class="num">25.5</td></tr><tr><td>FES-MEKNES</td><td class="num">10 917</td><td class="num">13.6</td></tr><tr><td>L'ORIENTALE</td><td class="num">6 392</td><td class="num">10.7</td></tr><tr><td>CASABLANCA-SETTAT</td><td class="num">15 869</td><td class="num">7.7</td></tr><tr><td>TANGER-TETOUAN-AL HOCEIMA</td><td class="num">6 109</td><td class="num">5.5</td></tr></tbody></table></div>
+</div>
+<div class="footer">ALPHASENSE IMMO · INDICE BTP · PERMIS DE CONSTRUIRE DÉLIVRÉS, CVS, BASE 100 = 2023 · SÉRIE COMPLÈTE: indice_btp.json</div>
+<script>
+const months = ["2022-01", "2022-02", "2022-03", "2022-04", "2022-05", "2022-06", "2022-07", "2022-08", "2022-09", "2022-10", "2022-11", "2022-12", "2023-01", "2023-02", "2023-03", "2023-04", "2023-05", "2023-06", "2023-07", "2023-08", "2023-09", "2023-10", "2023-11", "2023-12", "2024-01", "2024-02", "2024-03", "2024-04", "2024-05", "2024-06", "2024-07", "2024-08", "2024-09", "2024-10", "2024-11", "2024-12", "2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03", "2026-04", "2026-05", "2026-06"], raw = [4033, 3716, 4199, 3174, 3846, 3829, 3633, 3931, 4041, 4940, 5051, 6611, 4631, 4779, 4972, 4013, 5350, 3931, 4261, 4088, 4044, 5277, 4766, 5713, 4437, 4481, 4494, 5341, 6054, 4136, 6007, 4416, 4539, 6743, 5319, 8102, 5955, 5705, 4911, 6685, 6138, 4809, 6595, 4945, 6001, 8441, 6471, 11159, 5236, 6135, 6402, 8688, 5353, 6867], idx = [89.7, 84.2, 99.1, 63.3, 77.5, 100.3, 80.6, 99.8, 96.4, 89.8, 109.6, 99.9, 103.0, 108.2, 117.4, 80.1, 107.9, 103.0, 94.5, 103.7, 96.5, 96.0, 103.4, 86.3, 98.7, 101.5, 106.1, 106.6, 122.1, 108.4, 133.3, 112.1, 108.3, 122.6, 115.4, 122.4, 132.5, 129.2, 115.9, 133.4, 123.7, 126.0, 146.3, 125.5, 143.1, 153.5, 140.4, 168.6, 116.5, 139.0, 151.1, 173.4, 107.9, 179.9], trend = [89.7, 87.0, 91.0, 82.2, 80.0, 80.4, 86.1, 93.6, 92.3, 95.3, 98.6, 99.8, 104.2, 103.7, 109.5, 101.9, 101.8, 97.0, 101.8, 100.4, 98.2, 98.7, 98.6, 95.2, 96.1, 95.5, 102.1, 104.7, 111.6, 112.4, 121.3, 117.9, 117.9, 114.3, 115.4, 120.1, 123.4, 128.0, 125.9, 126.2, 124.3, 127.7, 132.0, 132.6, 138.3, 140.7, 145.7, 154.2, 141.8, 141.4, 135.5, 154.5, 144.1, 153.7];
+Plotly.newPlot('chart', [
+  { x: months, y: raw, type: 'bar', name: 'Permis bruts', yaxis: 'y2',
+     marker: { color: 'rgba(51,105,91,0.25)' } },
+  { x: months, y: idx, type: 'scatter', mode: 'lines', name: 'Indice CVS',
+     line: { color: '#1F2A28', width: 2.5 } },
+  { x: months, y: trend, type: 'scatter', mode: 'lines', name: 'Tendance 3 mois',
+     line: { color: '#D9481F', width: 1.4, dash: 'dot' } }
+], {
+  paper_bgcolor: 'rgba(0,0,0,0)', plot_bgcolor: 'rgba(0,0,0,0)',
+  font: { family: 'Consolas, monospace', size: 11.5, color: '#1F2A28' },
+  margin: { l: 46, r: 46, t: 12, b: 34 },
+  legend: { orientation: 'h', y: 1.08 },
+  xaxis: { gridcolor: '#D9E0D7' },
+  yaxis: { title: 'Indice (100 = 2023)', gridcolor: '#D9E0D7' },
+  yaxis2: { overlaying: 'y', side: 'right', showgrid: false, title: 'Permis/mois' }
+}, { displayModeBar: false, responsive: true });
+</script>
+</body></html>

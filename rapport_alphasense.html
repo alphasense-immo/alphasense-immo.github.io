@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>AlphaSense Immo — Rapport National</title>
+    <style>
+        @page { margin: 15mm; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            color: #222;
+            line-height: 1.5;
+            font-size: 11pt;
+        }
+        .page { page-break-after: always; padding: 20px 0; }
+        .page:last-child { page-break-after: avoid; }
+        h1 {
+            font-size: 28pt;
+            color: #1a1a3e;
+            margin-bottom: 10px;
+        }
+        h2 {
+            font-size: 16pt;
+            color: #1a1a3e;
+            margin: 20px 0 10px 0;
+            border-bottom: 2px solid #2ecc71;
+            padding-bottom: 5px;
+        }
+        h3 { font-size: 13pt; color: #333; margin: 12px 0 6px 0; }
+        .cover {
+            text-align: center;
+            padding-top: 150px;
+        }
+        .cover h1 { font-size: 36pt; }
+        .cover .subtitle { font-size: 16pt; color: #555; margin-top: 10px; }
+        .cover .date { font-size: 12pt; color: #999; margin-top: 30px; }
+        .kpi-row {
+            display: flex;
+            gap: 20px;
+            margin: 15px 0;
+        }
+        .kpi {
+            flex: 1;
+            text-align: center;
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .kpi .val { font-size: 20pt; font-weight: bold; color: #1a1a3e; }
+        .kpi .lbl { font-size: 9pt; color: #666; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+            font-size: 10pt;
+        }
+        th {
+            background: #1a1a3e;
+            color: white;
+            padding: 8px 6px;
+            text-align: left;
+        }
+        td {
+            padding: 6px;
+            border-bottom: 1px solid #ddd;
+        }
+        tr:nth-child(even) { background: #f9f9f9; }
+    </style>
+</head>
+<body>
+
+<!-- COVER PAGE -->
+<div class="page cover">
+    <h1>AlphaSense Immo</h1>
+    <div class="subtitle">Rapport d'Analyse Urbaine — Maroc</div>
+    <div class="subtitle">1,422 communes | 497,633 permis analysés</div>
+    <div class="date">Généré le 09 February 2026</div>
+</div>
+
+<!-- EXECUTIVE SUMMARY -->
+<div class="page">
+    <h2>Synthèse Exécutive</h2>
+
+    <div class="kpi-row">
+        <div class="kpi"><div class="val">316,867</div><div class="lbl">Permis Construction</div></div>
+        <div class="kpi"><div class="val">180,766</div><div class="lbl">Permis Habitation</div></div>
+        <div class="kpi"><div class="val">1,422</div><div class="lbl">Communes</div></div>
+        <div class="kpi"><div class="val">64</div><div class="lbl">Zones Chaudes</div></div>
+        <div class="kpi"><div class="val">67</div><div class="lbl">Anomalies</div></div>
+    </div>
+
+    <p style="margin:10px 0;color:#888;font-size:10pt;"><i>Note : 2026 est partiel (~40 jours). Croissance calculee sur 2025 vs 2024 (annees completes). Alpha Score ajuste par credibilite et typologie.</i></p>
+
+    <h3>Projections Economiques</h3>
+    <div class="kpi-row">
+        <div class="kpi"><div class="val">535,169</div><div class="lbl">Logements Estimes</div></div>
+        <div class="kpi"><div class="val">218,746</div><div class="lbl">Proj. 24 mois</div></div>
+        <div class="kpi"><div class="val">61,889 ha</div><div class="lbl">Surface Totale</div></div>
+    </div>
+
+    <h3>Distribution des Profils</h3>
+    <table>
+        <thead><tr><th>Profil</th><th>Communes</th><th>Alpha Moyen</th><th>Total PC</th></tr></thead>
+        <tbody><tr><td>BOOMING</td><td>224</td><td>76.1</td><td>139,013</td></tr><tr><td>EMERGENT</td><td>225</td><td>49.2</td><td>6,915</td></tr><tr><td>MATURE</td><td>199</td><td>60.3</td><td>155,113</td></tr><tr><td>SATURATED</td><td>202</td><td>46.8</td><td>8,426</td></tr><tr><td>DORMANT</td><td>240</td><td>32.9</td><td>6,604</td></tr><tr><td>DECLINING</td><td>332</td><td>15.7</td><td>796</td></tr></tbody>
+    </table>
+</div>
+
+<!-- TOP 30 -->
+<div class="page">
+    <h2>Top 30 — Classement Alpha Score</h2>
+    <table>
+        <thead><tr><th>#</th><th>Commune</th><th>Profil</th><th>Alpha</th><th>PC</th><th>Croissance</th><th>Région</th></tr></thead>
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td>COMMUNE MEDIOUNA</td>
+            <td>BOOMING</td>
+            <td>91.5</td>
+            <td>356</td>
+            <td>+43.3%</td>
+            <td>REGION DE CASABLANCA-SETTAT</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>ARRONDISSEMENT DE MENARA</td>
+            <td>BOOMING</td>
+            <td>91.2</td>
+            <td>5,179</td>
+            <td>+71.6%</td>
+            <td>REGION DE MARRAKECH-SAFI</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>COMMUNE ZEMAMRA</td>
+            <td>BOOMING</td>
+            <td>91.1</td>
+            <td>418</td>
+            <td>+94.4%</td>
+            <td>REGION DE CASABLANCA-SETTAT</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>COMMUNE BEN SLIMANE</td>
+            <td>BOOMING</td>
+            <td>89.5</td>
+            <td>1,991</td>
+            <td>+26.0%</td>
+            <td>REGION DE CASABLANCA-SETTAT</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>COMMUNE BOUZNIKA</td>
+            <td>BOOMING</td>
+            <td>88.9</td>
+            <td>2,933</td>
+            <td>+25.7%</td>
+            <td>REGION DE CASABLANCA-SETTAT</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>COMMUNE SETTAT</td>
+            <td>BOOMING</td>
+            <td>88.9</td>
+            <td>4,336</td>
+            <td>+32.2%</td>
+            <td>REGION DE CASABLANCA-SETTAT</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>COMMUNE DE SAFI</td>
+            <td>BOOMING</td>
+            <td>88.4</td>
+            <td>4,410</td>
+            <td>+58.6%</td>
+            <td>REGION DE MARRAKECH-SAFI</td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>ARRONDISSEMENT MAARIF</td>
+            <td>BOOMING</td>
+            <td>88.2</td>
+            <td>2,001</td>
+            <td>+10.8%</td>
+            <td>REGION DE CASABLANCA-SETTAT</td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>COMMUNE MEJJATIA OULED TALEB</td>
+            <td>BOOMING</td>
+            <td>87.7</td>
+            <td>1,295</td>
+            <td>+80.5%</td>
+            <td>REGION DE CASABLANCA-SETTAT</td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>COMMUNE DE CHICHAOUA</td>
+            <td>BOOMING</td>
+            <td>87.6</td>
+            <td>414</td>
+            <td>+97.3%</td>
+            <td>REGION DE MARRAKECH-SAFI</td>
+        </tr>
+        <tr>
+            <td>11</td>
+            <td>COMMUNE D'OULAD ABDOUNE</td>
+            <td>BOOMING</td>
+            <td>87.5</td>
+            <td>1,168</td>
+            <td>+41.7%</td>
+            <td>REGION DE BENI MELLAL-KHENIFRA</td>
+        </tr>
+        <tr>
+            <td>12</td>
+            <td>COMMUNE DE DAKHLA</td>
+            <td>BOOMING</td>
+            <td>87.4</td>
+            <td>778</td>
+            <td>+85.8%</td>
+            <td>REGION DE DAKHLA-OUED EDDAHAB</td>
+        </tr>
+        <tr>
+            <td>13</td>
+            <td>ARRONDISSEMENT D'AGDAL</td>
+            <td>BOOMING</td>
+            <td>87.3</td>
+            <td>875</td>
+            <td>+37.6%</td>
+            <td>REGION DE FES-MEKNES</td>
+        </tr>
+        <tr>
+            <td>14</td>
+            <td>COMMUNE BEN AHMED</td>
+            <td>BOOMING</td>
+            <td>87.2</td>
+            <td>530</td>
+            <td>+35.3%</td>
+            <td>REGION DE CASABLANCA-SETTAT</td>
+        </tr>
+        <tr>
+            <td>15</td>
+            <td>COMMUNE HAD SOUALEM</td>
+            <td>BOOMING</td>
+            <td>86.9</td>
+            <td>2,696</td>
+            <td>+24.9%</td>
+            <td>REGION DE CASABLANCA-SETTAT</td>
+        </tr>
+        <tr>
+            <td>16</td>
+            <td>COMMUNE DE TAHANNAOUT</td>
+            <td>BOOMING</td>
+            <td>86.9</td>
+            <td>378</td>
+            <td>+83.8%</td>
+            <td>REGION DE MARRAKECH-SAFI</td>
+        </tr>
+        <tr>
+            <td>17</td>
+            <td>COMMUNE DE MAJJATE</td>
+            <td>BOOMING</td>
+            <td>86.7</td>
+            <td>1,527</td>
+            <td>+52.9%</td>
+            <td>REGION DE FES-MEKNES</td>
+        </tr>
+        <tr>
+            <td>18</td>
+            <td>COMMUNE LAAOUNATE</td>
+            <td>BOOMING</td>
+            <td>86.2</td>
+            <td>279</td>
+            <td>+91.3%</td>
+            <td>REGION DE CASABLANCA-SETTAT</td>
+        </tr>
+        <tr>
+            <td>19</td>
+            <td>COMMUNE DE MEHDYA</td>
+            <td>BOOMING</td>
+            <td>85.9</td>
+            <td>2,172</td>
+            <td>+31.5%</td>
+            <td>REGION DE RABAT-SALE-KENITRA</td>
+        </tr>
+        <tr>
+            <td>20</td>
+            <td>COMMUNE D'OULAD TEIMA</td>
+            <td>BOOMING</td>
+            <td>85.8</td>
+            <td>1,231</td>
+            <td>+37.4%</td>
+            <td>REGION DE SOUSS-MASSA</td>
+        </tr>
+        <tr>
+            <td>21</td>
+            <td>COMMUNE SIDI RAHHAL CHATAI</td>
+            <td>BOOMING</td>
+            <td>85.4</td>
+            <td>981</td>
+            <td>+42.1%</td>
+            <td>REGION DE CASABLANCA-SETTAT</td>
+        </tr>
+        <tr>
+            <td>22</td>
+            <td>COMMUNE DE BEJAAD</td>
+            <td>BOOMING</td>
+            <td>85.2</td>
+            <td>1,098</td>
+            <td>+36.7%</td>
+            <td>REGION DE BENI MELLAL-KHENIFRA</td>
+        </tr>
+        <tr>
+            <td>23</td>
+            <td>COMMUNE DE HARBIL</td>
+            <td>BOOMING</td>
+            <td>85.1</td>
+            <td>2,847</td>
+            <td>+36.2%</td>
+            <td>REGION DE MARRAKECH-SAFI</td>
+        </tr>
+        <tr>
+            <td>24</td>
+            <td>COMMUNE D'AIT OURIR</td>
+            <td>BOOMING</td>
+            <td>84.5</td>
+            <td>456</td>
+            <td>+61.1%</td>
+            <td>REGION DE MARRAKECH-SAFI</td>
+        </tr>
+        <tr>
+            <td>25</td>
+            <td>COMMUNE D'OULAD MBAREK</td>
+            <td>BOOMING</td>
+            <td>84.5</td>
+            <td>185</td>
+            <td>+100.0%</td>
+            <td>REGION DE BENI MELLAL-KHENIFRA</td>
+        </tr>
+        <tr>
+            <td>26</td>
+            <td>COMMUNE D'ERRACHIDIA</td>
+            <td>BOOMING</td>
+            <td>84.4</td>
+            <td>1,850</td>
+            <td>+39.5%</td>
+            <td>REGION DE DARAA-TAFILALET</td>
+        </tr>
+        <tr>
+            <td>27</td>
+            <td>COMMUNE DE SIDI YAHYA ZAER</td>
+            <td>BOOMING</td>
+            <td>84.3</td>
+            <td>938</td>
+            <td>+26.5%</td>
+            <td>REGION DE RABAT-SALE-KENITRA</td>
+        </tr>
+        <tr>
+            <td>28</td>
+            <td>ARRONDISSEMENT D'AGDAL-RYAD</td>
+            <td>BOOMING</td>
+            <td>84.3</td>
+            <td>677</td>
+            <td>+28.3%</td>
+            <td>REGION DE RABAT-SALE-KENITRA</td>
+        </tr>
+        <tr>
+            <td>29</td>
+            <td>COMMUNE SIDI AL AIDI</td>
+            <td>BOOMING</td>
+            <td>84.3</td>
+            <td>289</td>
+            <td>+53.3%</td>
+            <td>REGION DE CASABLANCA-SETTAT</td>
+        </tr>
+        <tr>
+            <td>30</td>
+            <td>COMMUNE DE BEN GUERIR</td>
+            <td>BOOMING</td>
+            <td>83.8</td>
+            <td>2,449</td>
+            <td>+53.3%</td>
+            <td>REGION DE MARRAKECH-SAFI</td>
+        </tr></tbody>
+    </table>
+</div>
+
+<!-- REGION LEADERBOARD -->
+<div class="page">
+    <h2>Classement Régional</h2>
+    <table>
+        <thead><tr><th>Région</th><th>Communes</th><th>Total PC</th><th>Alpha Moyen</th><th>Top Commune</th></tr></thead>
+        <tbody>
+        <tr>
+            <td>REGION DE CASABLANCA-SETTAT</td>
+            <td>167</td>
+            <td>78,524</td>
+            <td>57.4</td>
+            <td>COMMUNE MEDIOUNA</td>
+        </tr>
+        <tr>
+            <td>REGION DE FES-MEKNES</td>
+            <td>178</td>
+            <td>43,009</td>
+            <td>45.1</td>
+            <td>ARRONDISSEMENT D'AGDAL</td>
+        </tr>
+        <tr>
+            <td>REGION DE RABAT-SALE-KENITRA</td>
+            <td>108</td>
+            <td>40,306</td>
+            <td>49.7</td>
+            <td>COMMUNE DE MEHDYA</td>
+        </tr>
+        <tr>
+            <td>REGION DE MARRAKECH-SAFI</td>
+            <td>232</td>
+            <td>39,047</td>
+            <td>36.2</td>
+            <td>ARRONDISSEMENT DE MENARA</td>
+        </tr>
+        <tr>
+            <td>REGION DE BENI MELLAL-KHENIFRA</td>
+            <td>131</td>
+            <td>30,180</td>
+            <td>52.0</td>
+            <td>COMMUNE D'OULAD ABDOUNE</td>
+        </tr>
+        <tr>
+            <td>REGION DE L'ORIENTALE</td>
+            <td>121</td>
+            <td>25,808</td>
+            <td>49.6</td>
+            <td>COMMUNE DE HOUARA OULAD RAHO</td>
+        </tr>
+        <tr>
+            <td>REGION DE TANGER-TETOUAN-AL HOCEIMA</td>
+            <td>127</td>
+            <td>22,802</td>
+            <td>39.9</td>
+            <td>COMMUNE D'ASILAH</td>
+        </tr>
+        <tr>
+            <td>REGION DE SOUSS-MASSA</td>
+            <td>164</td>
+            <td>20,539</td>
+            <td>37.6</td>
+            <td>COMMUNE D'OULAD TEIMA</td>
+        </tr>
+        <tr>
+            <td>REGION DE DARAA-TAFILALET</td>
+            <td>118</td>
+            <td>11,379</td>
+            <td>43.1</td>
+            <td>COMMUNE D'ERRACHIDIA</td>
+        </tr>
+        <tr>
+            <td>REGION DE GUELMIM-OUED NOUN</td>
+            <td>48</td>
+            <td>2,242</td>
+            <td>30.2</td>
+            <td>COMMUNE DE BOUIZAKARNE</td>
+        </tr>
+        <tr>
+            <td>REGION DE LAAYOUNE-SAKIA EL HAMRA</td>
+            <td>14</td>
+            <td>2,214</td>
+            <td>36.5</td>
+            <td>COMMUNE DE LAAYOUNE</td>
+        </tr>
+        <tr>
+            <td>REGION DE DAKHLA-OUED EDDAHAB</td>
+            <td>3</td>
+            <td>800</td>
+            <td>49.7</td>
+            <td>COMMUNE DE DAKHLA</td>
+        </tr></tbody>
+    </table>
+</div>
+
+</body>
+</html>
