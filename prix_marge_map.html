@@ -1,0 +1,3099 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_3c96b4e9db47243e02460a6d5273eb24 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    <div style="position:fixed;bottom:20px;left:20px;z-index:1000;background:#fff;padding:8px 12px;border:1px solid #1F2A28;font-family:sans-serif;font-size:12px;"><b>Prix &amp; marge</b><br><span style="color:#D9481F;">&#9679;</span> Compression de marge<br><span style="color:#33695B;">&#9679;</span> Opportunité<br><span style="color:#64756E;">taille = prix au m²</span></div>
+    
+            <div class="folium-map" id="map_3c96b4e9db47243e02460a6d5273eb24" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_3c96b4e9db47243e02460a6d5273eb24 = L.map(
+                "map_3c96b4e9db47243e02460a6d5273eb24",
+                {
+                    center: [31.79, -7.09],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 6,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+            L.control.scale().addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+
+            
+
+        
+    
+            var tile_layer_0b3f63ca9535cbbc70a6e54a9417260e = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_0b3f63ca9535cbbc70a6e54a9417260e.addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+            map_3c96b4e9db47243e02460a6d5273eb24.fitBounds(
+                [[29.4, -11.2], [35.9, -2.2]],
+                {}
+            );
+        
+    
+            var circle_marker_a4dd9e34c5ec585b481afde92d2795e3 = L.circleMarker(
+                [34.24059, -6.60345],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.346557990870934, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_f0e1eb652e9b5a50d60c17fd97d05b21 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e7f9f1246e9940911d76c7d9bacd90cb = $(`<div id="html_e7f9f1246e9940911d76c7d9bacd90cb" style="width: 100.0%; height: 100.0%;"><b>COMMUNE DE KENITRA nord</b><br>Neutre<br>Prix appt: 6 086 MAD/m²<br>Construction 24m: 3 704</div>`)[0];
+                popup_f0e1eb652e9b5a50d60c17fd97d05b21.setContent(html_e7f9f1246e9940911d76c7d9bacd90cb);
+            
+        
+
+        circle_marker_a4dd9e34c5ec585b481afde92d2795e3.bindPopup(popup_f0e1eb652e9b5a50d60c17fd97d05b21)
+        ;
+
+        
+    
+    
+            var circle_marker_4151e8d5953bae594243aafb03f07a96 = L.circleMarker(
+                [34.02125, -5.04698],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.329848066932422, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_4f0832c5139f869d7cf83fb4950c8813 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_bc7c327e937f84be4b5bad58da22d146 = $(`<div id="html_bc7c327e937f84be4b5bad58da22d146" style="width: 100.0%; height: 100.0%;"><b>ARRONDISSEMENT DE ZOUAGUA est</b><br>Neutre<br>Prix appt: 4 237 MAD/m²<br>Construction 24m: 4 361</div>`)[0];
+                popup_4f0832c5139f869d7cf83fb4950c8813.setContent(html_bc7c327e937f84be4b5bad58da22d146);
+            
+        
+
+        circle_marker_4151e8d5953bae594243aafb03f07a96.bindPopup(popup_4f0832c5139f869d7cf83fb4950c8813)
+        ;
+
+        
+    
+    
+            var circle_marker_5669271806a7de1a626a9cb3565a02ec = L.circleMarker(
+                [32.2938, -9.22266],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.026955235789917, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_ec3d96579ec4fd005d59d6bb0ad727e0 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3100e7e3d6c1c03b22a0e57ecdd24cd5 = $(`<div id="html_3100e7e3d6c1c03b22a0e57ecdd24cd5" style="width: 100.0%; height: 100.0%;"><b>COMMUNE DE SAFI centre</b><br>Neutre<br>Prix appt: 5 504 MAD/m²<br>Construction 24m: 3 260</div>`)[0];
+                popup_ec3d96579ec4fd005d59d6bb0ad727e0.setContent(html_3100e7e3d6c1c03b22a0e57ecdd24cd5);
+            
+        
+
+        circle_marker_5669271806a7de1a626a9cb3565a02ec.bindPopup(popup_ec3d96579ec4fd005d59d6bb0ad727e0)
+        ;
+
+        
+    
+    
+            var circle_marker_765c26fb38782edccbc77e9897c4cf7c = L.circleMarker(
+                [32.34466, -6.35254],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.80125032292338, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_249cbbf64d30755805c7abbf871cf6c5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_59c7dd600b13b4a230f8766ff70fb172 = $(`<div id="html_59c7dd600b13b4a230f8766ff70fb172" style="width: 100.0%; height: 100.0%;"><b>COMMUNE DE BENI MELLAL est</b><br>Neutre<br>Prix appt: 5 094 MAD/m²<br>Construction 24m: 3 298</div>`)[0];
+                popup_249cbbf64d30755805c7abbf871cf6c5.setContent(html_59c7dd600b13b4a230f8766ff70fb172);
+            
+        
+
+        circle_marker_765c26fb38782edccbc77e9897c4cf7c.bindPopup(popup_249cbbf64d30755805c7abbf871cf6c5)
+        ;
+
+        
+    
+    
+            var circle_marker_1cc3b7c7f5450967799ecce310e88fa2 = L.circleMarker(
+                [33.52676, -7.62097],
+                {"bubblingMouseEvents": true, "color": "#D9481F", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#D9481F", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.900487399342422, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_bc4e7a6881f38abc9969e30c156c57ba = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2ce2397dbe2d5f18200c79000ef8fd20 = $(`<div id="html_2ce2397dbe2d5f18200c79000ef8fd20" style="width: 100.0%; height: 100.0%;"><b>ARRONDISSEMENT AIN CHOCK nord</b><br>Compression<br>Prix appt: 18 003 MAD/m²<br>Construction 24m: 2 967</div>`)[0];
+                popup_bc4e7a6881f38abc9969e30c156c57ba.setContent(html_2ce2397dbe2d5f18200c79000ef8fd20);
+            
+        
+
+        circle_marker_1cc3b7c7f5450967799ecce310e88fa2.bindPopup(popup_bc4e7a6881f38abc9969e30c156c57ba)
+        ;
+
+        
+    
+    
+            var circle_marker_c1744bc91c43dabfc75c34ad38b34c19 = L.circleMarker(
+                [32.88101, -6.9153],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.774279123476887, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_102173a84a9748abce3e749098fd0026 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_83a02900f767c51f8ef23b586b8963ba = $(`<div id="html_83a02900f767c51f8ef23b586b8963ba" style="width: 100.0%; height: 100.0%;"><b>COMMUNE DE KHOURIBGA est</b><br>Neutre<br>Prix appt: 5 045 MAD/m²<br>Construction 24m: 2 351</div>`)[0];
+                popup_102173a84a9748abce3e749098fd0026.setContent(html_83a02900f767c51f8ef23b586b8963ba);
+            
+        
+
+        circle_marker_c1744bc91c43dabfc75c34ad38b34c19.bindPopup(popup_102173a84a9748abce3e749098fd0026)
+        ;
+
+        
+    
+    
+            var circle_marker_8236ccadfe6ce9964a13bb914c745817 = L.circleMarker(
+                [32.99516, -7.6229],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.167718712888101, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_fe9c0786323b4e3812b39c5149c4885c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_fee0d62db8b1afad165baa87d73c7985 = $(`<div id="html_fee0d62db8b1afad165baa87d73c7985" style="width: 100.0%; height: 100.0%;"><b>COMMUNE SETTAT est</b><br>Neutre<br>Prix appt: 5 760 MAD/m²<br>Construction 24m: 4 453</div>`)[0];
+                popup_fe9c0786323b4e3812b39c5149c4885c.setContent(html_fee0d62db8b1afad165baa87d73c7985);
+            
+        
+
+        circle_marker_8236ccadfe6ce9964a13bb914c745817.bindPopup(popup_fe9c0786323b4e3812b39c5149c4885c)
+        ;
+
+        
+    
+    
+            var circle_marker_f3bbe4832e565a7613f220c10b88cf66 = L.circleMarker(
+                [33.87832, -5.55202],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.735140531319378, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_73aab4e7ddc1f25860e6717059336985 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_941da70741dbbc88a5bd2ee045741be8 = $(`<div id="html_941da70741dbbc88a5bd2ee045741be8" style="width: 100.0%; height: 100.0%;"><b>COMMUNE DE MEKNES est</b><br>Neutre<br>Prix appt: 3 155 MAD/m²<br>Construction 24m: 2 934</div>`)[0];
+                popup_73aab4e7ddc1f25860e6717059336985.setContent(html_941da70741dbbc88a5bd2ee045741be8);
+            
+        
+
+        circle_marker_f3bbe4832e565a7613f220c10b88cf66.bindPopup(popup_73aab4e7ddc1f25860e6717059336985)
+        ;
+
+        
+    
+    
+            var circle_marker_7b39685c0fac62d1d1628b17678af6fc = L.circleMarker(
+                [34.6849, -1.89476],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.939055587435872, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_ac5b3e83c24b4643c02e7db98748aea1 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d16f9695405bfc31ddeb020f03251834 = $(`<div id="html_d16f9695405bfc31ddeb020f03251834" style="width: 100.0%; height: 100.0%;"><b>COMMUNE D'OUJDA est</b><br>Neutre<br>Prix appt: 5 344 MAD/m²<br>Construction 24m: 3 555</div>`)[0];
+                popup_ac5b3e83c24b4643c02e7db98748aea1.setContent(html_d16f9695405bfc31ddeb020f03251834);
+            
+        
+
+        circle_marker_7b39685c0fac62d1d1628b17678af6fc.bindPopup(popup_ac5b3e83c24b4643c02e7db98748aea1)
+        ;
+
+        
+    
+    
+            var circle_marker_c03cd2e1fb5cbc6cdf5eff4ad4911125 = L.circleMarker(
+                [33.23413, -8.5059],
+                {"bubblingMouseEvents": true, "color": "#D9481F", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#D9481F", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.85574697027817, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_c3543718f0dae80dcb92b4b1440b1269 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f41432d19c3a0bf56b7cc219369bacf4 = $(`<div id="html_f41432d19c3a0bf56b7cc219369bacf4" style="width: 100.0%; height: 100.0%;"><b>COMMUNE EL JADIDA nord</b><br>Compression<br>Prix appt: 7 011 MAD/m²<br>Construction 24m: 1 877</div>`)[0];
+                popup_c3543718f0dae80dcb92b4b1440b1269.setContent(html_f41432d19c3a0bf56b7cc219369bacf4);
+            
+        
+
+        circle_marker_c03cd2e1fb5cbc6cdf5eff4ad4911125.bindPopup(popup_c3543718f0dae80dcb92b4b1440b1269)
+        ;
+
+        
+    
+    
+            var circle_marker_c620993f5b0e8c83ac33b88bf435863d = L.circleMarker(
+                [33.26513, -7.57831],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.833110539984724, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_22e146c968d9c39453a5b0cc53afdf55 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c864b69316e672d93ea26db363172c8a = $(`<div id="html_c864b69316e672d93ea26db363172c8a" style="width: 100.0%; height: 100.0%;"><b>COMMUNE BERRECHID est</b><br>Neutre<br>Prix appt: 5 152 MAD/m²<br>Construction 24m: 4 850</div>`)[0];
+                popup_22e146c968d9c39453a5b0cc53afdf55.setContent(html_c864b69316e672d93ea26db363172c8a);
+            
+        
+
+        circle_marker_c620993f5b0e8c83ac33b88bf435863d.bindPopup(popup_22e146c968d9c39453a5b0cc53afdf55)
+        ;
+
+        
+    
+    
+            var circle_marker_39c7ec35181041a5a437cd2c96cc70eb = L.circleMarker(
+                [31.63528, -8.05722],
+                {"bubblingMouseEvents": true, "color": "#D9481F", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#D9481F", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.576410926338774, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_c13b4b6dd3d4123c72522e43eba47851 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_39b7ca2eaf806083143445367a6f2a6b = $(`<div id="html_39b7ca2eaf806083143445367a6f2a6b" style="width: 100.0%; height: 100.0%;"><b>ARRONDISSEMENT DE MENARA est</b><br>Compression<br>Prix appt: 6 503 MAD/m²<br>Construction 24m: 1 093</div>`)[0];
+                popup_c13b4b6dd3d4123c72522e43eba47851.setContent(html_39b7ca2eaf806083143445367a6f2a6b);
+            
+        
+
+        circle_marker_39c7ec35181041a5a437cd2c96cc70eb.bindPopup(popup_c13b4b6dd3d4123c72522e43eba47851)
+        ;
+
+        
+    
+    
+            var circle_marker_b8f26b1e32c4694c9f67d9f561e45969 = L.circleMarker(
+                [33.54631, -7.67744],
+                {"bubblingMouseEvents": true, "color": "#D9481F", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#D9481F", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.244182124915147, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_e4114a6720f206d6b38da9f73f36c84b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a802d01d69e13fe111b8904a86aaa316 = $(`<div id="html_a802d01d69e13fe111b8904a86aaa316" style="width: 100.0%; height: 100.0%;"><b>ARRONDISSEMENT HAY HASSANI nord</b><br>Compression<br>Prix appt: 11 355 MAD/m²<br>Construction 24m: 3 040</div>`)[0];
+                popup_e4114a6720f206d6b38da9f73f36c84b.setContent(html_a802d01d69e13fe111b8904a86aaa316);
+            
+        
+
+        circle_marker_b8f26b1e32c4694c9f67d9f561e45969.bindPopup(popup_e4114a6720f206d6b38da9f73f36c84b)
+        ;
+
+        
+    
+    
+            var circle_marker_27f6a5491c2f16654532f35d08f9451e = L.circleMarker(
+                [35.7294, -5.82301],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.972240595054139, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_c0e66012e068a575ddb73333679a10e0 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_810e7d66e75e22a591d511b70f44ed66 = $(`<div id="html_810e7d66e75e22a591d511b70f44ed66" style="width: 100.0%; height: 100.0%;"><b>ARRONDISSEMENT DE BNI MAKADA nord</b><br>Neutre<br>Prix appt: 5 405 MAD/m²<br>Construction 24m: 1 278</div>`)[0];
+                popup_c0e66012e068a575ddb73333679a10e0.setContent(html_810e7d66e75e22a591d511b70f44ed66);
+            
+        
+
+        circle_marker_27f6a5491c2f16654532f35d08f9451e.bindPopup(popup_c0e66012e068a575ddb73333679a10e0)
+        ;
+
+        
+    
+    
+            var circle_marker_c81cdb48a669427f3f7178c1e91fb4dd = L.circleMarker(
+                [31.55664, -8.00889],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.76970167592337, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_0286034857ef4b1542384d40a5f6b5ec = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9d37befa7ca4ae8002201da65274c3a6 = $(`<div id="html_9d37befa7ca4ae8002201da65274c3a6" style="width: 100.0%; height: 100.0%;"><b>COMMUNE DE TASSOULTANTE est</b><br>Neutre<br>Prix appt: 5 037 MAD/m²<br>Construction 24m: 1 572</div>`)[0];
+                popup_0286034857ef4b1542384d40a5f6b5ec.setContent(html_9d37befa7ca4ae8002201da65274c3a6);
+            
+        
+
+        circle_marker_c81cdb48a669427f3f7178c1e91fb4dd.bindPopup(popup_0286034857ef4b1542384d40a5f6b5ec)
+        ;
+
+        
+    
+    
+            var circle_marker_b70f24d2280f220459c92f6ce8084340 = L.circleMarker(
+                [33.78273, -7.16052],
+                {"bubblingMouseEvents": true, "color": "#D9481F", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#D9481F", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.902158111199528, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_7d07de03fd90fae46366f9919dd63fd6 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_16302288855cf5ed4b74471bfb468041 = $(`<div id="html_16302288855cf5ed4b74471bfb468041" style="width: 100.0%; height: 100.0%;"><b>COMMUNE BOUZNIKA nord</b><br>Compression<br>Prix appt: 7 096 MAD/m²<br>Construction 24m: 3 877</div>`)[0];
+                popup_7d07de03fd90fae46366f9919dd63fd6.setContent(html_16302288855cf5ed4b74471bfb468041);
+            
+        
+
+        circle_marker_b70f24d2280f220459c92f6ce8084340.bindPopup(popup_7d07de03fd90fae46366f9919dd63fd6)
+        ;
+
+        
+    
+    
+            var circle_marker_bf7d42b661370fd66ef94ca1e6a4e5b3 = L.circleMarker(
+                [34.003, -4.9715],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.265045372125096, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_823748124e704a4c645478c9f0ab270f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b70971ea3ba411257cd7c933114e07ab = $(`<div id="html_b70971ea3ba411257cd7c933114e07ab" style="width: 100.0%; height: 100.0%;"><b>ARRONDISSEMENT DE SAISS est</b><br>Neutre<br>Prix appt: 4 119 MAD/m²<br>Construction 24m: 2 557</div>`)[0];
+                popup_823748124e704a4c645478c9f0ab270f.setContent(html_b70971ea3ba411257cd7c933114e07ab);
+            
+        
+
+        circle_marker_bf7d42b661370fd66ef94ca1e6a4e5b3.bindPopup(popup_823748124e704a4c645478c9f0ab270f)
+        ;
+
+        
+    
+    
+            var circle_marker_ea44e1f56435acdbb2c7912d2fe5f603 = L.circleMarker(
+                [33.90842, -5.47219],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.160742259521744, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_87461be3ab0129abcfd9859efdfa7378 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_413e2c15c0b0e9d2bfd17579895179eb = $(`<div id="html_413e2c15c0b0e9d2bfd17579895179eb" style="width: 100.0%; height: 100.0%;"><b>COMMUNE D'OUISLANE est</b><br>Neutre<br>Prix appt: 3 929 MAD/m²<br>Construction 24m: 1 268</div>`)[0];
+                popup_87461be3ab0129abcfd9859efdfa7378.setContent(html_413e2c15c0b0e9d2bfd17579895179eb);
+            
+        
+
+        circle_marker_ea44e1f56435acdbb2c7912d2fe5f603.bindPopup(popup_87461be3ab0129abcfd9859efdfa7378)
+        ;
+
+        
+    
+    
+            var circle_marker_c426a3c673e848e8e73a0ebd12a82755 = L.circleMarker(
+                [34.92332, -2.3194],
+                {"bubblingMouseEvents": true, "color": "#D9481F", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#D9481F", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.184806204264598, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_7a86812e2590507bdb275edd7c6420c4 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_df7f25b9552f2f5de9efa717820a9400 = $(`<div id="html_df7f25b9552f2f5de9efa717820a9400" style="width: 100.0%; height: 100.0%;"><b>COMMUNE DE BERKANE est</b><br>Compression<br>Prix appt: 7 610 MAD/m²<br>Construction 24m: 1 078</div>`)[0];
+                popup_7a86812e2590507bdb275edd7c6420c4.setContent(html_df7f25b9552f2f5de9efa717820a9400);
+            
+        
+
+        circle_marker_c426a3c673e848e8e73a0ebd12a82755.bindPopup(popup_7a86812e2590507bdb275edd7c6420c4)
+        ;
+
+        
+    
+    
+            var circle_marker_1904047f36b232f01431d9bf8d1ea5ec = L.circleMarker(
+                [33.52474, -7.7837],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.268675219761718, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_096a04ef964fdc1742566e36e6210f39 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_484914074d6e8d5b0510975ed8d829a5 = $(`<div id="html_484914074d6e8d5b0510975ed8d829a5" style="width: 100.0%; height: 100.0%;"><b>COMMUNE DAR BOUAZZA nord</b><br>Neutre<br>Prix appt: 5 944 MAD/m²<br>Construction 24m: 1 793</div>`)[0];
+                popup_096a04ef964fdc1742566e36e6210f39.setContent(html_484914074d6e8d5b0510975ed8d829a5);
+            
+        
+
+        circle_marker_1904047f36b232f01431d9bf8d1ea5ec.bindPopup(popup_096a04ef964fdc1742566e36e6210f39)
+        ;
+
+        
+    
+    
+            var circle_marker_a200f985baa15624af2559530bc4b366 = L.circleMarker(
+                [34.22289, -3.99336],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.413840574887123, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_dd71ab25f88afdaf04ea9cbd34f5182b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_18a6b46e3f99694f1d2f19c3ce1822da = $(`<div id="html_18a6b46e3f99694f1d2f19c3ce1822da" style="width: 100.0%; height: 100.0%;"><b>COMMUNE DE TAZA est</b><br>Neutre<br>Prix appt: 4 389 MAD/m²<br>Construction 24m: 1 352</div>`)[0];
+                popup_dd71ab25f88afdaf04ea9cbd34f5182b.setContent(html_18a6b46e3f99694f1d2f19c3ce1822da);
+            
+        
+
+        circle_marker_a200f985baa15624af2559530bc4b366.bindPopup(popup_dd71ab25f88afdaf04ea9cbd34f5182b)
+        ;
+
+        
+    
+    
+            var circle_marker_70f5ddc1fd068399c0ebda6535bb167a = L.circleMarker(
+                [33.42176, -7.84801],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.588778686304249, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_5f8c7127b1263b8356f9d22e3907c5aa = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_61aa91aea68d67c6ff4e3fa966c2d652 = $(`<div id="html_61aa91aea68d67c6ff4e3fa966c2d652" style="width: 100.0%; height: 100.0%;"><b>COMMUNE HAD SOUALEM nord</b><br>Neutre<br>Prix appt: 4 708 MAD/m²<br>Construction 24m: 3 746</div>`)[0];
+                popup_5f8c7127b1263b8356f9d22e3907c5aa.setContent(html_61aa91aea68d67c6ff4e3fa966c2d652);
+            
+        
+
+        circle_marker_70f5ddc1fd068399c0ebda6535bb167a.bindPopup(popup_5f8c7127b1263b8356f9d22e3907c5aa)
+        ;
+
+        
+    
+    
+            var circle_marker_cf80e71ffbb05e7728e20af8be7c41bc = L.circleMarker(
+                [33.91316, -6.91701],
+                {"bubblingMouseEvents": true, "color": "#D9481F", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#D9481F", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.564520573252079, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_3cbe76c89e4c14115c89b76ca68a96d4 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_cc26a371b963afa1c7821b8a375dc2e2 = $(`<div id="html_cc26a371b963afa1c7821b8a375dc2e2" style="width: 100.0%; height: 100.0%;"><b>COMMUNE DE TEMARA est</b><br>Compression<br>Prix appt: 8 300 MAD/m²<br>Construction 24m: 1 039</div>`)[0];
+                popup_3cbe76c89e4c14115c89b76ca68a96d4.setContent(html_cc26a371b963afa1c7821b8a375dc2e2);
+            
+        
+
+        circle_marker_cf80e71ffbb05e7728e20af8be7c41bc.bindPopup(popup_3cbe76c89e4c14115c89b76ca68a96d4)
+        ;
+
+        
+    
+    
+            var circle_marker_21b5352e5182c91ea37cad2b738ce0c3 = L.circleMarker(
+                [35.1572, -2.93385],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.940859321113612, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_20eef9dddd08d33af2fa3554b6797aa3 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a5436460f24e314e844c6be7334e5ff0 = $(`<div id="html_a5436460f24e314e844c6be7334e5ff0" style="width: 100.0%; height: 100.0%;"><b>COMMUNE DE NADOR est</b><br>Neutre<br>Prix appt: 5 348 MAD/m²<br>Construction 24m: 1 268</div>`)[0];
+                popup_20eef9dddd08d33af2fa3554b6797aa3.setContent(html_a5436460f24e314e844c6be7334e5ff0);
+            
+        
+
+        circle_marker_21b5352e5182c91ea37cad2b738ce0c3.bindPopup(popup_20eef9dddd08d33af2fa3554b6797aa3)
+        ;
+
+        
+    
+    
+            var circle_marker_b59f4a0ec4df67943784ce96161f6f35 = L.circleMarker(
+                [33.61062, -7.13385],
+                {"bubblingMouseEvents": true, "color": "#D9481F", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#D9481F", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.561599821647523, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_d98fa38f4727e2fbbc5c4740dfa61c98 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e66de9170ad704c67be3851be12a1a6d = $(`<div id="html_e66de9170ad704c67be3851be12a1a6d" style="width: 100.0%; height: 100.0%;"><b>COMMUNE BEN SLIMANE est</b><br>Compression<br>Prix appt: 6 477 MAD/m²<br>Construction 24m: 2 535</div>`)[0];
+                popup_d98fa38f4727e2fbbc5c4740dfa61c98.setContent(html_e66de9170ad704c67be3851be12a1a6d);
+            
+        
+
+        circle_marker_b59f4a0ec4df67943784ce96161f6f35.bindPopup(popup_d98fa38f4727e2fbbc5c4740dfa61c98)
+        ;
+
+        
+    
+    
+            var circle_marker_1dc43fec81f8b4c375745a4b44372e94 = L.circleMarker(
+                [35.75777, -5.85915],
+                {"bubblingMouseEvents": true, "color": "#D9481F", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#D9481F", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.596601711598668, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_87081efd9d8a228993c9998201f8e0bf = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_139ff02a5e41cbc85b98bc0997b12de2 = $(`<div id="html_139ff02a5e41cbc85b98bc0997b12de2" style="width: 100.0%; height: 100.0%;"><b>ARRONDISSEMENT DE TANGER-MEDINA nord</b><br>Compression<br>Prix appt: 6 540 MAD/m²<br>Construction 24m: 861</div>`)[0];
+                popup_87081efd9d8a228993c9998201f8e0bf.setContent(html_139ff02a5e41cbc85b98bc0997b12de2);
+            
+        
+
+        circle_marker_1dc43fec81f8b4c375745a4b44372e94.bindPopup(popup_87081efd9d8a228993c9998201f8e0bf)
+        ;
+
+        
+    
+    
+            var circle_marker_7c8d17b3fdb528abab849bf65f3ea23b = L.circleMarker(
+                [33.47295, -7.6489],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.322428295965173, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_d934fefca33a95c93fc9131d56601b18 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_af4d182c7abe09563d7ee105afe74924 = $(`<div id="html_af4d182c7abe09563d7ee105afe74924" style="width: 100.0%; height: 100.0%;"><b>COMMUNE BOUSKOURA nord</b><br>Neutre<br>Prix appt: 6 042 MAD/m²<br>Construction 24m: 879</div>`)[0];
+                popup_d934fefca33a95c93fc9131d56601b18.setContent(html_af4d182c7abe09563d7ee105afe74924);
+            
+        
+
+        circle_marker_7c8d17b3fdb528abab849bf65f3ea23b.bindPopup(popup_d934fefca33a95c93fc9131d56601b18)
+        ;
+
+        
+    
+    
+            var circle_marker_cce5757b9c3ab4d97b826ff819f3884c = L.circleMarker(
+                [35.76081, -5.76172],
+                {"bubblingMouseEvents": true, "color": "#D9481F", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#D9481F", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.583107116695908, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_49a900aa916153b6998ed83f9a7589b4 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4bd15f308f787a825b831b85f81724e8 = $(`<div id="html_4bd15f308f787a825b831b85f81724e8" style="width: 100.0%; height: 100.0%;"><b>ARRONDISSEMENT DE MGHOGHA nord</b><br>Compression<br>Prix appt: 6 516 MAD/m²<br>Construction 24m: 1 034</div>`)[0];
+                popup_49a900aa916153b6998ed83f9a7589b4.setContent(html_4bd15f308f787a825b831b85f81724e8);
+            
+        
+
+        circle_marker_cce5757b9c3ab4d97b826ff819f3884c.bindPopup(popup_49a900aa916153b6998ed83f9a7589b4)
+        ;
+
+        
+    
+    
+            var circle_marker_19d576f2205ee38aa47dafdf09c0286f = L.circleMarker(
+                [33.82173, -6.07926],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.024553435803922, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_cbc3335f9eafe57b67d701eb19de2ac7 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c7f0bed070de154d8ae358710f4ca14c = $(`<div id="html_c7f0bed070de154d8ae358710f4ca14c" style="width: 100.0%; height: 100.0%;"><b>COMMUNE DE KHEMISSET centre</b><br>Neutre<br>Prix appt: 5 500 MAD/m²<br>Construction 24m: 805</div>`)[0];
+                popup_cbc3335f9eafe57b67d701eb19de2ac7.setContent(html_c7f0bed070de154d8ae358710f4ca14c);
+            
+        
+
+        circle_marker_19d576f2205ee38aa47dafdf09c0286f.bindPopup(popup_cbc3335f9eafe57b67d701eb19de2ac7)
+        ;
+
+        
+    
+    
+            var circle_marker_f91b4f5c2e122b249c1d00d3fed9919c = L.circleMarker(
+                [34.24767, -6.65261],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.060838496939443, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_f73bef15cf6be62e5a5fd4d542100476 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2191bb560e4b7640a46866451259e6bd = $(`<div id="html_2191bb560e4b7640a46866451259e6bd" style="width: 100.0%; height: 100.0%;"><b>COMMUNE DE MEHDYA nord</b><br>Neutre<br>Prix appt: 5 566 MAD/m²<br>Construction 24m: 735</div>`)[0];
+                popup_f73bef15cf6be62e5a5fd4d542100476.setContent(html_2191bb560e4b7640a46866451259e6bd);
+            
+        
+
+        circle_marker_f91b4f5c2e122b249c1d00d3fed9919c.bindPopup(popup_f73bef15cf6be62e5a5fd4d542100476)
+        ;
+
+        
+    
+    
+            var circle_marker_1299606539308c3f166d19cdab36a560 = L.circleMarker(
+                [32.23565, -7.94153],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.984990699423925, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_524522e471d20a9272693fab62b13c48 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4aa59eda49f271f983b30630222c92d8 = $(`<div id="html_4aa59eda49f271f983b30630222c92d8" style="width: 100.0%; height: 100.0%;"><b>COMMUNE DE BEN GUERIR est</b><br>Neutre<br>Prix appt: 3 610 MAD/m²<br>Construction 24m: 890</div>`)[0];
+                popup_524522e471d20a9272693fab62b13c48.setContent(html_4aa59eda49f271f983b30630222c92d8);
+            
+        
+
+        circle_marker_1299606539308c3f166d19cdab36a560.bindPopup(popup_524522e471d20a9272693fab62b13c48)
+        ;
+
+        
+    
+    
+            var circle_marker_36e035077e2237b2d3ae682c5321eb03 = L.circleMarker(
+                [33.69089, -7.3736],
+                {"bubblingMouseEvents": true, "color": "#D9481F", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#D9481F", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.385781145611887, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_65435979f523ad5691ff5da3c5649fe2 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d263db6ceb5c0dc5ac9e5caebcca9b68 = $(`<div id="html_d263db6ceb5c0dc5ac9e5caebcca9b68" style="width: 100.0%; height: 100.0%;"><b>COMMUNE MOHAMMEDIA nord</b><br>Compression<br>Prix appt: 7 975 MAD/m²<br>Construction 24m: 1 462</div>`)[0];
+                popup_65435979f523ad5691ff5da3c5649fe2.setContent(html_d263db6ceb5c0dc5ac9e5caebcca9b68);
+            
+        
+
+        circle_marker_36e035077e2237b2d3ae682c5321eb03.bindPopup(popup_65435979f523ad5691ff5da3c5649fe2)
+        ;
+
+        
+    
+    
+            var circle_marker_70607bed7826c69ef70ea134d6fc4804 = L.circleMarker(
+                [32.94007, -5.66234],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_fea7b1bb4eae43c10c3505d1a06ee1ea = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8e0a2f5eb55388b08e9eb8dbc85dff76 = $(`<div id="html_8e0a2f5eb55388b08e9eb8dbc85dff76" style="width: 100.0%; height: 100.0%;"><b>COMMUNE DE KHENIFRA est</b><br>Neutre<br>Prix appt: 0 MAD/m²<br>Construction 24m: 694</div>`)[0];
+                popup_fea7b1bb4eae43c10c3505d1a06ee1ea.setContent(html_8e0a2f5eb55388b08e9eb8dbc85dff76);
+            
+        
+
+        circle_marker_70607bed7826c69ef70ea134d6fc4804.bindPopup(popup_fea7b1bb4eae43c10c3505d1a06ee1ea)
+        ;
+
+        
+    
+    
+            var circle_marker_86782f100aa294f3986fbc1b482dfb51 = L.circleMarker(
+                [33.88467, -5.60312],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.532159094403598, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_a8f06353dda4498e19cd6c1e90c54c4d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6f7fc278e2de3fa91d92f105a74c6734 = $(`<div id="html_6f7fc278e2de3fa91d92f105a74c6734" style="width: 100.0%; height: 100.0%;"><b>COMMUNE DE TOULAL est</b><br>Neutre<br>Prix appt: 4 605 MAD/m²<br>Construction 24m: 1 086</div>`)[0];
+                popup_a8f06353dda4498e19cd6c1e90c54c4d.setContent(html_6f7fc278e2de3fa91d92f105a74c6734);
+            
+        
+
+        circle_marker_86782f100aa294f3986fbc1b482dfb51.bindPopup(popup_a8f06353dda4498e19cd6c1e90c54c4d)
+        ;
+
+        
+    
+    
+            var circle_marker_6479c1f958fa3df8af6faa52e5b8867e = L.circleMarker(
+                [34.07325, -6.76568],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.45636169536974, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_9cb4422813bab3cf556e9af643552e3d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ad7186e9af03478926eee18c400d0a4f = $(`<div id="html_ad7186e9af03478926eee18c400d0a4f" style="width: 100.0%; height: 100.0%;"><b>ARRONDISSEMENT DE LAYAYDA est</b><br>Neutre<br>Prix appt: 6 285 MAD/m²<br>Construction 24m: 1 212</div>`)[0];
+                popup_9cb4422813bab3cf556e9af643552e3d.setContent(html_ad7186e9af03478926eee18c400d0a4f);
+            
+        
+
+        circle_marker_6479c1f958fa3df8af6faa52e5b8867e.bindPopup(popup_9cb4422813bab3cf556e9af643552e3d)
+        ;
+
+        
+    
+    
+            var circle_marker_5c6e4b788c3ce56193c4f065a4a886b4 = L.circleMarker(
+                [31.65243, -8.01321],
+                {"bubblingMouseEvents": true, "color": "#D9481F", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#D9481F", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.507420306105027, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_825c93bac8432345aea042839da3a31f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2ebf8b04ec9bec63f51c6924b007aab7 = $(`<div id="html_2ebf8b04ec9bec63f51c6924b007aab7" style="width: 100.0%; height: 100.0%;"><b>ARRONDISSEMENT DE GUELIZ est</b><br>Compression<br>Prix appt: 8 196 MAD/m²<br>Construction 24m: 1 011</div>`)[0];
+                popup_825c93bac8432345aea042839da3a31f.setContent(html_2ebf8b04ec9bec63f51c6924b007aab7);
+            
+        
+
+        circle_marker_5c6e4b788c3ce56193c4f065a4a886b4.bindPopup(popup_825c93bac8432345aea042839da3a31f)
+        ;
+
+        
+    
+    
+            var circle_marker_0fa77ad032afdc467e7994b1f16e3866 = L.circleMarker(
+                [35.5784, -5.36419],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.238616464519971, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_ee18d625678ac4af1da531687d3655c6 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d82c3c7c4c48d551a2173e9d304b01eb = $(`<div id="html_d82c3c7c4c48d551a2173e9d304b01eb" style="width: 100.0%; height: 100.0%;"><b>COMMUNE DE TETOUAN centre</b><br>Neutre<br>Prix appt: 4 071 MAD/m²<br>Construction 24m: 1 377</div>`)[0];
+                popup_ee18d625678ac4af1da531687d3655c6.setContent(html_d82c3c7c4c48d551a2173e9d304b01eb);
+            
+        
+
+        circle_marker_0fa77ad032afdc467e7994b1f16e3866.bindPopup(popup_ee18d625678ac4af1da531687d3655c6)
+        ;
+
+        
+    
+    
+            var circle_marker_708772b50c6f82272af957cc6d972d5a = L.circleMarker(
+                [33.56114, -7.46689],
+                {"bubblingMouseEvents": true, "color": "#D9481F", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#D9481F", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.679356355016814, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_627949df16b0066747fd64b412c57ea6 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e59b621e53feb119faa5bc481c256d07 = $(`<div id="html_e59b621e53feb119faa5bc481c256d07" style="width: 100.0%; height: 100.0%;"><b>COMMUNE SIDI HAJJAJ OUED HASSAR nord</b><br>Compression<br>Prix appt: 6 691 MAD/m²<br>Construction 24m: 2 361</div>`)[0];
+                popup_627949df16b0066747fd64b412c57ea6.setContent(html_e59b621e53feb119faa5bc481c256d07);
+            
+        
+
+        circle_marker_708772b50c6f82272af957cc6d972d5a.bindPopup(popup_627949df16b0066747fd64b412c57ea6)
+        ;
+
+        
+    
+    
+            var circle_marker_75a0d72b2e75fded9d10aac6f081da32 = L.circleMarker(
+                [33.82627, -4.82225],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.4231058252133035, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_19ad0d8d0e506672285ee6fc211bf2b0 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b6430a83a24d1e7057a87d2fd73cced7 = $(`<div id="html_b6430a83a24d1e7057a87d2fd73cced7" style="width: 100.0%; height: 100.0%;"><b>COMMUNE DE SEFROU est</b><br>Neutre<br>Prix appt: 4 406 MAD/m²<br>Construction 24m: 523</div>`)[0];
+                popup_19ad0d8d0e506672285ee6fc211bf2b0.setContent(html_b6430a83a24d1e7057a87d2fd73cced7);
+            
+        
+
+        circle_marker_75a0d72b2e75fded9d10aac6f081da32.bindPopup(popup_19ad0d8d0e506672285ee6fc211bf2b0)
+        ;
+
+        
+    
+    
+            var circle_marker_d85ddbee12d67294382741e5f0eaa588 = L.circleMarker(
+                [33.39666, -7.54611],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.945659840844288, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_5af537a0f94c95099738e3c6fb303348 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_738a1d4f5b7d5501cf761b34dfd9fb69 = $(`<div id="html_738a1d4f5b7d5501cf761b34dfd9fb69" style="width: 100.0%; height: 100.0%;"><b>COMMUNE NOUACEUR nord</b><br>Neutre<br>Prix appt: 5 356 MAD/m²<br>Construction 24m: 869</div>`)[0];
+                popup_5af537a0f94c95099738e3c6fb303348.setContent(html_738a1d4f5b7d5501cf761b34dfd9fb69);
+            
+        
+
+        circle_marker_d85ddbee12d67294382741e5f0eaa588.bindPopup(popup_5af537a0f94c95099738e3c6fb303348)
+        ;
+
+        
+    
+    
+            var circle_marker_96dcd3922431517511b2d132f0ae673e = L.circleMarker(
+                [33.60685, -7.53479],
+                {"bubblingMouseEvents": true, "color": "#D9481F", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#D9481F", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.781172579700085, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_45ed96b2559b8df5a9612f3674b89107 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_937b2bada5485fcfc8c56714634cf4e2 = $(`<div id="html_937b2bada5485fcfc8c56714634cf4e2" style="width: 100.0%; height: 100.0%;"><b>ARRONDISSEMENT AIN SEBAA nord</b><br>Compression<br>Prix appt: 10 513 MAD/m²<br>Construction 24m: 1 439</div>`)[0];
+                popup_45ed96b2559b8df5a9612f3674b89107.setContent(html_937b2bada5485fcfc8c56714634cf4e2);
+            
+        
+
+        circle_marker_96dcd3922431517511b2d132f0ae673e.bindPopup(popup_45ed96b2559b8df5a9612f3674b89107)
+        ;
+
+        
+    
+    
+            var circle_marker_b1f1b879933ee04e25a7600bfdf3a024 = L.circleMarker(
+                [35.61889, -5.29639],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.499367874091401, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_741f7bb6dc138fb2f6fe015d3e1e9328 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_932e8534edee085b23c173842fad68d6 = $(`<div id="html_932e8534edee085b23c173842fad68d6" style="width: 100.0%; height: 100.0%;"><b>COMMUNE DE MARTIL centre</b><br>Neutre<br>Prix appt: 6 363 MAD/m²<br>Construction 24m: 1 208</div>`)[0];
+                popup_741f7bb6dc138fb2f6fe015d3e1e9328.setContent(html_932e8534edee085b23c173842fad68d6);
+            
+        
+
+        circle_marker_b1f1b879933ee04e25a7600bfdf3a024.bindPopup(popup_741f7bb6dc138fb2f6fe015d3e1e9328)
+        ;
+
+        
+    
+    
+            var circle_marker_2729b60c250dc4e04d2282ad8555090e = L.circleMarker(
+                [33.56891, -7.63133],
+                {"bubblingMouseEvents": true, "color": "#D9481F", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#D9481F", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.264871198201142, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_c7fc1f76808b0d9274a139416edc38af = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1e5f224e2cc167d8a1bc86f162aaee50 = $(`<div id="html_1e5f224e2cc167d8a1bc86f162aaee50" style="width: 100.0%; height: 100.0%;"><b>ARRONDISSEMENT MAARIF nord</b><br>Compression<br>Prix appt: 15 029 MAD/m²<br>Construction 24m: 951</div>`)[0];
+                popup_c7fc1f76808b0d9274a139416edc38af.setContent(html_1e5f224e2cc167d8a1bc86f162aaee50);
+            
+        
+
+        circle_marker_2729b60c250dc4e04d2282ad8555090e.bindPopup(popup_c7fc1f76808b0d9274a139416edc38af)
+        ;
+
+        
+    
+    
+            var circle_marker_4205566ead69f57d84ecbca1a0ea6b10 = L.circleMarker(
+                [33.58361, -7.50901],
+                {"bubblingMouseEvents": true, "color": "#D9481F", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#D9481F", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.756366542776474, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_5221d2f6f08901e75741a66b440148d5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a830bf17e3151c9884f7c44f547a2710 = $(`<div id="html_a830bf17e3151c9884f7c44f547a2710" style="width: 100.0%; height: 100.0%;"><b>ARRONDISSEMENT SIDI MOUMEN nord</b><br>Compression<br>Prix appt: 6 831 MAD/m²<br>Construction 24m: 1 052</div>`)[0];
+                popup_5221d2f6f08901e75741a66b440148d5.setContent(html_a830bf17e3151c9884f7c44f547a2710);
+            
+        
+
+        circle_marker_4205566ead69f57d84ecbca1a0ea6b10.bindPopup(popup_5221d2f6f08901e75741a66b440148d5)
+        ;
+
+        
+    
+    
+            var circle_marker_e2e6c865f787a34122057435c02f3493 = L.circleMarker(
+                [33.56225, -7.52859],
+                {"bubblingMouseEvents": true, "color": "#D9481F", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#D9481F", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.769191658737455, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_715a3126f35b9e0edba8db4d3e4ef133 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_40b5dd1c1e84ad39024e57b8442ea166 = $(`<div id="html_40b5dd1c1e84ad39024e57b8442ea166" style="width: 100.0%; height: 100.0%;"><b>ARRONDISSEMENT MOULAY RACHID nord</b><br>Compression<br>Prix appt: 6 854 MAD/m²<br>Construction 24m: 2 011</div>`)[0];
+                popup_715a3126f35b9e0edba8db4d3e4ef133.setContent(html_40b5dd1c1e84ad39024e57b8442ea166);
+            
+        
+
+        circle_marker_e2e6c865f787a34122057435c02f3493.bindPopup(popup_715a3126f35b9e0edba8db4d3e4ef133)
+        ;
+
+        
+    
+    
+            var circle_marker_b7b635446ef7e531a0b51bf6f282bee9 = L.circleMarker(
+                [33.42228, -7.65439],
+                {"bubblingMouseEvents": true, "color": "#D9481F", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#D9481F", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.83734050066448, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_fc5b2c8c0312528ba437de0ada368af7 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1df77fdb80b75e1d57c007d4e0844cb9 = $(`<div id="html_1df77fdb80b75e1d57c007d4e0844cb9" style="width: 100.0%; height: 100.0%;"><b>COMMUNE OULED SALEH nord</b><br>Compression<br>Prix appt: 8 796 MAD/m²<br>Construction 24m: 732</div>`)[0];
+                popup_fc5b2c8c0312528ba437de0ada368af7.setContent(html_1df77fdb80b75e1d57c007d4e0844cb9);
+            
+        
+
+        circle_marker_b7b635446ef7e531a0b51bf6f282bee9.bindPopup(popup_fc5b2c8c0312528ba437de0ada368af7)
+        ;
+
+        
+    
+    
+            var circle_marker_5212dc9d02e90de48367857030e6fcef = L.circleMarker(
+                [33.46135, -7.98036],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.156290526955264, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_7a993fc76eb80474dcecf3a25769086e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4b5e0429494c5ac24591b17fa9658501 = $(`<div id="html_4b5e0429494c5ac24591b17fa9658501" style="width: 100.0%; height: 100.0%;"><b>COMMUNE SIDI RAHHAL CHATAI nord</b><br>Neutre<br>Prix appt: 5 740 MAD/m²<br>Construction 24m: 1 585</div>`)[0];
+                popup_7a993fc76eb80474dcecf3a25769086e.setContent(html_4b5e0429494c5ac24591b17fa9658501);
+            
+        
+
+        circle_marker_5212dc9d02e90de48367857030e6fcef.bindPopup(popup_7a993fc76eb80474dcecf3a25769086e)
+        ;
+
+        
+    
+    
+            var circle_marker_7dc2e88c9024a92f74bcb836d6855b82 = L.circleMarker(
+                [35.17511, -6.14952],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.01131733828402, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_7a6a5ffcbdcd17dd26feac824678d07a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9bd9a898c9a5c8d1f9d550ebe21d6b02 = $(`<div id="html_9bd9a898c9a5c8d1f9d550ebe21d6b02" style="width: 100.0%; height: 100.0%;"><b>COMMUNE DE LARACHE nord</b><br>Neutre<br>Prix appt: 5 476 MAD/m²<br>Construction 24m: 610</div>`)[0];
+                popup_7a6a5ffcbdcd17dd26feac824678d07a.setContent(html_9bd9a898c9a5c8d1f9d550ebe21d6b02);
+            
+        
+
+        circle_marker_7dc2e88c9024a92f74bcb836d6855b82.bindPopup(popup_7a6a5ffcbdcd17dd26feac824678d07a)
+        ;
+
+        
+    
+    
+            var circle_marker_ca3434338f36377e977565957054279c = L.circleMarker(
+                [34.05574, -5.03894],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.586832993155536, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_e33fcf2ef11587224360cf881dab7c84 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3fa0cc8abc52111fa041f57694f8b5cd = $(`<div id="html_3fa0cc8abc52111fa041f57694f8b5cd" style="width: 100.0%; height: 100.0%;"><b>ARRONDISSEMENT D'EL MARINIYINE est</b><br>Neutre<br>Prix appt: 4 704 MAD/m²<br>Construction 24m: 529</div>`)[0];
+                popup_e33fcf2ef11587224360cf881dab7c84.setContent(html_3fa0cc8abc52111fa041f57694f8b5cd);
+            
+        
+
+        circle_marker_ca3434338f36377e977565957054279c.bindPopup(popup_e33fcf2ef11587224360cf881dab7c84)
+        ;
+
+        
+    
+    
+            var circle_marker_8dbcabd7e2f1bb53dcfe7f1144df401d = L.circleMarker(
+                [33.54734, -7.48318],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.448605759536981, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_282cd8a4adb265ad18584135c362a5f2 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f44c0a4737d5cb1416215d0f869ddc50 = $(`<div id="html_f44c0a4737d5cb1416215d0f869ddc50" style="width: 100.0%; height: 100.0%;"><b>COMMUNE TIT MELLIL nord</b><br>Neutre<br>Prix appt: 6 271 MAD/m²<br>Construction 24m: 902</div>`)[0];
+                popup_282cd8a4adb265ad18584135c362a5f2.setContent(html_f44c0a4737d5cb1416215d0f869ddc50);
+            
+        
+
+        circle_marker_8dbcabd7e2f1bb53dcfe7f1144df401d.bindPopup(popup_282cd8a4adb265ad18584135c362a5f2)
+        ;
+
+        
+    
+    
+            var circle_marker_83043975c632da15eda017759eca8b0b = L.circleMarker(
+                [31.61687, -7.93885],
+                {"bubblingMouseEvents": true, "color": "#33695B", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#33695B", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.83270740004432, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_bffd2fe45c82f99082c3e4947368734c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_81a9c4e05582eaf3882062502b7991ce = $(`<div id="html_81a9c4e05582eaf3882062502b7991ce" style="width: 100.0%; height: 100.0%;"><b>ARRONDISSEMENT D'ENNAKHIL est</b><br>Opportunité<br>Prix appt: 8 788 MAD/m²<br>Construction 24m: 181</div>`)[0];
+                popup_bffd2fe45c82f99082c3e4947368734c.setContent(html_81a9c4e05582eaf3882062502b7991ce);
+            
+        
+
+        circle_marker_83043975c632da15eda017759eca8b0b.bindPopup(popup_bffd2fe45c82f99082c3e4947368734c)
+        ;
+
+        
+    
+    
+            var circle_marker_06a6dbe7560264214b94526dd118530f = L.circleMarker(
+                [31.92433, -4.43984],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.169486595705354, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_1e3c41de30c5a84f557df8c581513055 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_be1bbd7a134b0136bd5210a701290917 = $(`<div id="html_be1bbd7a134b0136bd5210a701290917" style="width: 100.0%; height: 100.0%;"><b>COMMUNE D'ERRACHIDIA est</b><br>Neutre<br>Prix appt: 3 945 MAD/m²<br>Construction 24m: 409</div>`)[0];
+                popup_1e3c41de30c5a84f557df8c581513055.setContent(html_be1bbd7a134b0136bd5210a701290917);
+            
+        
+
+        circle_marker_06a6dbe7560264214b94526dd118530f.bindPopup(popup_1e3c41de30c5a84f557df8c581513055)
+        ;
+
+        
+    
+    
+            var circle_marker_2f850c16939f2818ac3e6677a1f3d176 = L.circleMarker(
+                [33.50621, -7.68439],
+                {"bubblingMouseEvents": true, "color": "#33695B", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#33695B", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.78655597388478, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_ee35498e30969f95e98a84cd9590c796 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1ae8b347a52d358407d067e79c6c4baf = $(`<div id="html_1ae8b347a52d358407d067e79c6c4baf" style="width: 100.0%; height: 100.0%;"><b>COMMUNE OULED AZZOUZ est</b><br>Opportunité<br>Prix appt: 14 159 MAD/m²<br>Construction 24m: 174</div>`)[0];
+                popup_ee35498e30969f95e98a84cd9590c796.setContent(html_1ae8b347a52d358407d067e79c6c4baf);
+            
+        
+
+        circle_marker_2f850c16939f2818ac3e6677a1f3d176.bindPopup(popup_ee35498e30969f95e98a84cd9590c796)
+        ;
+
+        
+    
+    
+            var circle_marker_5e8a2a091caa04f2a3a1524ab1999097 = L.circleMarker(
+                [33.58576, -7.67428],
+                {"bubblingMouseEvents": true, "color": "#33695B", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#33695B", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 21.0, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_63059f6bab345cb2d87b87e769196930 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c94f605c1373d1ee95b585116f7e721f = $(`<div id="html_c94f605c1373d1ee95b585116f7e721f" style="width: 100.0%; height: 100.0%;"><b>ARRONDISSEMENT ANFA nord</b><br>Opportunité<br>Prix appt: 29 095 MAD/m²<br>Construction 24m: 258</div>`)[0];
+                popup_63059f6bab345cb2d87b87e769196930.setContent(html_c94f605c1373d1ee95b585116f7e721f);
+            
+        
+
+        circle_marker_5e8a2a091caa04f2a3a1524ab1999097.bindPopup(popup_63059f6bab345cb2d87b87e769196930)
+        ;
+
+        
+    
+    
+            var circle_marker_5942a0ec5329be9a3ce4e472319626c8 = L.circleMarker(
+                [34.03814, -5.00961],
+                {"bubblingMouseEvents": true, "color": "#D9481F", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#D9481F", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.131202595800204, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_c790d2b0f51716f8fb5e93d954953b56 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5eb8efbe1025be61b47703dfa19a42fa = $(`<div id="html_5eb8efbe1025be61b47703dfa19a42fa" style="width: 100.0%; height: 100.0%;"><b>ARRONDISSEMENT D'AGDAL est</b><br>Compression<br>Prix appt: 7 512 MAD/m²<br>Construction 24m: 1 136</div>`)[0];
+                popup_c790d2b0f51716f8fb5e93d954953b56.setContent(html_5eb8efbe1025be61b47703dfa19a42fa);
+            
+        
+
+        circle_marker_5942a0ec5329be9a3ce4e472319626c8.bindPopup(popup_c790d2b0f51716f8fb5e93d954953b56)
+        ;
+
+        
+    
+    
+            var circle_marker_c17045b9b6d5f1bab7749cb6cc876c30 = L.circleMarker(
+                [31.62987, -7.98837],
+                {"bubblingMouseEvents": true, "color": "#D9481F", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#D9481F", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.572880916142122, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_f5cc35c7b6594a4415fed8c97debf670 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b2d226d37b28b3dfb8b1f0c214a171fe = $(`<div id="html_b2d226d37b28b3dfb8b1f0c214a171fe" style="width: 100.0%; height: 100.0%;"><b>ARRONDISSEMENT DE MARRAKECH-MEDINA est</b><br>Compression<br>Prix appt: 6 497 MAD/m²<br>Construction 24m: 336</div>`)[0];
+                popup_f5cc35c7b6594a4415fed8c97debf670.setContent(html_b2d226d37b28b3dfb8b1f0c214a171fe);
+            
+        
+
+        circle_marker_c17045b9b6d5f1bab7749cb6cc876c30.bindPopup(popup_f5cc35c7b6594a4415fed8c97debf670)
+        ;
+
+        
+    
+    
+            var circle_marker_7e38f7256aa6e7afbd55ad4b8288aef3 = L.circleMarker(
+                [33.91356, -6.96996],
+                {"bubblingMouseEvents": true, "color": "#33695B", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#33695B", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.05111690886644, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_ac7e34a4fd40b1cc21f88d07e57598ee = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c271769f008f794fcbac2577a6982a4b = $(`<div id="html_c271769f008f794fcbac2577a6982a4b" style="width: 100.0%; height: 100.0%;"><b>COMMUNE DE HARHOURA nord</b><br>Opportunité<br>Prix appt: 11 004 MAD/m²<br>Construction 24m: 240</div>`)[0];
+                popup_ac7e34a4fd40b1cc21f88d07e57598ee.setContent(html_c271769f008f794fcbac2577a6982a4b);
+            
+        
+
+        circle_marker_7e38f7256aa6e7afbd55ad4b8288aef3.bindPopup(popup_ac7e34a4fd40b1cc21f88d07e57598ee)
+        ;
+
+        
+    
+    
+            var circle_marker_198ccf0756380d049773a366b11e16d8 = L.circleMarker(
+                [34.00914, -6.74046],
+                {"bubblingMouseEvents": true, "color": "#D9481F", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#D9481F", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.952017521897588, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_022e2e4333f457e5de33170fab4c82cc = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5896021b5b876d32f83827bcd390185e = $(`<div id="html_5896021b5b876d32f83827bcd390185e" style="width: 100.0%; height: 100.0%;"><b>ARRONDISSEMENT DE HSSAINE est</b><br>Compression<br>Prix appt: 9 005 MAD/m²<br>Construction 24m: 985</div>`)[0];
+                popup_022e2e4333f457e5de33170fab4c82cc.setContent(html_5896021b5b876d32f83827bcd390185e);
+            
+        
+
+        circle_marker_198ccf0756380d049773a366b11e16d8.bindPopup(popup_022e2e4333f457e5de33170fab4c82cc)
+        ;
+
+        
+    
+    
+            var circle_marker_ab916887c4e0dcddbe77c7c886df281f = L.circleMarker(
+                [33.65373, -7.44359],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.91401400834814, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_803102f442239ea4a7f434ad0320d459 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6a60e07eb5f324cf2ad58f199348526f = $(`<div id="html_6a60e07eb5f324cf2ad58f199348526f" style="width: 100.0%; height: 100.0%;"><b>COMMUNE AIN HARROUDA nord</b><br>Neutre<br>Prix appt: 5 299 MAD/m²<br>Construction 24m: 955</div>`)[0];
+                popup_803102f442239ea4a7f434ad0320d459.setContent(html_6a60e07eb5f324cf2ad58f199348526f);
+            
+        
+
+        circle_marker_ab916887c4e0dcddbe77c7c886df281f.bindPopup(popup_803102f442239ea4a7f434ad0320d459)
+        ;
+
+        
+    
+    
+            var circle_marker_c6d06e9c3be3742e9709c79940473319 = L.circleMarker(
+                [33.84844, -7.03527],
+                {"bubblingMouseEvents": true, "color": "#D9481F", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#D9481F", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.575686223315444, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_7244cba57eefc08e5675a11e4a36d6c8 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_86c867cc656100f46de3397f09d21b7a = $(`<div id="html_86c867cc656100f46de3397f09d21b7a" style="width: 100.0%; height: 100.0%;"><b>COMMUNE DE SKHIRATE nord</b><br>Compression<br>Prix appt: 6 502 MAD/m²<br>Construction 24m: 493</div>`)[0];
+                popup_7244cba57eefc08e5675a11e4a36d6c8.setContent(html_86c867cc656100f46de3397f09d21b7a);
+            
+        
+
+        circle_marker_c6d06e9c3be3742e9709c79940473319.bindPopup(popup_7244cba57eefc08e5675a11e4a36d6c8)
+        ;
+
+        
+    
+    
+            var circle_marker_c32f4298da25a3f66ced30048b9c4260 = L.circleMarker(
+                [34.05047, -4.95865],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.91952642740846, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_5152f09f1941c75b9e490daf212f5621 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f021efdbc01a53c9b1fd3b56ff28adc8 = $(`<div id="html_f021efdbc01a53c9b1fd3b56ff28adc8" style="width: 100.0%; height: 100.0%;"><b>ARRONDISSEMENT DE JNANE EL OUARD centre</b><br>Neutre<br>Prix appt: 3 491 MAD/m²<br>Construction 24m: 208</div>`)[0];
+                popup_5152f09f1941c75b9e490daf212f5621.setContent(html_f021efdbc01a53c9b1fd3b56ff28adc8);
+            
+        
+
+        circle_marker_c32f4298da25a3f66ced30048b9c4260.bindPopup(popup_5152f09f1941c75b9e490daf212f5621)
+        ;
+
+        
+    
+    
+            var circle_marker_c36b9c2161fe12ef0378bac992c4e47d = L.circleMarker(
+                [33.61882, -7.50116],
+                {"bubblingMouseEvents": true, "color": "#D9481F", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#D9481F", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.500256698276855, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_05214ba88be59e300037519f7a7fc7e4 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6132388836870e9a36751fd8af69acd7 = $(`<div id="html_6132388836870e9a36751fd8af69acd7" style="width: 100.0%; height: 100.0%;"><b>ARRONDISSEMENT SIDI BERNOUSSI nord</b><br>Compression<br>Prix appt: 8 183 MAD/m²<br>Construction 24m: 450</div>`)[0];
+                popup_05214ba88be59e300037519f7a7fc7e4.setContent(html_6132388836870e9a36751fd8af69acd7);
+            
+        
+
+        circle_marker_c36b9c2161fe12ef0378bac992c4e47d.bindPopup(popup_05214ba88be59e300037519f7a7fc7e4)
+        ;
+
+        
+    
+    
+            var circle_marker_2473ac86f3debd5f47f976c29501ac56 = L.circleMarker(
+                [33.95324, -6.83049],
+                {"bubblingMouseEvents": true, "color": "#33695B", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#33695B", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.967285544544715, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_5ecbdf084e9ce6fe29fcd4d97c615da3 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ac776eb656009e6d2a88e53417dfea1b = $(`<div id="html_ac776eb656009e6d2a88e53417dfea1b" style="width: 100.0%; height: 100.0%;"><b>ARRONDISSEMENT DE SOUISSI nord</b><br>Opportunité<br>Prix appt: 23 580 MAD/m²<br>Construction 24m: 120</div>`)[0];
+                popup_5ecbdf084e9ce6fe29fcd4d97c615da3.setContent(html_ac776eb656009e6d2a88e53417dfea1b);
+            
+        
+
+        circle_marker_2473ac86f3debd5f47f976c29501ac56.bindPopup(popup_5ecbdf084e9ce6fe29fcd4d97c615da3)
+        ;
+
+        
+    
+    
+            var circle_marker_fee65c204035146399ae790a95b2841a = L.circleMarker(
+                [33.45214, -7.50375],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.4776393910633825, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_ba9e8b9efb7d2f546aafec933494f9e3 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_cb3f5c95cf1076de762bc27edc96edd3 = $(`<div id="html_cb3f5c95cf1076de762bc27edc96edd3" style="width: 100.0%; height: 100.0%;"><b>COMMUNE MEJJATIA OULED TALEB est</b><br>Neutre<br>Prix appt: 4 505 MAD/m²<br>Construction 24m: 939</div>`)[0];
+                popup_ba9e8b9efb7d2f546aafec933494f9e3.setContent(html_cb3f5c95cf1076de762bc27edc96edd3);
+            
+        
+
+        circle_marker_fee65c204035146399ae790a95b2841a.bindPopup(popup_ba9e8b9efb7d2f546aafec933494f9e3)
+        ;
+
+        
+    
+    
+            var circle_marker_cbd11554cf60c8a281cf428d7db4d1ee = L.circleMarker(
+                [34.06079, -6.80483],
+                {"bubblingMouseEvents": true, "color": "#D9481F", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#D9481F", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.073291423017725, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_0d1d4e79d51a4cc60f5ff417dbfc7224 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_577cdf9652001027a00845a1a9b8b2de = $(`<div id="html_577cdf9652001027a00845a1a9b8b2de" style="width: 100.0%; height: 100.0%;"><b>ARRONDISSEMENT DE BAB LAMRISSA nord</b><br>Compression<br>Prix appt: 7 407 MAD/m²<br>Construction 24m: 340</div>`)[0];
+                popup_0d1d4e79d51a4cc60f5ff417dbfc7224.setContent(html_577cdf9652001027a00845a1a9b8b2de);
+            
+        
+
+        circle_marker_cbd11554cf60c8a281cf428d7db4d1ee.bindPopup(popup_0d1d4e79d51a4cc60f5ff417dbfc7224)
+        ;
+
+        
+    
+    
+            var circle_marker_06f6d7fe50ddb61b9bfebde169172915 = L.circleMarker(
+                [34.11005, -6.72256],
+                {"bubblingMouseEvents": true, "color": "#D9481F", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#D9481F", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.983815115132105, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_70dd5de4a6f862d20324b6962f085ffc = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_30ad1a198db066c9390a9b71b8e9304c = $(`<div id="html_30ad1a198db066c9390a9b71b8e9304c" style="width: 100.0%; height: 100.0%;"><b>COMMUNE DE SIDI BOUKNADEL nord</b><br>Compression<br>Prix appt: 7 244 MAD/m²<br>Construction 24m: 340</div>`)[0];
+                popup_70dd5de4a6f862d20324b6962f085ffc.setContent(html_30ad1a198db066c9390a9b71b8e9304c);
+            
+        
+
+        circle_marker_06f6d7fe50ddb61b9bfebde169172915.bindPopup(popup_70dd5de4a6f862d20324b6962f085ffc)
+        ;
+
+        
+    
+    
+            var circle_marker_aa766b8a1030c69bfc85875d56abd6ab = L.circleMarker(
+                [35.2408, -3.93776],
+                {"bubblingMouseEvents": true, "color": "#33695B", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#33695B", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.660248465896602, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_2f8a8c4f5a9d8423998050494e1569fa = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a457e95705ccae7cdbd306d98b687d22 = $(`<div id="html_a457e95705ccae7cdbd306d98b687d22" style="width: 100.0%; height: 100.0%;"><b>COMMUNE D'AL HOCEIMA est</b><br>Opportunité<br>Prix appt: 10 293 MAD/m²<br>Construction 24m: 196</div>`)[0];
+                popup_2f8a8c4f5a9d8423998050494e1569fa.setContent(html_a457e95705ccae7cdbd306d98b687d22);
+            
+        
+
+        circle_marker_aa766b8a1030c69bfc85875d56abd6ab.bindPopup(popup_2f8a8c4f5a9d8423998050494e1569fa)
+        ;
+
+        
+    
+    
+            var circle_marker_bdf5e1ab20e01b3546fffed249568392 = L.circleMarker(
+                [33.51922, -7.77611],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.268675219761718, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_f448b8a88bdb058f2399960f1851f909 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ab7a5aa69d454d4260009127b7e01192 = $(`<div id="html_ab7a5aa69d454d4260009127b7e01192" style="width: 100.0%; height: 100.0%;"><b>COMMUNE OULED AZZOUZ nord</b><br>Neutre<br>Prix appt: 5 944 MAD/m²<br>Construction 24m: 397</div>`)[0];
+                popup_f448b8a88bdb058f2399960f1851f909.setContent(html_ab7a5aa69d454d4260009127b7e01192);
+            
+        
+
+        circle_marker_bdf5e1ab20e01b3546fffed249568392.bindPopup(popup_f448b8a88bdb058f2399960f1851f909)
+        ;
+
+        
+    
+    
+            var circle_marker_cd94db82d05b56b329d280ac184c0fee = L.circleMarker(
+                [33.53989, -7.56754],
+                {"bubblingMouseEvents": true, "color": "#D9481F", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#D9481F", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.22262009109529, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_46082f35927b5b71e5ce5e8abb04f7a5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e9cbef42db3ad366d170229406a28b39 = $(`<div id="html_e9cbef42db3ad366d170229406a28b39" style="width: 100.0%; height: 100.0%;"><b>ARRONDISSEMENT SBATA est</b><br>Compression<br>Prix appt: 7 679 MAD/m²<br>Construction 24m: 528</div>`)[0];
+                popup_46082f35927b5b71e5ce5e8abb04f7a5.setContent(html_e9cbef42db3ad366d170229406a28b39);
+            
+        
+
+        circle_marker_cd94db82d05b56b329d280ac184c0fee.bindPopup(popup_46082f35927b5b71e5ce5e8abb04f7a5)
+        ;
+
+        
+    
+    
+            var circle_marker_5f3a18a3b14315798e9b3b8f676348c0 = L.circleMarker(
+                [33.55681, -7.55547],
+                {"bubblingMouseEvents": true, "color": "#33695B", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#33695B", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.892700578166677, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_55447298b2ac954ab70c7730fb185432 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2d6eb50b134c8b44846fa6511b0aba31 = $(`<div id="html_2d6eb50b134c8b44846fa6511b0aba31" style="width: 100.0%; height: 100.0%;"><b>ARRONDISSEMENT SIDI OTHMANE nord</b><br>Opportunité<br>Prix appt: 7 079 MAD/m²<br>Construction 24m: 236</div>`)[0];
+                popup_55447298b2ac954ab70c7730fb185432.setContent(html_2d6eb50b134c8b44846fa6511b0aba31);
+            
+        
+
+        circle_marker_5f3a18a3b14315798e9b3b8f676348c0.bindPopup(popup_55447298b2ac954ab70c7730fb185432)
+        ;
+
+        
+    
+    
+            var circle_marker_1256a4a0c73ce8bfe8d3a1d1b8c58c47 = L.circleMarker(
+                [31.52698, -7.97664],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.9392753808805985, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_c59cea8c5be9c8a1d1a14f1ae13754c2 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3421aa35a742d869f8504caa6efcfeed = $(`<div id="html_3421aa35a742d869f8504caa6efcfeed" style="width: 100.0%; height: 100.0%;"><b>COMMUNE DE TAMESLOUHTE est</b><br>Neutre<br>Prix appt: 3 526 MAD/m²<br>Construction 24m: 126</div>`)[0];
+                popup_c59cea8c5be9c8a1d1a14f1ae13754c2.setContent(html_3421aa35a742d869f8504caa6efcfeed);
+            
+        
+
+        circle_marker_1256a4a0c73ce8bfe8d3a1d1b8c58c47.bindPopup(popup_c59cea8c5be9c8a1d1a14f1ae13754c2)
+        ;
+
+        
+    
+    
+            var circle_marker_fb5c3ed10331dd65dd152518773bfff6 = L.circleMarker(
+                [31.50742, -9.75758],
+                {"bubblingMouseEvents": true, "color": "#33695B", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#33695B", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.933468292601544, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_4da12d06e81d67f6f17eff6748961247 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6811ebb9cdbb12bfbb2de9a055c685fe = $(`<div id="html_6811ebb9cdbb12bfbb2de9a055c685fe" style="width: 100.0%; height: 100.0%;"><b>COMMUNE D'ESSAOUIRA nord</b><br>Opportunité<br>Prix appt: 7 153 MAD/m²<br>Construction 24m: 141</div>`)[0];
+                popup_4da12d06e81d67f6f17eff6748961247.setContent(html_6811ebb9cdbb12bfbb2de9a055c685fe);
+            
+        
+
+        circle_marker_fb5c3ed10331dd65dd152518773bfff6.bindPopup(popup_4da12d06e81d67f6f17eff6748961247)
+        ;
+
+        
+    
+    
+            var circle_marker_9a96623b94dd9f10a1f9c80e5272a7d1 = L.circleMarker(
+                [31.59952, -7.95847],
+                {"bubblingMouseEvents": true, "color": "#33695B", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#33695B", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.905974340790156, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_e8c66679045d804d9a844d2ac228cbf7 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4b66c1077225b6d3d1fa47d3707df8d6 = $(`<div id="html_4b66c1077225b6d3d1fa47d3707df8d6" style="width: 100.0%; height: 100.0%;"><b>ARRONDISSEMENT DE SIDI YOUSSEF BEN ALI est</b><br>Opportunité<br>Prix appt: 10 740 MAD/m²<br>Construction 24m: 118</div>`)[0];
+                popup_e8c66679045d804d9a844d2ac228cbf7.setContent(html_4b66c1077225b6d3d1fa47d3707df8d6);
+            
+        
+
+        circle_marker_9a96623b94dd9f10a1f9c80e5272a7d1.bindPopup(popup_e8c66679045d804d9a844d2ac228cbf7)
+        ;
+
+        
+    
+    
+            var circle_marker_a4716eefcc5b9aa33fda6c7688091f5b = L.circleMarker(
+                [30.33138, -9.50856],
+                {"bubblingMouseEvents": true, "color": "#33695B", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#33695B", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.648652240487866, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_e1276c248b745bf7188eef1d09b8b868 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_22681e9e2154f9f05f02d97970ca4c1e = $(`<div id="html_22681e9e2154f9f05f02d97970ca4c1e" style="width: 100.0%; height: 100.0%;"><b>COMMUNE D'AIT MELLOUL est</b><br>Opportunité<br>Prix appt: 6 635 MAD/m²<br>Construction 24m: 175</div>`)[0];
+                popup_e1276c248b745bf7188eef1d09b8b868.setContent(html_22681e9e2154f9f05f02d97970ca4c1e);
+            
+        
+
+        circle_marker_a4716eefcc5b9aa33fda6c7688091f5b.bindPopup(popup_e1276c248b745bf7188eef1d09b8b868)
+        ;
+
+        
+    
+    
+            var circle_marker_f6d4e036686770cb04e27709edf46470 = L.circleMarker(
+                [33.52485, -7.5217],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.34780614653268, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_b02036c9ea8690d68921256804e86222 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_eb6808c79cc9523ce5d77dea9bddda15 = $(`<div id="html_eb6808c79cc9523ce5d77dea9bddda15" style="width: 100.0%; height: 100.0%;"><b>COMMUNE LAHRAOUIYINE nord</b><br>Neutre<br>Prix appt: 6 088 MAD/m²<br>Construction 24m: 657</div>`)[0];
+                popup_b02036c9ea8690d68921256804e86222.setContent(html_eb6808c79cc9523ce5d77dea9bddda15);
+            
+        
+
+        circle_marker_f6d4e036686770cb04e27709edf46470.bindPopup(popup_b02036c9ea8690d68921256804e86222)
+        ;
+
+        
+    
+    
+            var circle_marker_4cd539a1062c84253b7cdb77520bae86 = L.circleMarker(
+                [33.9546, -6.87259],
+                {"bubblingMouseEvents": true, "color": "#33695B", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#33695B", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.275685038052236, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_ee4beae3b06ed6e1ce26039379a49170 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d0db597b19e6675fdce221d015cdc709 = $(`<div id="html_d0db597b19e6675fdce221d015cdc709" style="width: 100.0%; height: 100.0%;"><b>ARRONDISSEMENT D'AGDAL-RYAD est</b><br>Opportunité<br>Prix appt: 18 686 MAD/m²<br>Construction 24m: 88</div>`)[0];
+                popup_ee4beae3b06ed6e1ce26039379a49170.setContent(html_d0db597b19e6675fdce221d015cdc709);
+            
+        
+
+        circle_marker_4cd539a1062c84253b7cdb77520bae86.bindPopup(popup_ee4beae3b06ed6e1ce26039379a49170)
+        ;
+
+        
+    
+    
+            var circle_marker_4ae3b3909a743e5a23317f230f7bd2fb = L.circleMarker(
+                [33.45412, -7.51585],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.18409056376216, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_eed40d93beb5049a2e7710c98f672716 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ebb879b0776d69dd8f23ab1227e4cf44 = $(`<div id="html_ebb879b0776d69dd8f23ab1227e4cf44" style="width: 100.0%; height: 100.0%;"><b>COMMUNE MEDIOUNA est</b><br>Neutre<br>Prix appt: 5 790 MAD/m²<br>Construction 24m: 267</div>`)[0];
+                popup_eed40d93beb5049a2e7710c98f672716.setContent(html_ebb879b0776d69dd8f23ab1227e4cf44);
+            
+        
+
+        circle_marker_4ae3b3909a743e5a23317f230f7bd2fb.bindPopup(popup_eed40d93beb5049a2e7710c98f672716)
+        ;
+
+        
+    
+    
+            var circle_marker_4579c19a11a20f74c35e4e3eb92bece4 = L.circleMarker(
+                [33.59259, -7.62473],
+                {"bubblingMouseEvents": true, "color": "#33695B", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#33695B", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.6253410500403, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_382dd22ff75d6abbc04e36c210a22699 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2d0e7e0f53afba58c4a4196046790c5d = $(`<div id="html_2d0e7e0f53afba58c4a4196046790c5d" style="width: 100.0%; height: 100.0%;"><b>ARRONDISSEMENT SIDI BELYOUT nord</b><br>Opportunité<br>Prix appt: 15 685 MAD/m²<br>Construction 24m: 137</div>`)[0];
+                popup_382dd22ff75d6abbc04e36c210a22699.setContent(html_2d0e7e0f53afba58c4a4196046790c5d);
+            
+        
+
+        circle_marker_4579c19a11a20f74c35e4e3eb92bece4.bindPopup(popup_382dd22ff75d6abbc04e36c210a22699)
+        ;
+
+        
+    
+    
+            var circle_marker_cc8362fabffbc1d500c748f216a7656e = L.circleMarker(
+                [31.55944, -8.07394],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.582308514004388, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_4864dc71aa7726fce0ebac477cfb9dc6 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_607f7184b707217ca9bafe37d67be526 = $(`<div id="html_607f7184b707217ca9bafe37d67be526" style="width: 100.0%; height: 100.0%;"><b>COMMUNE DE SAADA est</b><br>Neutre<br>Prix appt: 4 696 MAD/m²<br>Construction 24m: 80</div>`)[0];
+                popup_4864dc71aa7726fce0ebac477cfb9dc6.setContent(html_607f7184b707217ca9bafe37d67be526);
+            
+        
+
+        circle_marker_cc8362fabffbc1d500c748f216a7656e.bindPopup(popup_4864dc71aa7726fce0ebac477cfb9dc6)
+        ;
+
+        
+    
+    
+            var circle_marker_6f9abd1293bf749f28b36e421390804c = L.circleMarker(
+                [33.49725, -7.53594],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.8527176383398585, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_db08be3235292d536483214bb15384f3 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ab2979661ccb82e1de8afbb6a50941cf = $(`<div id="html_ab2979661ccb82e1de8afbb6a50941cf" style="width: 100.0%; height: 100.0%;"><b>COMMUNE MEJJATIA OULED TALEB nord</b><br>Neutre<br>Prix appt: 5 187 MAD/m²<br>Construction 24m: 569</div>`)[0];
+                popup_db08be3235292d536483214bb15384f3.setContent(html_ab2979661ccb82e1de8afbb6a50941cf);
+            
+        
+
+        circle_marker_6f9abd1293bf749f28b36e421390804c.bindPopup(popup_db08be3235292d536483214bb15384f3)
+        ;
+
+        
+    
+    
+            var circle_marker_c523e851039f6195a1879898cfae8831 = L.circleMarker(
+                [33.98389, -6.88282],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.274951406468205, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_41c01930e90d6371243218f56501ae27 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_54a99d85e9d19afb192edec607c2f36f = $(`<div id="html_54a99d85e9d19afb192edec607c2f36f" style="width: 100.0%; height: 100.0%;"><b>ARRONDISSEMENT DE YACOUB EL MANSOUR est</b><br>Neutre<br>Prix appt: 5 955 MAD/m²<br>Construction 24m: 70</div>`)[0];
+                popup_41c01930e90d6371243218f56501ae27.setContent(html_54a99d85e9d19afb192edec607c2f36f);
+            
+        
+
+        circle_marker_c523e851039f6195a1879898cfae8831.bindPopup(popup_41c01930e90d6371243218f56501ae27)
+        ;
+
+        
+    
+    
+            var circle_marker_d9fb88a330f011cc1a1d32406153536c = L.circleMarker(
+                [33.5877, -7.58562],
+                {"bubblingMouseEvents": true, "color": "#D9481F", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#D9481F", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.84333498304426, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_9a0911ce6eb6133449a4689e027021c2 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_63f3f7ff6ebc3e1489ada77ded6f473b = $(`<div id="html_63f3f7ff6ebc3e1489ada77ded6f473b" style="width: 100.0%; height: 100.0%;"><b>ARRONDISSEMENT ESSOUKHOUR ESSAWEDA nord</b><br>Compression<br>Prix appt: 10 626 MAD/m²<br>Construction 24m: 337</div>`)[0];
+                popup_9a0911ce6eb6133449a4689e027021c2.setContent(html_63f3f7ff6ebc3e1489ada77ded6f473b);
+            
+        
+
+        circle_marker_d9fb88a330f011cc1a1d32406153536c.bindPopup(popup_9a0911ce6eb6133449a4689e027021c2)
+        ;
+
+        
+    
+    
+            var circle_marker_17648d9217d9ebbfb7e1576adc2bd911 = L.circleMarker(
+                [33.80863, -7.14259],
+                {"bubblingMouseEvents": true, "color": "#33695B", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#33695B", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.568872676807143, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_c562c53dc5d40427b0e251caf9bfed30 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_317f8ff0fa481bca66c75c7a936e207a = $(`<div id="html_317f8ff0fa481bca66c75c7a936e207a" style="width: 100.0%; height: 100.0%;"><b>COMMUNE CHARRATE nord</b><br>Opportunité<br>Prix appt: 10 127 MAD/m²<br>Construction 24m: 277</div>`)[0];
+                popup_c562c53dc5d40427b0e251caf9bfed30.setContent(html_317f8ff0fa481bca66c75c7a936e207a);
+            
+        
+
+        circle_marker_17648d9217d9ebbfb7e1576adc2bd911.bindPopup(popup_c562c53dc5d40427b0e251caf9bfed30)
+        ;
+
+        
+    
+    
+            var circle_marker_a09a20b54eec072e5560d70019efd1ab = L.circleMarker(
+                [35.70908, -5.89757],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.366321359440342, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_6117e30e98ca6efb2ad7f948705959e4 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b70011b2e98cd255ef120f6bdca24425 = $(`<div id="html_b70011b2e98cd255ef120f6bdca24425" style="width: 100.0%; height: 100.0%;"><b>COMMUNE DE GUEZNAIA nord</b><br>Neutre<br>Prix appt: 6 121 MAD/m²<br>Construction 24m: 193</div>`)[0];
+                popup_6117e30e98ca6efb2ad7f948705959e4.setContent(html_b70011b2e98cd255ef120f6bdca24425);
+            
+        
+
+        circle_marker_a09a20b54eec072e5560d70019efd1ab.bindPopup(popup_6117e30e98ca6efb2ad7f948705959e4)
+        ;
+
+        
+    
+    
+            var circle_marker_744bb61be29d3caa14dbffeed303c5ea = L.circleMarker(
+                [33.28752, -8.35402],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.391218480484146, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_80becdad648cc594296bd85e20f8d724 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_62d0d152b354a460d66e97ceefad69f8 = $(`<div id="html_62d0d152b354a460d66e97ceefad69f8" style="width: 100.0%; height: 100.0%;"><b>COMMUNE AZEMMOUR nord</b><br>Neutre<br>Prix appt: 4 348 MAD/m²<br>Construction 24m: 249</div>`)[0];
+                popup_80becdad648cc594296bd85e20f8d724.setContent(html_62d0d152b354a460d66e97ceefad69f8);
+            
+        
+
+        circle_marker_744bb61be29d3caa14dbffeed303c5ea.bindPopup(popup_80becdad648cc594296bd85e20f8d724)
+        ;
+
+        
+    
+    
+            var circle_marker_c607edde4eae05f05aab43775be20b7c = L.circleMarker(
+                [33.586, -7.56282],
+                {"bubblingMouseEvents": true, "color": "#33695B", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#33695B", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.818122915612545, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_78d67dbb1ba4b25e19c10f9dd7e75b03 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f04f6238efd4ed6ec7e511c11c388c25 = $(`<div id="html_f04f6238efd4ed6ec7e511c11c388c25" style="width: 100.0%; height: 100.0%;"><b>ARRONDISSEMENT HAY MOHAMMADI nord</b><br>Opportunité<br>Prix appt: 8 761 MAD/m²<br>Construction 24m: 192</div>`)[0];
+                popup_78d67dbb1ba4b25e19c10f9dd7e75b03.setContent(html_f04f6238efd4ed6ec7e511c11c388c25);
+            
+        
+
+        circle_marker_c607edde4eae05f05aab43775be20b7c.bindPopup(popup_78d67dbb1ba4b25e19c10f9dd7e75b03)
+        ;
+
+        
+    
+    
+            var circle_marker_86df40b6b8ed670fd64b6c67e5e18460 = L.circleMarker(
+                [33.56695, -7.59477],
+                {"bubblingMouseEvents": true, "color": "#33695B", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#33695B", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.060772088234893, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_d2b9c675eb7e2b7b23875d3643488303 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_49c38bba06242183128b6e5b217effb6 = $(`<div id="html_49c38bba06242183128b6e5b217effb6" style="width: 100.0%; height: 100.0%;"><b>ARRONDISSEMENT AL FIDA nord</b><br>Opportunité<br>Prix appt: 9 203 MAD/m²<br>Construction 24m: 219</div>`)[0];
+                popup_d2b9c675eb7e2b7b23875d3643488303.setContent(html_49c38bba06242183128b6e5b217effb6);
+            
+        
+
+        circle_marker_86df40b6b8ed670fd64b6c67e5e18460.bindPopup(popup_d2b9c675eb7e2b7b23875d3643488303)
+        ;
+
+        
+    
+    
+            var circle_marker_c9cc56c4665d227c4c436528e9f7ae27 = L.circleMarker(
+                [31.59911, -7.997],
+                {"bubblingMouseEvents": true, "color": "#33695B", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#33695B", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.885634510388263, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_572f84262632b103d74dea1f335222a6 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_775b2becfb9ba61fe8e6008c0881f2b4 = $(`<div id="html_775b2becfb9ba61fe8e6008c0881f2b4" style="width: 100.0%; height: 100.0%;"><b>COMMUNE DE MECHOUAR-KASBA est</b><br>Opportunité<br>Prix appt: 16 158 MAD/m²<br>Construction 24m: 65</div>`)[0];
+                popup_572f84262632b103d74dea1f335222a6.setContent(html_775b2becfb9ba61fe8e6008c0881f2b4);
+            
+        
+
+        circle_marker_c9cc56c4665d227c4c436528e9f7ae27.bindPopup(popup_572f84262632b103d74dea1f335222a6)
+        ;
+
+        
+    
+    
+            var circle_marker_6ce160799908b9a75caf117af4209438 = L.circleMarker(
+                [33.5557, -7.57977],
+                {"bubblingMouseEvents": true, "color": "#33695B", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#33695B", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.869709925145509, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_32dbfabe43dcb41c164306f81d5a6ac8 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b856de7ec6d5bdb75b9e615eb9ca177f = $(`<div id="html_b856de7ec6d5bdb75b9e615eb9ca177f" style="width: 100.0%; height: 100.0%;"><b>ARRONDISSEMENT BEN MSIK nord</b><br>Opportunité<br>Prix appt: 8 855 MAD/m²<br>Construction 24m: 245</div>`)[0];
+                popup_32dbfabe43dcb41c164306f81d5a6ac8.setContent(html_b856de7ec6d5bdb75b9e615eb9ca177f);
+            
+        
+
+        circle_marker_6ce160799908b9a75caf117af4209438.bindPopup(popup_32dbfabe43dcb41c164306f81d5a6ac8)
+        ;
+
+        
+    
+    
+            var circle_marker_302d1869459b0c86877ff1aaeecebe26 = L.circleMarker(
+                [31.36728, -7.92787],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_34e600eec20cff8313078795ae2160c7 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_bea6a580842a5280c3ab413c1a8aa459 = $(`<div id="html_bea6a580842a5280c3ab413c1a8aa459" style="width: 100.0%; height: 100.0%;"><b>COMMUNE DE TAHANNAOUT est</b><br>Neutre<br>Prix appt: 0 MAD/m²<br>Construction 24m: 59</div>`)[0];
+                popup_34e600eec20cff8313078795ae2160c7.setContent(html_bea6a580842a5280c3ab413c1a8aa459);
+            
+        
+
+        circle_marker_302d1869459b0c86877ff1aaeecebe26.bindPopup(popup_34e600eec20cff8313078795ae2160c7)
+        ;
+
+        
+    
+    
+            var circle_marker_f0e9d763c3613c00b3eef0c66e660af1 = L.circleMarker(
+                [35.69096, -5.33482],
+                {"bubblingMouseEvents": true, "color": "#33695B", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#33695B", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.351748189222999, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_e56ebea742ede16bcb8dfaf06b366769 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3f769d8e59189c0a94767fb8946bc8ae = $(`<div id="html_3f769d8e59189c0a94767fb8946bc8ae" style="width: 100.0%; height: 100.0%;"><b>COMMUNE DE MDIQ centre</b><br>Opportunité<br>Prix appt: 7 913 MAD/m²<br>Construction 24m: 107</div>`)[0];
+                popup_e56ebea742ede16bcb8dfaf06b366769.setContent(html_3f769d8e59189c0a94767fb8946bc8ae);
+            
+        
+
+        circle_marker_f0e9d763c3613c00b3eef0c66e660af1.bindPopup(popup_e56ebea742ede16bcb8dfaf06b366769)
+        ;
+
+        
+    
+    
+            var circle_marker_56e65034dc6693c773de7b8a639483ba = L.circleMarker(
+                [35.16417, -2.9715],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.298851211678292, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_26d2a991962b6c862b8c03e6503a9945 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1af38c4dd7b44c63a49903deca8cb625 = $(`<div id="html_1af38c4dd7b44c63a49903deca8cb625" style="width: 100.0%; height: 100.0%;"><b>COMMUNE D'IHADDADENE centre</b><br>Neutre<br>Prix appt: 4 180 MAD/m²<br>Construction 24m: 75</div>`)[0];
+                popup_26d2a991962b6c862b8c03e6503a9945.setContent(html_1af38c4dd7b44c63a49903deca8cb625);
+            
+        
+
+        circle_marker_56e65034dc6693c773de7b8a639483ba.bindPopup(popup_26d2a991962b6c862b8c03e6503a9945)
+        ;
+
+        
+    
+    
+            var circle_marker_903aa1345d066f86411f35e878df4995 = L.circleMarker(
+                [34.64977, -1.86995],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.331028726747591, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_46ca3232652e87532b080a50b3344750 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_192bd2ceec83e543262f89f4b3e06cd4 = $(`<div id="html_192bd2ceec83e543262f89f4b3e06cd4" style="width: 100.0%; height: 100.0%;"><b>COMMUNE D'AHL ANGAD est</b><br>Neutre<br>Prix appt: 4 239 MAD/m²<br>Construction 24m: 68</div>`)[0];
+                popup_46ca3232652e87532b080a50b3344750.setContent(html_192bd2ceec83e543262f89f4b3e06cd4);
+            
+        
+
+        circle_marker_903aa1345d066f86411f35e878df4995.bindPopup(popup_46ca3232652e87532b080a50b3344750)
+        ;
+
+        
+    
+    
+            var circle_marker_6b4a20dbb2cf9c684d5a3b1567508be6 = L.circleMarker(
+                [34.05141, -6.79612],
+                {"bubblingMouseEvents": true, "color": "#33695B", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#33695B", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.218807165083895, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_8f744e7b4ca65bf0c0641c093703e213 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_624a1940ca95744f12f04fcf878b61b7 = $(`<div id="html_624a1940ca95744f12f04fcf878b61b7" style="width: 100.0%; height: 100.0%;"><b>ARRONDISSEMENT DE TABRIQUET est</b><br>Opportunité<br>Prix appt: 7 672 MAD/m²<br>Construction 24m: 212</div>`)[0];
+                popup_8f744e7b4ca65bf0c0641c093703e213.setContent(html_624a1940ca95744f12f04fcf878b61b7);
+            
+        
+
+        circle_marker_6b4a20dbb2cf9c684d5a3b1567508be6.bindPopup(popup_8f744e7b4ca65bf0c0641c093703e213)
+        ;
+
+        
+    
+    
+            var circle_marker_a7979bedf02382560537be37518eb875 = L.circleMarker(
+                [34.68302, -1.85336],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.413496468301489, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_a6adc022a9a3bcaf613640653c8444a8 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_574a67fc27254d671e9be1221f07b50c = $(`<div id="html_574a67fc27254d671e9be1221f07b50c" style="width: 100.0%; height: 100.0%;"><b>COMMUNE D'AHL ANGAD est 2</b><br>Neutre<br>Prix appt: 4 389 MAD/m²<br>Construction 24m: 52</div>`)[0];
+                popup_a6adc022a9a3bcaf613640653c8444a8.setContent(html_574a67fc27254d671e9be1221f07b50c);
+            
+        
+
+        circle_marker_a7979bedf02382560537be37518eb875.bindPopup(popup_a6adc022a9a3bcaf613640653c8444a8)
+        ;
+
+        
+    
+    
+            var circle_marker_ce242f0db3f05d8dcfc39d5da6316a0c = L.circleMarker(
+                [34.01776, -6.84426],
+                {"bubblingMouseEvents": true, "color": "#33695B", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#33695B", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.267483764530613, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_7f81d90fc3e5eedb66208a565ba028a6 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f40dc7071ce3df53ec9a6a5bab00a399 = $(`<div id="html_f40dc7071ce3df53ec9a6a5bab00a399" style="width: 100.0%; height: 100.0%;"><b>ARRONDISSEMENT DE HASSAN nord</b><br>Opportunité<br>Prix appt: 15 034 MAD/m²<br>Construction 24m: 177</div>`)[0];
+                popup_7f81d90fc3e5eedb66208a565ba028a6.setContent(html_f40dc7071ce3df53ec9a6a5bab00a399);
+            
+        
+
+        circle_marker_ce242f0db3f05d8dcfc39d5da6316a0c.bindPopup(popup_7f81d90fc3e5eedb66208a565ba028a6)
+        ;
+
+        
+    
+    
+            var circle_marker_a687ec2a85e7c28bad2f3297617b2cd7 = L.circleMarker(
+                [31.52501, -8.03812],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.9392753808805985, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_824703eb8edea00385bdb7367f58ba96 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_732f72de57ff4bb368fc132605cf2459 = $(`<div id="html_732f72de57ff4bb368fc132605cf2459" style="width: 100.0%; height: 100.0%;"><b>COMMUNE DE TAMESLOUHTE est 2</b><br>Neutre<br>Prix appt: 3 526 MAD/m²<br>Construction 24m: 45</div>`)[0];
+                popup_824703eb8edea00385bdb7367f58ba96.setContent(html_732f72de57ff4bb368fc132605cf2459);
+            
+        
+
+        circle_marker_a687ec2a85e7c28bad2f3297617b2cd7.bindPopup(popup_824703eb8edea00385bdb7367f58ba96)
+        ;
+
+        
+    
+    
+            var circle_marker_b8d8e7d65b44cb5f08b995b133d68bad = L.circleMarker(
+                [33.57548, -7.60707],
+                {"bubblingMouseEvents": true, "color": "#33695B", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#33695B", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.370205098678479, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_6aa8a1be7c0f9a78d35476bae001d473 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_baa58983cdd5ec1ae6847288fab35c9a = $(`<div id="html_baa58983cdd5ec1ae6847288fab35c9a" style="width: 100.0%; height: 100.0%;"><b>ARRONDISSEMENT MERS SULTAN nord</b><br>Opportunité<br>Prix appt: 7 947 MAD/m²<br>Construction 24m: 109</div>`)[0];
+                popup_6aa8a1be7c0f9a78d35476bae001d473.setContent(html_baa58983cdd5ec1ae6847288fab35c9a);
+            
+        
+
+        circle_marker_b8d8e7d65b44cb5f08b995b133d68bad.bindPopup(popup_6aa8a1be7c0f9a78d35476bae001d473)
+        ;
+
+        
+    
+    
+            var circle_marker_1a083f1d7ea43b73b1cc1506d43803ac = L.circleMarker(
+                [35.76427, -5.82502],
+                {"bubblingMouseEvents": true, "color": "#33695B", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#33695B", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.495829659620732, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_045830e805a9de85849fbe3e554762ac = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_bc7a64fd92f574939085a1464fcd1812 = $(`<div id="html_bc7a64fd92f574939085a1464fcd1812" style="width: 100.0%; height: 100.0%;"><b>ARRONDISSEMENT DE SOUANI nord</b><br>Opportunité<br>Prix appt: 8 175 MAD/m²<br>Construction 24m: 165</div>`)[0];
+                popup_045830e805a9de85849fbe3e554762ac.setContent(html_bc7a64fd92f574939085a1464fcd1812);
+            
+        
+
+        circle_marker_1a083f1d7ea43b73b1cc1506d43803ac.bindPopup(popup_045830e805a9de85849fbe3e554762ac)
+        ;
+
+        
+    
+    
+            var circle_marker_87aff2df32d50db8c7b99487b2c98b99 = L.circleMarker(
+                [34.083, -6.75284],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.278409707968725, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_b3f4ecc3528402191d7068fcaeb98559 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_757622014e47b819cf5d5326d13b4561 = $(`<div id="html_757622014e47b819cf5d5326d13b4561" style="width: 100.0%; height: 100.0%;"><b>COMMUNE D'AMEUR centre</b><br>Neutre<br>Prix appt: 5 962 MAD/m²<br>Construction 24m: 49</div>`)[0];
+                popup_b3f4ecc3528402191d7068fcaeb98559.setContent(html_757622014e47b819cf5d5326d13b4561);
+            
+        
+
+        circle_marker_87aff2df32d50db8c7b99487b2c98b99.bindPopup(popup_b3f4ecc3528402191d7068fcaeb98559)
+        ;
+
+        
+    
+    
+            var circle_marker_5f130437a39846cb07cfecec5a5eb9fc = L.circleMarker(
+                [35.84275, -5.36093],
+                {"bubblingMouseEvents": true, "color": "#33695B", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#33695B", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.946446334886547, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_c42bb39e88cc1271ad803ebe831ac20f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_eb0b916be18261fc528ee7e670a0d648 = $(`<div id="html_eb0b916be18261fc528ee7e670a0d648" style="width: 100.0%; height: 100.0%;"><b>COMMUNE DE FNIDEQ centre</b><br>Opportunité<br>Prix appt: 7 176 MAD/m²<br>Construction 24m: 227</div>`)[0];
+                popup_c42bb39e88cc1271ad803ebe831ac20f.setContent(html_eb0b916be18261fc528ee7e670a0d648);
+            
+        
+
+        circle_marker_5f130437a39846cb07cfecec5a5eb9fc.bindPopup(popup_c42bb39e88cc1271ad803ebe831ac20f)
+        ;
+
+        
+    
+    
+            var circle_marker_0d5768ef5348918c7df9c4a505ec0f1b = L.circleMarker(
+                [33.52644, -7.46582],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.202043353587073, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_e5713ce59eec9c690e99782ede7a3ca5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_fa5ee6d4a7792ab1c69a753acee79942 = $(`<div id="html_fa5ee6d4a7792ab1c69a753acee79942" style="width: 100.0%; height: 100.0%;"><b>COMMUNE SIDI HAJJAJ OUED HASSAR est</b><br>Neutre<br>Prix appt: 4 004 MAD/m²<br>Construction 24m: 229</div>`)[0];
+                popup_e5713ce59eec9c690e99782ede7a3ca5.setContent(html_fa5ee6d4a7792ab1c69a753acee79942);
+            
+        
+
+        circle_marker_0d5768ef5348918c7df9c4a505ec0f1b.bindPopup(popup_e5713ce59eec9c690e99782ede7a3ca5)
+        ;
+
+        
+    
+    
+            var circle_marker_863d390bc7e595132266b331640c886f = L.circleMarker(
+                [29.68729, -9.73444],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.5901796595958855, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_f972cb5030e4eef42c11a6530b84e16b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_dc6e63ec2258bc3b127ec2b8d70a504c = $(`<div id="html_dc6e63ec2258bc3b127ec2b8d70a504c" style="width: 100.0%; height: 100.0%;"><b>COMMUNE DE TIZNIT sud</b><br>Neutre<br>Prix appt: 4 710 MAD/m²<br>Construction 24m: 59</div>`)[0];
+                popup_f972cb5030e4eef42c11a6530b84e16b.setContent(html_dc6e63ec2258bc3b127ec2b8d70a504c);
+            
+        
+
+        circle_marker_863d390bc7e595132266b331640c886f.bindPopup(popup_f972cb5030e4eef42c11a6530b84e16b)
+        ;
+
+        
+    
+    
+            var circle_marker_6d929b6f08f70ad131b8a1f3042fc5ad = L.circleMarker(
+                [33.98623, -6.81946],
+                {"bubblingMouseEvents": true, "color": "#33695B", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#33695B", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.52134146358516, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_3077dce92b7d3db6ed4d835e95f4aa3d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_fdaab5b0e57c93634fbdcc7f240d18e8 = $(`<div id="html_fdaab5b0e57c93634fbdcc7f240d18e8" style="width: 100.0%; height: 100.0%;"><b>ARRONDISSEMENT D'EL YOUSSOUFIA nord</b><br>Opportunité<br>Prix appt: 8 222 MAD/m²<br>Construction 24m: 62</div>`)[0];
+                popup_3077dce92b7d3db6ed4d835e95f4aa3d.setContent(html_fdaab5b0e57c93634fbdcc7f240d18e8);
+            
+        
+
+        circle_marker_6d929b6f08f70ad131b8a1f3042fc5ad.bindPopup(popup_3077dce92b7d3db6ed4d835e95f4aa3d)
+        ;
+
+        
+    
+    
+            var circle_marker_349bd42422a797f6db814e4d36ae78dc = L.circleMarker(
+                [31.572, -7.80877],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.192715436697589, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_fd60dac570aba9739496e5769e31365d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e925446b44a18da23faa75f36a4168ef = $(`<div id="html_e925446b44a18da23faa75f36a4168ef" style="width: 100.0%; height: 100.0%;"><b>COMMUNE DE SIDI ABDALLAH GHIAT est</b><br>Neutre<br>Prix appt: 3 987 MAD/m²<br>Construction 24m: 39</div>`)[0];
+                popup_fd60dac570aba9739496e5769e31365d.setContent(html_e925446b44a18da23faa75f36a4168ef);
+            
+        
+
+        circle_marker_349bd42422a797f6db814e4d36ae78dc.bindPopup(popup_fd60dac570aba9739496e5769e31365d)
+        ;
+
+        
+    
+    
+            var circle_marker_53ca2bfaa80bad0d9cdd2dbec5a3f62c = L.circleMarker(
+                [30.35004, -9.55076],
+                {"bubblingMouseEvents": true, "color": "#33695B", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#33695B", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.61590585773293, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_9c7f21bdc914cb4cad2c48496ca5e297 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8eeb6d134f90fee71c975958e711c589 = $(`<div id="html_8eeb6d134f90fee71c975958e711c589" style="width: 100.0%; height: 100.0%;"><b>COMMUNE D'INEZGANE est</b><br>Opportunité<br>Prix appt: 8 394 MAD/m²<br>Construction 24m: 52</div>`)[0];
+                popup_9c7f21bdc914cb4cad2c48496ca5e297.setContent(html_8eeb6d134f90fee71c975958e711c589);
+            
+        
+
+        circle_marker_53ca2bfaa80bad0d9cdd2dbec5a3f62c.bindPopup(popup_9c7f21bdc914cb4cad2c48496ca5e297)
+        ;
+
+        
+    
+    
+            var circle_marker_531397272749c2488c3cf0eb6f1f5720 = L.circleMarker(
+                [33.5185, -7.5683],
+                {"bubblingMouseEvents": true, "color": "#33695B", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#33695B", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.607328428564394, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_b4324b7ab2b0bf24d5b69e9b36af8000 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_cf36e6cee9f7a1b923c535de2d6c1d81 = $(`<div id="html_cf36e6cee9f7a1b923c535de2d6c1d81" style="width: 100.0%; height: 100.0%;"><b>COMMUNE BOUSKOURA est</b><br>Opportunité<br>Prix appt: 6 560 MAD/m²<br>Construction 24m: 59</div>`)[0];
+                popup_b4324b7ab2b0bf24d5b69e9b36af8000.setContent(html_cf36e6cee9f7a1b923c535de2d6c1d81);
+            
+        
+
+        circle_marker_531397272749c2488c3cf0eb6f1f5720.bindPopup(popup_b4324b7ab2b0bf24d5b69e9b36af8000)
+        ;
+
+        
+    
+    
+            var circle_marker_5610caca4aaa425d0468adc05abe8774 = L.circleMarker(
+                [30.37449, -9.52905],
+                {"bubblingMouseEvents": true, "color": "#33695B", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#33695B", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.50363630291781, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_282d45f147db2679666ffb125fdaf3ec = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_46d82f07318bb3df4505847d527eab44 = $(`<div id="html_46d82f07318bb3df4505847d527eab44" style="width: 100.0%; height: 100.0%;"><b>COMMUNE DE DCHEIRA EL JIHADIA est</b><br>Opportunité<br>Prix appt: 6 371 MAD/m²<br>Construction 24m: 53</div>`)[0];
+                popup_282d45f147db2679666ffb125fdaf3ec.setContent(html_46d82f07318bb3df4505847d527eab44);
+            
+        
+
+        circle_marker_5610caca4aaa425d0468adc05abe8774.bindPopup(popup_282d45f147db2679666ffb125fdaf3ec)
+        ;
+
+        
+    
+    
+            var circle_marker_b61a35432df6a2605275142febb7cb4d = L.circleMarker(
+                [33.99966, -6.84858],
+                {"bubblingMouseEvents": true, "color": "#33695B", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#33695B", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.117765337769828, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_87cfa0ab555b7e4945d62a8dea000bb9 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b75e64d3c8fb4a0fdb99757fdd0226ba = $(`<div id="html_b75e64d3c8fb4a0fdb99757fdd0226ba" style="width: 100.0%; height: 100.0%;"><b>ARRONDISSEMENT D'AGDAL-RYAD nord</b><br>Opportunité<br>Prix appt: 16 580 MAD/m²<br>Construction 24m: 94</div>`)[0];
+                popup_87cfa0ab555b7e4945d62a8dea000bb9.setContent(html_b75e64d3c8fb4a0fdb99757fdd0226ba);
+            
+        
+
+        circle_marker_b61a35432df6a2605275142febb7cb4d.bindPopup(popup_87cfa0ab555b7e4945d62a8dea000bb9)
+        ;
+
+        
+    
+    
+            var circle_marker_73580e286e89487f206812d89664a783 = L.circleMarker(
+                [34.03792, -6.78615],
+                {"bubblingMouseEvents": true, "color": "#33695B", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#33695B", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.599214946276234, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_9ce3b9d17d1e4b4d4d7ebc43e0ef3d7d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5af2799967335bdb67f83ef2a7b633dc = $(`<div id="html_5af2799967335bdb67f83ef2a7b633dc" style="width: 100.0%; height: 100.0%;"><b>ARRONDISSEMENT DE BETTANA nord</b><br>Opportunité<br>Prix appt: 8 363 MAD/m²<br>Construction 24m: 54</div>`)[0];
+                popup_9ce3b9d17d1e4b4d4d7ebc43e0ef3d7d.setContent(html_5af2799967335bdb67f83ef2a7b633dc);
+            
+        
+
+        circle_marker_73580e286e89487f206812d89664a783.bindPopup(popup_9ce3b9d17d1e4b4d4d7ebc43e0ef3d7d)
+        ;
+
+        
+    
+    
+            var circle_marker_56a5386d137dafa44df9beb8823b5e65 = L.circleMarker(
+                [33.597, -7.578],
+                {"bubblingMouseEvents": true, "color": "#33695B", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#33695B", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.818122915612545, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_805fb43d77689493b8c782324f6f767f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_21713a504ef578a89aa3cd552a4a4adb = $(`<div id="html_21713a504ef578a89aa3cd552a4a4adb" style="width: 100.0%; height: 100.0%;"><b>ARRONDISSEMENT AIN SEBAA nord 2</b><br>Opportunité<br>Prix appt: 8 761 MAD/m²<br>Construction 24m: 234</div>`)[0];
+                popup_805fb43d77689493b8c782324f6f767f.setContent(html_21713a504ef578a89aa3cd552a4a4adb);
+            
+        
+
+        circle_marker_56a5386d137dafa44df9beb8823b5e65.bindPopup(popup_805fb43d77689493b8c782324f6f767f)
+        ;
+
+        
+    
+    
+            var circle_marker_d35002b440190bb11f201fbec6e6989c = L.circleMarker(
+                [34.64953, -1.953],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.271242897447916, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_ba8611210430bfc72f7a4eda39f7f400 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c31fbae5b98aebfd54b2120c5530cb5e = $(`<div id="html_c31fbae5b98aebfd54b2120c5530cb5e" style="width: 100.0%; height: 100.0%;"><b>COMMUNE DE SIDI MOUSSA LEMHAYA est</b><br>Neutre<br>Prix appt: 4 130 MAD/m²<br>Construction 24m: 37</div>`)[0];
+                popup_ba8611210430bfc72f7a4eda39f7f400.setContent(html_c31fbae5b98aebfd54b2120c5530cb5e);
+            
+        
+
+        circle_marker_d35002b440190bb11f201fbec6e6989c.bindPopup(popup_ba8611210430bfc72f7a4eda39f7f400)
+        ;
+
+        
+    
+    
+            var circle_marker_90a879888ceae459dbe07ed8d33e6cc2 = L.circleMarker(
+                [30.42079, -9.5605],
+                {"bubblingMouseEvents": true, "color": "#33695B", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#33695B", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.310028215091323, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_914461e9527c107a435bd83ad45c912a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_76473c22d57edf0fb599c7b7d3fe8718 = $(`<div id="html_76473c22d57edf0fb599c7b7d3fe8718" style="width: 100.0%; height: 100.0%;"><b>COMMUNE D'AGADIR sud</b><br>Opportunité<br>Prix appt: 7 838 MAD/m²<br>Construction 24m: 73</div>`)[0];
+                popup_914461e9527c107a435bd83ad45c912a.setContent(html_76473c22d57edf0fb599c7b7d3fe8718);
+            
+        
+
+        circle_marker_90a879888ceae459dbe07ed8d33e6cc2.bindPopup(popup_914461e9527c107a435bd83ad45c912a)
+        ;
+
+        
+    
+    
+            var circle_marker_61c58a57e19ab6897b16ac2a6d70d6dd = L.circleMarker(
+                [33.51539, -7.515],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.8527176383398585, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_9e6dab1f4fe3191b55b3c7a917f668ba = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_89b9e6344553318ac22c8c404357c93a = $(`<div id="html_89b9e6344553318ac22c8c404357c93a" style="width: 100.0%; height: 100.0%;"><b>COMMUNE MEJJATIA OULED TALEB nord 2</b><br>Neutre<br>Prix appt: 5 187 MAD/m²<br>Construction 24m: 25</div>`)[0];
+                popup_9e6dab1f4fe3191b55b3c7a917f668ba.setContent(html_89b9e6344553318ac22c8c404357c93a);
+            
+        
+
+        circle_marker_61c58a57e19ab6897b16ac2a6d70d6dd.bindPopup(popup_9e6dab1f4fe3191b55b3c7a917f668ba)
+        ;
+
+        
+    
+    
+            var circle_marker_1f62e121e9957ea743615e77f5603690 = L.circleMarker(
+                [32.94291, -5.643],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_52c5582d63b31253d7d62939a25d104c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_319ab48f7543455d363823a58de1e703 = $(`<div id="html_319ab48f7543455d363823a58de1e703" style="width: 100.0%; height: 100.0%;"><b>COMMUNE DE MOHA OU HAMMOU ZAYANI centre</b><br>Neutre<br>Prix appt: 0 MAD/m²<br>Construction 24m: 31</div>`)[0];
+                popup_52c5582d63b31253d7d62939a25d104c.setContent(html_319ab48f7543455d363823a58de1e703);
+            
+        
+
+        circle_marker_1f62e121e9957ea743615e77f5603690.bindPopup(popup_52c5582d63b31253d7d62939a25d104c)
+        ;
+
+        
+    
+    
+            var circle_marker_2c75a2c2c57041c4fba62d93e361af65 = L.circleMarker(
+                [30.93602, -6.92772],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.507076297632837, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_d0ca1d05fffff418f559dc643c2f1057 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_7a73b55bbfdfdd66c55168b5619e2bb8 = $(`<div id="html_7a73b55bbfdfdd66c55168b5619e2bb8" style="width: 100.0%; height: 100.0%;"><b>COMMUNE D'OUARZAZATE sud</b><br>Neutre<br>Prix appt: 4 559 MAD/m²<br>Construction 24m: 40</div>`)[0];
+                popup_d0ca1d05fffff418f559dc643c2f1057.setContent(html_7a73b55bbfdfdd66c55168b5619e2bb8);
+            
+        
+
+        circle_marker_2c75a2c2c57041c4fba62d93e361af65.bindPopup(popup_d0ca1d05fffff418f559dc643c2f1057)
+        ;
+
+        
+    
+    
+            var circle_marker_6804631445192b012ae71dade2374a51 = L.circleMarker(
+                [28.9899, -10.05528],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_c70870e4fc685765e528e29d71e572b5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_abcce5e737f67d99ac796f6457f5050d = $(`<div id="html_abcce5e737f67d99ac796f6457f5050d" style="width: 100.0%; height: 100.0%;"><b>COMMUNE DE GUELMIM sud</b><br>Neutre<br>Prix appt: 0 MAD/m²<br>Construction 24m: 24</div>`)[0];
+                popup_c70870e4fc685765e528e29d71e572b5.setContent(html_abcce5e737f67d99ac796f6457f5050d);
+            
+        
+
+        circle_marker_6804631445192b012ae71dade2374a51.bindPopup(popup_c70870e4fc685765e528e29d71e572b5)
+        ;
+
+        
+    
+    
+            var circle_marker_9f69bb387a072d1787bb7737c1604a13 = L.circleMarker(
+                [30.37821, -9.50658],
+                {"bubblingMouseEvents": true, "color": "#33695B", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#33695B", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.83564897525053, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_ea94b925b3c7620a052191de94774484 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b83448e00ff0585bd9cae99218647cf8 = $(`<div id="html_b83448e00ff0585bd9cae99218647cf8" style="width: 100.0%; height: 100.0%;"><b>COMMUNE D'AGADIR sud 2</b><br>Opportunité<br>Prix appt: 6 975 MAD/m²<br>Construction 24m: 27</div>`)[0];
+                popup_ea94b925b3c7620a052191de94774484.setContent(html_b83448e00ff0585bd9cae99218647cf8);
+            
+        
+
+        circle_marker_9f69bb387a072d1787bb7737c1604a13.bindPopup(popup_ea94b925b3c7620a052191de94774484)
+        ;
+
+        
+    
+    
+            var circle_marker_8a9043e7d32eb8f6f0a75fdbbd0c88a5 = L.circleMarker(
+                [33.49573, -7.81271],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.497172853549738, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_e4eb5837419096d26d47a6036cee8534 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_442a32c7ae2a5c0c29bee72707c05856 = $(`<div id="html_442a32c7ae2a5c0c29bee72707c05856" style="width: 100.0%; height: 100.0%;"><b>COMMUNE OULED AZZOUZ nord 2</b><br>Neutre<br>Prix appt: 6 359 MAD/m²<br>Construction 24m: 111</div>`)[0];
+                popup_e4eb5837419096d26d47a6036cee8534.setContent(html_442a32c7ae2a5c0c29bee72707c05856);
+            
+        
+
+        circle_marker_8a9043e7d32eb8f6f0a75fdbbd0c88a5.bindPopup(popup_e4eb5837419096d26d47a6036cee8534)
+        ;
+
+        
+    
+    
+            var circle_marker_e58647b60ed2d9c7df54aa508066234a = L.circleMarker(
+                [33.498, -7.866],
+                {"bubblingMouseEvents": true, "color": "#33695B", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#33695B", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.34939577975768, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_405a51ce6b0e78800dfdf3c5e01ec329 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ca2ef53a896cbea63ce3e0cfda9057ef = $(`<div id="html_ca2ef53a896cbea63ce3e0cfda9057ef" style="width: 100.0%; height: 100.0%;"><b>COMMUNE OULED AZZOUZ ouest</b><br>Opportunité<br>Prix appt: 13 364 MAD/m²<br>Construction 24m: 71</div>`)[0];
+                popup_405a51ce6b0e78800dfdf3c5e01ec329.setContent(html_ca2ef53a896cbea63ce3e0cfda9057ef);
+            
+        
+
+        circle_marker_e58647b60ed2d9c7df54aa508066234a.bindPopup(popup_405a51ce6b0e78800dfdf3c5e01ec329)
+        ;
+
+        
+    
+    
+            var circle_marker_08749207e3bb879b797144f58ad14aaf = L.circleMarker(
+                [34.28705, -6.53563],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.953712596393183, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_1a08be109858e40a4b407076d9bf6596 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8a8f4f21c61d880a82770f42d58608a6 = $(`<div id="html_8a8f4f21c61d880a82770f42d58608a6" style="width: 100.0%; height: 100.0%;"><b>COMMUNE DE KENITRA est</b><br>Neutre<br>Prix appt: 5 371 MAD/m²<br>Construction 24m: 77</div>`)[0];
+                popup_1a08be109858e40a4b407076d9bf6596.setContent(html_8a8f4f21c61d880a82770f42d58608a6);
+            
+        
+
+        circle_marker_08749207e3bb879b797144f58ad14aaf.bindPopup(popup_1a08be109858e40a4b407076d9bf6596)
+        ;
+
+        
+    
+    
+            var circle_marker_4fbab6597972a9f30253cf2283fb1cd2 = L.circleMarker(
+                [34.2517, -6.678],
+                {"bubblingMouseEvents": true, "color": "#33695B", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#33695B", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.90370671278356, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_75bce5d240333373b2f4ccaaa3328ad5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3dfabfce08472489239df1321a51cd58 = $(`<div id="html_3dfabfce08472489239df1321a51cd58" style="width: 100.0%; height: 100.0%;"><b>COMMUNE DE MEHDYA nord 2</b><br>Opportunité<br>Prix appt: 12 554 MAD/m²<br>Construction 24m: 73</div>`)[0];
+                popup_75bce5d240333373b2f4ccaaa3328ad5.setContent(html_3dfabfce08472489239df1321a51cd58);
+            
+        
+
+        circle_marker_4fbab6597972a9f30253cf2283fb1cd2.bindPopup(popup_75bce5d240333373b2f4ccaaa3328ad5)
+        ;
+
+        
+    
+    
+            var circle_marker_376e16c1ccf5f9cc48d1941f526588d7 = L.circleMarker(
+                [33.399, -7.902],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.2564063167224, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_40426536ef9a4a193a6305d949fcac6b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2ff7786045225bd29c8d8c9d9aa19bbe = $(`<div id="html_2ff7786045225bd29c8d8c9d9aa19bbe" style="width: 100.0%; height: 100.0%;"><b>COMMUNE HAD SOUALEM ouest</b><br>Neutre<br>Prix appt: 4 103 MAD/m²<br>Construction 24m: 82</div>`)[0];
+                popup_40426536ef9a4a193a6305d949fcac6b.setContent(html_2ff7786045225bd29c8d8c9d9aa19bbe);
+            
+        
+
+        circle_marker_376e16c1ccf5f9cc48d1941f526588d7.bindPopup(popup_40426536ef9a4a193a6305d949fcac6b)
+        ;
+
+        
+    
+    
+            var circle_marker_c3fe244a29e3ed3494e4d108a2410745 = L.circleMarker(
+                [35.7108, -5.9369],
+                {"bubblingMouseEvents": true, "color": "#33695B", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#33695B", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.970737679875358, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_c9ee613ceac1888129ee3c2255dc8803 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_78e374f75908137a8fb70e1484fd7d94 = $(`<div id="html_78e374f75908137a8fb70e1484fd7d94" style="width: 100.0%; height: 100.0%;"><b>COMMUNE DE GUEZNAIA ouest</b><br>Opportunité<br>Prix appt: 9 039 MAD/m²<br>Construction 24m: 60</div>`)[0];
+                popup_c9ee613ceac1888129ee3c2255dc8803.setContent(html_78e374f75908137a8fb70e1484fd7d94);
+            
+        
+
+        circle_marker_c3fe244a29e3ed3494e4d108a2410745.bindPopup(popup_c9ee613ceac1888129ee3c2255dc8803)
+        ;
+
+        
+    
+    
+            var circle_marker_9fb4f59543c262bb32f4679cf25ee52c = L.circleMarker(
+                [33.651, -7.47389],
+                {"bubblingMouseEvents": true, "color": "#33695B", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#33695B", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.74614759488815, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_48c84ba9aaca00c6a21fea9c25cc7cbf = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4bd295cedb510e70ea819b94bfa23fa9 = $(`<div id="html_4bd295cedb510e70ea819b94bfa23fa9" style="width: 100.0%; height: 100.0%;"><b>COMMUNE AIN HARROUDA nord 2</b><br>Opportunité<br>Prix appt: 12 267 MAD/m²<br>Construction 24m: 217</div>`)[0];
+                popup_48c84ba9aaca00c6a21fea9c25cc7cbf.setContent(html_4bd295cedb510e70ea819b94bfa23fa9);
+            
+        
+
+        circle_marker_9fb4f59543c262bb32f4679cf25ee52c.bindPopup(popup_48c84ba9aaca00c6a21fea9c25cc7cbf)
+        ;
+
+        
+    
+    
+            var circle_marker_c5597da38bd1d1ef965db3ad8cfb9601 = L.circleMarker(
+                [33.3945, -7.68814],
+                {"bubblingMouseEvents": true, "color": "#33695B", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#33695B", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.672378663490338, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_bfe88e7a741eeb69d46f4448cc93f952 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0c41f4de70d1bd15d1a2641406c79dc8 = $(`<div id="html_0c41f4de70d1bd15d1a2641406c79dc8" style="width: 100.0%; height: 100.0%;"><b>COMMUNE OULED SALEH nord 2</b><br>Opportunité<br>Prix appt: 8 496 MAD/m²<br>Construction 24m: 25</div>`)[0];
+                popup_bfe88e7a741eeb69d46f4448cc93f952.setContent(html_0c41f4de70d1bd15d1a2641406c79dc8);
+            
+        
+
+        circle_marker_c5597da38bd1d1ef965db3ad8cfb9601.bindPopup(popup_bfe88e7a741eeb69d46f4448cc93f952)
+        ;
+
+        
+    
+    
+            var circle_marker_df91cc966f30f6fba7892ea328b8a70f = L.circleMarker(
+                [33.39476, -7.911],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.251152685696791, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_718a3b583e5120ec26bb42ed145bc0c9 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_de5b5b9078b1e7d4ff3831ce3c856006 = $(`<div id="html_de5b5b9078b1e7d4ff3831ce3c856006" style="width: 100.0%; height: 100.0%;"><b>COMMUNE SAHEL OULAD H'RIZ ouest</b><br>Neutre<br>Prix appt: 4 094 MAD/m²<br>Construction 24m: 32</div>`)[0];
+                popup_718a3b583e5120ec26bb42ed145bc0c9.setContent(html_de5b5b9078b1e7d4ff3831ce3c856006);
+            
+        
+
+        circle_marker_df91cc966f30f6fba7892ea328b8a70f.bindPopup(popup_718a3b583e5120ec26bb42ed145bc0c9)
+        ;
+
+        
+    
+    
+            var circle_marker_5f98e5e624f7dbd3d0587d75e0fec4c9 = L.circleMarker(
+                [33.471, -7.93155],
+                {"bubblingMouseEvents": true, "color": "#33695B", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#33695B", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.643810630610924, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_67f99ddc3ae75a61e2ea8d95ed277b96 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f8d88cce2ce1d884db53f3c50c78a342 = $(`<div id="html_f8d88cce2ce1d884db53f3c50c78a342" style="width: 100.0%; height: 100.0%;"><b>COMMUNE SIDI RAHHAL CHATAI est</b><br>Opportunité<br>Prix appt: 6 626 MAD/m²<br>Construction 24m: 21</div>`)[0];
+                popup_67f99ddc3ae75a61e2ea8d95ed277b96.setContent(html_f8d88cce2ce1d884db53f3c50c78a342);
+            
+        
+
+        circle_marker_5f98e5e624f7dbd3d0587d75e0fec4c9.bindPopup(popup_67f99ddc3ae75a61e2ea8d95ed277b96)
+        ;
+
+        
+    
+    
+            var circle_marker_4ea963fb2adffe3ba3b538ad523c66a8 = L.circleMarker(
+                [30.46006, -9.63929],
+                {"bubblingMouseEvents": true, "color": "#95a5a6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95a5a6", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.373990430790362, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_c281858619c25116945fa66592c9fb39 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_757f12c397da7ce71adb7f91ca60f07e = $(`<div id="html_757f12c397da7ce71adb7f91ca60f07e" style="width: 100.0%; height: 100.0%;"><b>COMMUNE D'AGADIR sud 3</b><br>Neutre<br>Prix appt: 4 317 MAD/m²<br>Construction 24m: 30</div>`)[0];
+                popup_c281858619c25116945fa66592c9fb39.setContent(html_757f12c397da7ce71adb7f91ca60f07e);
+            
+        
+
+        circle_marker_4ea963fb2adffe3ba3b538ad523c66a8.bindPopup(popup_c281858619c25116945fa66592c9fb39)
+        ;
+
+        
+    
+    
+            var circle_marker_d8933aed98f44ab0b526e9b810275fdf = L.circleMarker(
+                [33.471, -7.533],
+                {"bubblingMouseEvents": true, "color": "#33695B", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#33695B", "fillOpacity": 0.55, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.78341869464315, "stroke": true, "weight": 1}
+            ).addTo(map_3c96b4e9db47243e02460a6d5273eb24);
+        
+    
+        var popup_e1b0a25c52497cd6df690bc84717e170 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_39576f328abf6746ebc7619dede9e567 = $(`<div id="html_39576f328abf6746ebc7619dede9e567" style="width: 100.0%; height: 100.0%;"><b>COMMUNE MEJJATIA OULED TALEB nord 3</b><br>Opportunité<br>Prix appt: 6 880 MAD/m²<br>Construction 24m: 21</div>`)[0];
+                popup_e1b0a25c52497cd6df690bc84717e170.setContent(html_39576f328abf6746ebc7619dede9e567);
+            
+        
+
+        circle_marker_d8933aed98f44ab0b526e9b810275fdf.bindPopup(popup_e1b0a25c52497cd6df690bc84717e170)
+        ;
+
+        
+    
+</script>
+</html>
