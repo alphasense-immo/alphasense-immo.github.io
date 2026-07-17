@@ -96,6 +96,25 @@ td.num { font-family:var(--mono); font-variant-numeric:tabular-nums; }
 }
 
 
+html { -webkit-text-size-adjust:100%; }
+@media (max-width:700px) {
+  * { -webkit-tap-highlight-color: rgba(51,105,91,.18); }
+  table { font-size:12px; }
+  th { padding:8px 7px 5px; }
+  td { padding:6px 7px; }
+  .card {
+    background:
+      linear-gradient(90deg, #fff 30%, rgba(255,255,255,0)),
+      linear-gradient(90deg, rgba(255,255,255,0), #fff 70%) 100% 0,
+      radial-gradient(farthest-side at 0 50%, rgba(31,42,40,.22), transparent),
+      radial-gradient(farthest-side at 100% 50%, rgba(31,42,40,.22), transparent) 100% 0,
+      #fff;
+    background-repeat:no-repeat;
+    background-size:44px 100%, 44px 100%, 15px 100%, 15px 100%, 100% 100%;
+    background-attachment:local, local, scroll, scroll, local;
+  }
+}
+
 .topnav { position:sticky; top:0; z-index:5000; display:flex; flex-wrap:wrap; gap:0;
   background:#1F2A28; padding:0 4%; border-bottom:2px solid #D9481F; }
 .navtab { font-family:'Bahnschrift','Segoe UI Semibold',Arial,sans-serif; font-size:12.5px;
