@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AlphaSense Immo · Signaux d'alpha</title>
+<style>
+:root {
+  --paper:#F4F6F2; --paper2:#ECEFE8; --ink:#1F2A28; --dim:#64756E;
+  --line:#C7D2C9; --hair:#D9E0D7; --survey:#33695B; --flag:#D9481F;
+  --display:'Bahnschrift','Segoe UI Semibold','Arial Narrow',Arial,sans-serif;
+  --mono:'Consolas','Cascadia Mono',Menlo,monospace;
+  --body:'Segoe UI',system-ui,sans-serif;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:var(--body); background:var(--paper); color:var(--ink); font-size:14.5px; line-height:1.55; }
+a { color:var(--survey); }
+a:focus-visible { outline:2px solid var(--flag); outline-offset:2px; }
+
+/* ── Feuille: en-tête carroyée + cartouche ─────────────────────────── */
+.sheet {
+  position:relative; padding:52px 6% 30px; border-bottom:2px solid var(--ink);
+  background:
+    repeating-linear-gradient(0deg, transparent 0 34px, rgba(51,105,91,.10) 34px 35px),
+    repeating-linear-gradient(90deg, transparent 0 34px, rgba(51,105,91,.10) 34px 35px),
+    var(--paper2);
+}
+.sheet .fiche { font-family:var(--mono); font-size:11.5px; letter-spacing:.14em; color:var(--survey); }
+.sheet h1 {
+  font-family:var(--display); font-size:clamp(26px,4.4vw,44px); font-weight:600;
+  text-transform:uppercase; letter-spacing:.035em; margin:10px 0 4px; line-height:1.06;
+}
+.sheet .q { font-size:clamp(15px,1.9vw,19px); color:var(--ink); max-width:620px; }
+.cartouche {
+  margin-top:26px; display:inline-grid; grid-auto-flow:column; gap:0;
+  border:1.5px solid var(--ink); background:var(--paper); font-family:var(--mono); font-size:11.5px;
+}
+.cartouche > div { padding:7px 16px 8px; border-right:1px solid var(--line); }
+.cartouche > div:last-child { border-right:none; }
+.cartouche b { display:block; font-size:9.5px; letter-spacing:.12em; color:var(--dim); font-weight:400; }
+.cross { position:absolute; color:var(--survey); opacity:.5; font-family:var(--mono); font-size:13px; pointer-events:none; }
+
+/* ── Relevés (KPI) ─────────────────────────────────────────────────── */
+.kpis { display:flex; flex-wrap:wrap; gap:0; padding:0 6%; border-bottom:1px solid var(--line); background:var(--paper); }
+.kpi { padding:18px 28px 16px 0; margin-right:28px; }
+.kpi .v { font-family:var(--mono); font-size:26px; font-weight:700; letter-spacing:-.01em; }
+.kpi .l { font-size:11px; color:var(--dim); letter-spacing:.06em; text-transform:uppercase; margin-top:1px; }
+
+/* ── Planches (sections) ───────────────────────────────────────────── */
+.section { padding:30px 6% 4px; }
+.eyeb { font-family:var(--mono); font-size:10.5px; letter-spacing:.16em; color:var(--survey); }
+.section h2 { font-family:var(--display); font-size:20px; font-weight:600; letter-spacing:.01em; margin:3px 0 4px; }
+.section .note { color:var(--dim); font-size:12.5px; max-width:760px; margin-bottom:12px; }
+.card { background:#fff; border:1px solid var(--line); border-top:2px solid var(--ink); padding:4px 14px 8px; margin-bottom:14px; overflow-x:auto; }
+
+/* ── Registre (tables) ─────────────────────────────────────────────── */
+table { border-collapse:collapse; width:100%; font-size:13px; }
+th { text-align:left; font-family:var(--mono); font-weight:400; font-size:10.5px; letter-spacing:.1em;
+     text-transform:uppercase; color:var(--dim); padding:10px 10px 6px; border-bottom:1px solid var(--ink); white-space:nowrap; }
+td { padding:7px 10px; border-bottom:1px solid var(--hair); vertical-align:middle; }
+tbody tr:hover td { background:var(--paper2); }
+td.num, th.num { text-align:right; }
+td.num { font-family:var(--mono); font-variant-numeric:tabular-nums; }
+.zn { font-weight:600; }
+.sect { display:inline-block; font-family:var(--mono); font-size:10px; color:var(--survey);
+        border:1px solid var(--line); padding:0 5px; margin-left:6px; letter-spacing:.05em; }
+
+/* Barre d'échelle: percentile 0-100 rendu comme une échelle de carte */
+.gauge { display:inline-flex; align-items:center; gap:8px; min-width:130px; justify-content:flex-end; }
+.gauge .bar { width:84px; height:7px; border:1px solid var(--ink); background:
+  repeating-linear-gradient(90deg, transparent 0 20px, var(--hair) 20px 21px), #fff; position:relative; }
+.gauge .bar i { position:absolute; inset:0; right:auto; background:var(--survey); }
+.gauge.hot .bar i { background:var(--flag); }
+.gauge b { font-family:var(--mono); font-weight:700; font-size:12.5px; min-width:34px; text-align:right; }
+.gauge.hot b { color:var(--flag); }
+
+.btn { display:inline-block; font-family:var(--display); text-transform:uppercase; letter-spacing:.08em;
+       font-size:13px; padding:11px 20px; background:var(--ink); color:var(--paper); text-decoration:none; margin:18px 6%; }
+.btn:hover { background:var(--survey); }
+.mapframe { width:100%; height:460px; border:none; display:block; }
+.maplink { font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; }
+.footer { font-family:var(--mono); text-align:center; color:var(--dim); font-size:11px; padding:26px 6% 30px;
+          border-top:1px solid var(--line); margin-top:26px; }
+@media (max-width:700px) {
+  .cartouche { grid-auto-flow:row; }
+  .cartouche > div { border-right:none; border-bottom:1px solid var(--line); }
+  .cartouche > div:last-child { border-bottom:none; }
+  .sheet { padding:30px 4% 20px; }
+  .section { padding:20px 4% 4px; }
+  .kpis { padding:0 4%; }
+  .kpi { padding:12px 14px 10px 0; margin-right:14px; }
+  .kpi .v { font-size:19px; }
+  .mapframe { height:320px; }
+  .gauge { min-width:100px; } .gauge .bar { width:56px; }
+  .btn { margin:14px 4%; }
+}
+
+
+html { -webkit-text-size-adjust:100%; }
+@media (max-width:700px) {
+  * { -webkit-tap-highlight-color: rgba(51,105,91,.18); }
+  table { font-size:12px; }
+  th { padding:8px 7px 5px; }
+  td { padding:6px 7px; }
+  .card {
+    background:
+      linear-gradient(90deg, #fff 30%, rgba(255,255,255,0)),
+      linear-gradient(90deg, rgba(255,255,255,0), #fff 70%) 100% 0,
+      radial-gradient(farthest-side at 0 50%, rgba(31,42,40,.22), transparent),
+      radial-gradient(farthest-side at 100% 50%, rgba(31,42,40,.22), transparent) 100% 0,
+      #fff;
+    background-repeat:no-repeat;
+    background-size:44px 100%, 44px 100%, 15px 100%, 15px 100%, 100% 100%;
+    background-attachment:local, local, scroll, scroll, local;
+  }
+}
+
+.topnav { position:sticky; top:0; z-index:5000; display:flex; flex-wrap:wrap; gap:0;
+  background:#1F2A28; padding:0 4%; border-bottom:2px solid #D9481F; }
+.navtab { font-family:'Bahnschrift','Segoe UI Semibold',Arial,sans-serif; font-size:12.5px;
+  letter-spacing:.08em; text-transform:uppercase; color:#F4F6F2; text-decoration:none;
+  padding:12px 14px 10px; border-bottom:3px solid transparent; }
+.navtab:hover { background:#33695B; }
+.navtab.active { border-bottom-color:#D9481F; color:#fff; }
+@media (max-width:700px) {
+  .topnav { flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
+  .topnav::-webkit-scrollbar { display:none; }
+  .navtab { white-space:nowrap; padding:12px 10px 10px; font-size:11px; }
+}
+</style></head><body>
+<nav class="topnav"><a href="dashboard.html" class="navtab">Feuille de garde</a><a href="synthese.html" class="navtab">Note d'analyse</a><a href="signaux.html" class="navtab active">Signaux d'alpha</a><a href="lens_promoteur.html" class="navtab">Promoteur</a><a href="lens_commercant.html" class="navtab">Commerçant</a><a href="lens_agence.html" class="navtab">Agence</a><a href="prix_marge.html" class="navtab">Prix & marge</a><a href="reglementation.html" class="navtab">Réglementation</a><a href="lens_industriel.html" class="navtab">Industriel</a><a href="leads.html" class="navtab">Flux d'affaires</a><a href="registre_foncier.html" class="navtab">Registre foncier</a><a href="titre_lookup.html" class="navtab">Recherche titre</a><a href="indice_btp.html" class="navtab">Indice BTP</a></nav>
+<header class="sheet">
+  <span class="cross" style="top:14px;left:6%;">+</span>
+  <span class="cross" style="top:14px;right:6%;">+</span>
+  <div class="fiche">ALPHASENSE IMMO · SIGNAUX D'ALPHA · <a href="dashboard.html">TABLEAU DE BORD</a></div>
+  <h1>Signaux d'alpha</h1>
+  <p class="q">Le vrai edge n'est pas dans une donnée, il est dans le croisement des quatre : offre, prix, commerce, droit.</p>
+  <div class="cartouche"><div><b>Référence</b>2026-07-15</div><div><b>Couches croisées</b>offre · prix · commerce · zonage</div><div><b>Zone d'intersection</b>couronne sud de Casablanca</div><div><b>Usage</b>document de travail interne</div></div>
+</header>
+
+<div class="kpis">
+  <div class="kpi"><div class="v">192</div><div class="l">zones avec commerces réels (POI)</div></div>
+  <div class="kpi"><div class="v">188</div><div class="l">zones avec prix (Yakeey)</div></div>
+  <div class="kpi"><div class="v">30</div><div class="l">zones aux 4 couches croisées</div></div>
+</div>
+<div class="section">
+  <div class="eyeb">SIGNAL 1 · OFFRE ENTRANTE × COMMERCE RÉEL (POI GOOGLE MAPS)</div>
+  <h2>Le sous-équipement commercial, mesuré au sol</h2>
+  <div class="note">Logements livrés (24 mois) par commerce réellement présent. Zones à ≥10 commerces (fiable).
+  Fort = beaucoup d'habitants, peu de commerce = gisement pour une surface commerciale.</div>
+  <div class="card"><table><thead><tr><th class="num">Zone</th><th class="num">Livrés 24m</th><th class="num">Commerces réels</th><th class="num">Log / commerce</th><th class="num">Prix appt</th><th class="num">Note</th></tr></thead><tbody><tr><td><span class="zn">COMMUNE SIDI HAJJAJ OUED HASSAR nord</span></td><td class="num">2 362</td><td class="num">31</td><td class="num">76</td><td class="num">6 691</td><td class="num">3.4</td></tr><tr><td><span class="zn">COMMUNE DEROUA est</span></td><td class="num">6 646</td><td class="num">95</td><td class="num">70</td><td class="num">·</td><td class="num">3.4</td></tr><tr><td><span class="zn">COMMUNE D'AIT OUALLAL nord</span></td><td class="num">704</td><td class="num">11</td><td class="num">64</td><td class="num">·</td><td class="num">3.2</td></tr><tr><td><span class="zn">COMMUNE DE TINGHIR nord</span></td><td class="num">552</td><td class="num">10</td><td class="num">55</td><td class="num">·</td><td class="num">3.1</td></tr><tr><td><span class="zn">COMMUNE BERRECHID est</span></td><td class="num">4 850</td><td class="num">88</td><td class="num">55</td><td class="num">5 152</td><td class="num">3.2</td></tr><tr><td><span class="zn">COMMUNE SETTAT est</span></td><td class="num">4 453</td><td class="num">95</td><td class="num">47</td><td class="num">5 760</td><td class="num">3.2</td></tr><tr><td><span class="zn">ARRONDISSEMENT DE ZOUAGUA est</span></td><td class="num">4 361</td><td class="num">100</td><td class="num">44</td><td class="num">4 237</td><td class="num">3.2</td></tr><tr><td><span class="zn">COMMUNE D'OULAD ABDOUNE est</span></td><td class="num">1 138</td><td class="num">26</td><td class="num">44</td><td class="num">·</td><td class="num">4.0</td></tr><tr><td><span class="zn">COMMUNE HAD SOUALEM nord</span></td><td class="num">3 746</td><td class="num">92</td><td class="num">41</td><td class="num">4 708</td><td class="num">3.2</td></tr><tr><td><span class="zn">COMMUNE MEJJATIA OULED TALEB est</span></td><td class="num">940</td><td class="num">23</td><td class="num">41</td><td class="num">4 505</td><td class="num">3.0</td></tr><tr><td><span class="zn">COMMUNE DE SAFI centre</span></td><td class="num">3 260</td><td class="num">88</td><td class="num">37</td><td class="num">5 504</td><td class="num">3.1</td></tr><tr><td><span class="zn">COMMUNE DE TOULAL est</span></td><td class="num">1 086</td><td class="num">33</td><td class="num">33</td><td class="num">4 605</td><td class="num">3.8</td></tr><tr><td><span class="zn">COMMUNE DE BENI MELLAL est</span></td><td class="num">3 298</td><td class="num">103</td><td class="num">32</td><td class="num">5 094</td><td class="num">3.3</td></tr><tr><td><span class="zn">COMMUNE BOUZNIKA nord</span></td><td class="num">3 878</td><td class="num">121</td><td class="num">32</td><td class="num">7 096</td><td class="num">3.5</td></tr><tr><td><span class="zn">COMMUNE DE MAJJATE est</span></td><td class="num">667</td><td class="num">21</td><td class="num">32</td><td class="num">·</td><td class="num">4.0</td></tr></tbody></table></div>
+  <div class="card" style="padding:6px;margin-top:12px;"><iframe src="signaux_map.html" class="mapframe" loading="lazy"></iframe></div>
+</div>
+<div class="section">
+  <div class="eyeb">SIGNAL 2 · OFFRE × PRIX</div>
+  <h2>Opportunité de marché · cher et peu servi</h2>
+  <div class="note">Zone chère (prix haut) où peu d'offre neuve arrive : demande potentiellement non servie.</div>
+  <div class="card"><table><thead><tr><th class="num">Zone</th><th class="num">Prix appt (MAD/m²)</th><th class="num">Livrés 24m</th><th class="num">Opportunité</th></tr></thead><tbody><tr><td><span class="zn">COMMUNE DE MECHOUAR-KASBA est</span></td><td class="num">16 158</td><td class="num">66</td><td class="num"><span class="gauge"><span class="bar"><i style="width:61%"></i></span><b>61</b></span></td></tr><tr><td><span class="zn">ARRONDISSEMENT D'AGDAL-RYAD est</span></td><td class="num">18 686</td><td class="num">88</td><td class="num"><span class="gauge"><span class="bar"><i style="width:61%"></i></span><b>61</b></span></td></tr><tr><td><span class="zn">ARRONDISSEMENT DE SOUISSI nord</span></td><td class="num">23 580</td><td class="num">120</td><td class="num"><span class="gauge"><span class="bar"><i style="width:60%"></i></span><b>60</b></span></td></tr><tr><td><span class="zn">ARRONDISSEMENT D'AGDAL-RYAD nord</span></td><td class="num">16 580</td><td class="num">94</td><td class="num"><span class="gauge"><span class="bar"><i style="width:59%"></i></span><b>59</b></span></td></tr><tr><td><span class="zn">COMMUNE OULED AZZOUZ ouest</span></td><td class="num">13 364</td><td class="num">71</td><td class="num"><span class="gauge"><span class="bar"><i style="width:57%"></i></span><b>57</b></span></td></tr><tr><td><span class="zn">ARRONDISSEMENT SIDI BELYOUT nord</span></td><td class="num">15 685</td><td class="num">137</td><td class="num"><span class="gauge"><span class="bar"><i style="width:57%"></i></span><b>57</b></span></td></tr><tr><td><span class="zn">ARRONDISSEMENT ANFA nord</span></td><td class="num">29 095</td><td class="num">258</td><td class="num"><span class="gauge"><span class="bar"><i style="width:57%"></i></span><b>57</b></span></td></tr><tr><td><span class="zn">COMMUNE DE MEHDYA nord 2</span></td><td class="num">12 554</td><td class="num">74</td><td class="num"><span class="gauge"><span class="bar"><i style="width:56%"></i></span><b>56</b></span></td></tr><tr><td><span class="zn">ARRONDISSEMENT DE HASSAN nord</span></td><td class="num">15 034</td><td class="num">178</td><td class="num"><span class="gauge"><span class="bar"><i style="width:55%"></i></span><b>55</b></span></td></tr><tr><td><span class="zn">COMMUNE OULED AZZOUZ est</span></td><td class="num">14 159</td><td class="num">174</td><td class="num"><span class="gauge"><span class="bar"><i style="width:55%"></i></span><b>55</b></span></td></tr></tbody></table></div>
+</div>
+<div class="section">
+  <div class="eyeb">TABLEAU MAÎTRE · LES ZONES OÙ LES 4 COUCHES SE CROISENT</div>
+  <h2>Fiche croisée · offre, prix, commerce, droit</h2>
+  <div class="note">Les 30 zones (couronne sud de Casablanca) où l'on a simultanément l'offre,
+  le prix, le commerce réel et la hauteur réglementaire. La lecture complète d'un territoire, en une ligne.</div>
+  <div class="card"><table><thead><tr><th class="num">Zone</th><th class="num">Livrés 24m</th><th class="num">Prix appt</th><th class="num">Commerces</th><th class="num">Log/com</th><th>Autorisé</th><th class="num">Étages libres</th></tr></thead><tbody><tr><td><span class="zn">ARRONDISSEMENT HAY HASSANI nord</span></td><td class="num">3 040</td><td class="num">11 355</td><td class="num">143</td><td class="num">21</td><td>RDC+3</td><td class="num">1</td></tr><tr><td><span class="zn">ARRONDISSEMENT AIN CHOCK nord</span></td><td class="num">2 967</td><td class="num">18 003</td><td class="num">112</td><td class="num">26</td><td>RDC+2</td><td class="num">0</td></tr><tr><td><span class="zn">COMMUNE SIDI HAJJAJ OUED HASSAR nord</span></td><td class="num">2 362</td><td class="num">6 691</td><td class="num">31</td><td class="num">76</td><td>RDC+3</td><td class="num">0</td></tr><tr><td><span class="zn">ARRONDISSEMENT MOULAY RACHID nord</span></td><td class="num">2 011</td><td class="num">6 854</td><td class="num">71</td><td class="num">28</td><td>RDC+4</td><td class="num">1</td></tr><tr><td><span class="zn">COMMUNE DAR BOUAZZA nord</span></td><td class="num">1 794</td><td class="num">5 944</td><td class="num">96</td><td class="num">19</td><td>RDC+4</td><td class="num">·</td></tr><tr><td><span class="zn">COMMUNE MOHAMMEDIA nord</span></td><td class="num">1 462</td><td class="num">7 975</td><td class="num">100</td><td class="num">15</td><td>RDC+2</td><td class="num">0</td></tr><tr><td><span class="zn">ARRONDISSEMENT AIN SEBAA nord</span></td><td class="num">1 439</td><td class="num">10 513</td><td class="num">83</td><td class="num">17</td><td>RDC+4</td><td class="num">1</td></tr><tr><td><span class="zn">ARRONDISSEMENT SIDI MOUMEN nord</span></td><td class="num">1 052</td><td class="num">6 831</td><td class="num">124</td><td class="num">8</td><td>RDC+3</td><td class="num">1</td></tr><tr><td><span class="zn">COMMUNE AIN HARROUDA nord</span></td><td class="num">955</td><td class="num">5 299</td><td class="num">78</td><td class="num">12</td><td>RDC+2</td><td class="num">·</td></tr><tr><td><span class="zn">ARRONDISSEMENT MAARIF nord</span></td><td class="num">951</td><td class="num">15 029</td><td class="num">101</td><td class="num">9</td><td>RDC+4</td><td class="num">1</td></tr><tr><td><span class="zn">COMMUNE MEJJATIA OULED TALEB est</span></td><td class="num">940</td><td class="num">4 505</td><td class="num">23</td><td class="num">41</td><td>RDC+3</td><td class="num">0</td></tr><tr><td><span class="zn">COMMUNE TIT MELLIL nord</span></td><td class="num">902</td><td class="num">6 271</td><td class="num">77</td><td class="num">12</td><td>RDC+2</td><td class="num">0</td></tr><tr><td><span class="zn">COMMUNE BOUSKOURA nord</span></td><td class="num">880</td><td class="num">6 042</td><td class="num">87</td><td class="num">10</td><td>RDC+3</td><td class="num">2</td></tr><tr><td><span class="zn">COMMUNE LAHRAOUIYINE nord</span></td><td class="num">658</td><td class="num">6 088</td><td class="num">35</td><td class="num">19</td><td>RDC+3</td><td class="num">0</td></tr><tr><td><span class="zn">COMMUNE MEJJATIA OULED TALEB nord</span></td><td class="num">569</td><td class="num">5 187</td><td class="num">23</td><td class="num">25</td><td>RDC+3</td><td class="num">0</td></tr><tr><td><span class="zn">ARRONDISSEMENT SBATA est</span></td><td class="num">528</td><td class="num">7 679</td><td class="num">31</td><td class="num">17</td><td>RDC+4</td><td class="num">2</td></tr><tr><td><span class="zn">ARRONDISSEMENT SIDI BERNOUSSI nord</span></td><td class="num">450</td><td class="num">8 183</td><td class="num">63</td><td class="num">7</td><td>RDC+2</td><td class="num">0</td></tr><tr><td><span class="zn">ARRONDISSEMENT ESSOUKHOUR ESSAWEDA nord</span></td><td class="num">338</td><td class="num">10 626</td><td class="num">50</td><td class="num">7</td><td>RDC+5</td><td class="num">1</td></tr><tr><td><span class="zn">COMMUNE MEDIOUNA est</span></td><td class="num">268</td><td class="num">5 790</td><td class="num">47</td><td class="num">6</td><td>RDC+2</td><td class="num">0</td></tr><tr><td><span class="zn">ARRONDISSEMENT ANFA nord</span></td><td class="num">258</td><td class="num">29 095</td><td class="num">57</td><td class="num">5</td><td>RDC+3</td><td class="num">2</td></tr></tbody></table></div>
+</div>
+
+<div class="footer">ALPHASENSE IMMO · SIGNAUX D'ALPHA · DOCUMENT DE TRAVAIL INTERNE</div>
+</body></html>
