@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AlphaSense Immo · Marché & Liquidité</title>
+<style>
+:root {
+  --paper:#F4F6F2; --paper2:#ECEFE8; --ink:#1F2A28; --dim:#64756E;
+  --line:#C7D2C9; --hair:#D9E0D7; --survey:#33695B; --flag:#D9481F;
+  --display:'Bahnschrift','Segoe UI Semibold','Arial Narrow',Arial,sans-serif;
+  --mono:'Consolas','Cascadia Mono',Menlo,monospace;
+  --body:'Segoe UI',system-ui,sans-serif;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:var(--body); background:var(--paper); color:var(--ink); font-size:14.5px; line-height:1.55; }
+a { color:var(--survey); }
+a:focus-visible { outline:2px solid var(--flag); outline-offset:2px; }
+
+/* ── Feuille: en-tête carroyée + cartouche ─────────────────────────── */
+.sheet {
+  position:relative; padding:52px 6% 30px; border-bottom:2px solid var(--ink);
+  background:
+    repeating-linear-gradient(0deg, transparent 0 34px, rgba(51,105,91,.10) 34px 35px),
+    repeating-linear-gradient(90deg, transparent 0 34px, rgba(51,105,91,.10) 34px 35px),
+    var(--paper2);
+}
+.sheet .fiche { font-family:var(--mono); font-size:11.5px; letter-spacing:.14em; color:var(--survey); }
+.sheet h1 {
+  font-family:var(--display); font-size:clamp(26px,4.4vw,44px); font-weight:600;
+  text-transform:uppercase; letter-spacing:.035em; margin:10px 0 4px; line-height:1.06;
+}
+.sheet .q { font-size:clamp(15px,1.9vw,19px); color:var(--ink); max-width:620px; }
+.cartouche {
+  margin-top:26px; display:inline-grid; grid-auto-flow:column; gap:0;
+  border:1.5px solid var(--ink); background:var(--paper); font-family:var(--mono); font-size:11.5px;
+}
+.cartouche > div { padding:7px 16px 8px; border-right:1px solid var(--line); }
+.cartouche > div:last-child { border-right:none; }
+.cartouche b { display:block; font-size:9.5px; letter-spacing:.12em; color:var(--dim); font-weight:400; }
+.cross { position:absolute; color:var(--survey); opacity:.5; font-family:var(--mono); font-size:13px; pointer-events:none; }
+
+/* ── Relevés (KPI) ─────────────────────────────────────────────────── */
+.kpis { display:flex; flex-wrap:wrap; gap:0; padding:0 6%; border-bottom:1px solid var(--line); background:var(--paper); }
+.kpi { padding:18px 28px 16px 0; margin-right:28px; }
+.kpi .v { font-family:var(--mono); font-size:26px; font-weight:700; letter-spacing:-.01em; }
+.kpi .l { font-size:11px; color:var(--dim); letter-spacing:.06em; text-transform:uppercase; margin-top:1px; }
+
+/* ── Planches (sections) ───────────────────────────────────────────── */
+.section { padding:30px 6% 4px; }
+.eyeb { font-family:var(--mono); font-size:10.5px; letter-spacing:.16em; color:var(--survey); }
+.section h2 { font-family:var(--display); font-size:20px; font-weight:600; letter-spacing:.01em; margin:3px 0 4px; }
+.section .note { color:var(--dim); font-size:12.5px; max-width:760px; margin-bottom:12px; }
+.card { background:#fff; border:1px solid var(--line); border-top:2px solid var(--ink); padding:4px 14px 8px; margin-bottom:14px; overflow-x:auto; }
+
+/* ── Registre (tables) ─────────────────────────────────────────────── */
+table { border-collapse:collapse; width:100%; font-size:13px; }
+th { text-align:left; font-family:var(--mono); font-weight:400; font-size:10.5px; letter-spacing:.1em;
+     text-transform:uppercase; color:var(--dim); padding:10px 10px 6px; border-bottom:1px solid var(--ink); white-space:nowrap; }
+td { padding:7px 10px; border-bottom:1px solid var(--hair); vertical-align:middle; }
+tbody tr:hover td { background:var(--paper2); }
+td.num, th.num { text-align:right; }
+td.num { font-family:var(--mono); font-variant-numeric:tabular-nums; }
+.zn { font-weight:600; }
+.sect { display:inline-block; font-family:var(--mono); font-size:10px; color:var(--survey);
+        border:1px solid var(--line); padding:0 5px; margin-left:6px; letter-spacing:.05em; }
+
+/* Barre d'échelle: percentile 0-100 rendu comme une échelle de carte */
+.gauge { display:inline-flex; align-items:center; gap:8px; min-width:130px; justify-content:flex-end; }
+.gauge .bar { width:84px; height:7px; border:1px solid var(--ink); background:
+  repeating-linear-gradient(90deg, transparent 0 20px, var(--hair) 20px 21px), #fff; position:relative; }
+.gauge .bar i { position:absolute; inset:0; right:auto; background:var(--survey); }
+.gauge.hot .bar i { background:var(--flag); }
+.gauge b { font-family:var(--mono); font-weight:700; font-size:12.5px; min-width:34px; text-align:right; }
+.gauge.hot b { color:var(--flag); }
+
+.btn { display:inline-block; font-family:var(--display); text-transform:uppercase; letter-spacing:.08em;
+       font-size:13px; padding:11px 20px; background:var(--ink); color:var(--paper); text-decoration:none; margin:18px 6%; }
+.btn:hover { background:var(--survey); }
+.mapframe { width:100%; height:460px; border:none; display:block; }
+.maplink { font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; }
+.footer { font-family:var(--mono); text-align:center; color:var(--dim); font-size:11px; padding:26px 6% 30px;
+          border-top:1px solid var(--line); margin-top:26px; }
+@media (max-width:700px) {
+  .cartouche { grid-auto-flow:row; }
+  .cartouche > div { border-right:none; border-bottom:1px solid var(--line); }
+  .cartouche > div:last-child { border-bottom:none; }
+  .sheet { padding:30px 4% 20px; }
+  .section { padding:20px 4% 4px; }
+  .kpis { padding:0 4%; }
+  .kpi { padding:12px 14px 10px 0; margin-right:14px; }
+  .kpi .v { font-size:19px; }
+  .mapframe { height:320px; }
+  .gauge { min-width:100px; } .gauge .bar { width:56px; }
+  .btn { margin:14px 4%; }
+}
+
+
+html { -webkit-text-size-adjust:100%; }
+@media (max-width:700px) {
+  * { -webkit-tap-highlight-color: rgba(51,105,91,.18); }
+  table { font-size:12px; }
+  th { padding:8px 7px 5px; }
+  td { padding:6px 7px; }
+  .card {
+    background:
+      linear-gradient(90deg, #fff 30%, rgba(255,255,255,0)),
+      linear-gradient(90deg, rgba(255,255,255,0), #fff 70%) 100% 0,
+      radial-gradient(farthest-side at 0 50%, rgba(31,42,40,.22), transparent),
+      radial-gradient(farthest-side at 100% 50%, rgba(31,42,40,.22), transparent) 100% 0,
+      #fff;
+    background-repeat:no-repeat;
+    background-size:44px 100%, 44px 100%, 15px 100%, 15px 100%, 100% 100%;
+    background-attachment:local, local, scroll, scroll, local;
+  }
+}
+
+.topnav { position:sticky; top:0; z-index:5000; display:flex; flex-wrap:wrap; gap:0;
+  background:#1F2A28; padding:0 4%; border-bottom:2px solid #D9481F; }
+.navtab { font-family:'Bahnschrift','Segoe UI Semibold',Arial,sans-serif; font-size:12.5px;
+  letter-spacing:.08em; text-transform:uppercase; color:#F4F6F2; text-decoration:none;
+  padding:12px 14px 10px; border-bottom:3px solid transparent; }
+.navtab:hover { background:#33695B; }
+.navtab.active { border-bottom-color:#D9481F; color:#fff; }
+@media (max-width:700px) {
+  .topnav { flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
+  .topnav::-webkit-scrollbar { display:none; }
+  .navtab { white-space:nowrap; padding:12px 10px 10px; font-size:11px; }
+}
+</style></head><body>
+<nav class="topnav"><a href="dashboard.html" class="navtab">Feuille de garde</a><a href="synthese.html" class="navtab">Note d'analyse</a><a href="signaux.html" class="navtab">Signaux d'alpha</a><a href="lens_promoteur.html" class="navtab">Promoteur</a><a href="lens_commercant.html" class="navtab">Commerçant</a><a href="lens_agence.html" class="navtab">Agence</a><a href="prix_marge.html" class="navtab">Prix & marge</a><a href="marche.html" class="navtab active">Marché & Liquidité</a><a href="reglementation.html" class="navtab">Réglementation</a><a href="parc.html" class="navtab">Parc & Démographie</a><a href="stations.html" class="navtab">Stations-service</a><a href="lens_industriel.html" class="navtab">Industriel</a><a href="leads.html" class="navtab">Flux d'affaires</a><a href="registre_foncier.html" class="navtab">Registre foncier</a><a href="titre_lookup.html" class="navtab">Recherche titre</a><a href="indice_btp.html" class="navtab">Indice BTP</a></nav>
+<header class="sheet">
+  <span class="cross" style="top:14px;left:6%;">+</span>
+  <span class="cross" style="top:14px;right:6%;">+</span>
+  <div class="fiche">ALPHASENSE IMMO · MARCHÉ &amp; LIQUIDITÉ · <a href="dashboard.html">TABLEAU DE BORD</a></div>
+  <h1>Marché &amp; Liquidité</h1>
+  <p class="q">Ce que les vendeurs demandent, ce qui se conclut chez le notaire, et l'écart entre les deux,
+  au quartier exact. Plus la liquidité : où le marché s'échange vraiment.</p>
+  <div class="cartouche"><div><b>Sources</b>Mubawab (affiché) · Yakeey (notarial, quartier)</div><div><b>Annonces</b>37 132 géolocalisées</div><div><b>Granularité</b>quartier exact (point-dans-polygone)</div><div><b>Usage</b>document de travail interne</div></div>
+</header>
+
+<div class="kpis">
+  <div class="kpi"><div class="v">37 132</div><div class="l">annonces géolocalisées (Mubawab)</div></div>
+  <div class="kpi"><div class="v">172</div><div class="l">zones avec prix affiché</div></div>
+  <div class="kpi"><div class="v">1 368</div><div class="l">quartiers Yakeey (prix notarial fin)</div></div>
+</div>
+<div class="section">
+  <div class="eyeb">CARTE · CHAQUE QUARTIER COLORÉ PAR SON PRIX NOTARIAL (GRANULARITÉ FINE)</div>
+  <h2>Le prix au quartier, pas à la commune</h2>
+  <div class="note">Chaque polygone est un quartier Yakeey (prix de transaction notarial, confiance ≥2), coloré par
+  le prix de l'appartement au m². Un même arrondissement passe du simple au quadruple d'un quartier à l'autre.
+  Les cercles = la liquidité (nombre d'annonces en vente). Centré sur Casablanca, dézoomable sur tout le Maroc.</div>
+  <div class="card" style="padding:6px;"><iframe src="marche_map.html" class="mapframe" loading="lazy"></iframe></div>
+</div>
+<div class="section">
+  <div class="eyeb">LIQUIDITÉ · OÙ LE MARCHÉ S'ÉCHANGE VRAIMENT</div>
+  <h2>Les marchés les plus liquides</h2>
+  <div class="note">Nombre d'annonces d'appartements en vente par zone : l'activité réelle du marché.
+  Là où il y a du volume, un bien se vend ; là où il n'y en a pas, on peut afficher ce qu'on veut.</div>
+  <div class="card"><table><thead><tr><th class="num">Zone</th><th class="num">Appts en vente</th><th class="num">En location</th><th class="num">Terrains</th><th class="num">Affiché MAD/m²</th><th class="num">Écart vs notarial</th></tr></thead><tbody><tr><td><span class="zn">ARRONDISSEMENT MAARIF · nord</span></td><td class="num">1 158</td><td class="num">1 933</td><td class="num">97</td><td class="num">16 369</td><td class="num" style="color:#33695B">-3%</td></tr><tr><td><span class="zn">ARRONDISSEMENT DE GUELIZ · est</span></td><td class="num">1 122</td><td class="num">810</td><td class="num">64</td><td class="num">18 675</td><td class="num" style="color:#D9481F">+73%</td></tr><tr><td><span class="zn">ARRONDISSEMENT SIDI BELYOUT · nord</span></td><td class="num">1 011</td><td class="num">1 723</td><td class="num">48</td><td class="num">17 313</td><td class="num" style="color:#1F2A28">+6%</td></tr><tr><td><span class="zn">ARRONDISSEMENT DE TANGER-MEDINA · nord</span></td><td class="num">475</td><td class="num">383</td><td class="num">134</td><td class="num">14 421</td><td class="num" style="color:#D9481F">+58%</td></tr><tr><td><span class="zn">ARRONDISSEMENT DE SOUANI · nord</span></td><td class="num">461</td><td class="num">528</td><td class="num">73</td><td class="num">17 000</td><td class="num" style="color:#D9481F">+75%</td></tr><tr><td><span class="zn">ARRONDISSEMENT MERS SULTAN · nord</span></td><td class="num">433</td><td class="num">375</td><td class="num">48</td><td class="num">12 847</td><td class="num" style="color:#33695B">-2%</td></tr><tr><td><span class="zn">ARRONDISSEMENT ANFA · nord</span></td><td class="num">403</td><td class="num">998</td><td class="num">98</td><td class="num">19 200</td><td class="num" style="color:#33695B">-19%</td></tr><tr><td><span class="zn">ARRONDISSEMENT HAY HASSANI · nord</span></td><td class="num">341</td><td class="num">361</td><td class="num">53</td><td class="num">10 870</td><td class="num" style="color:#1F2A28">+13%</td></tr><tr><td><span class="zn">ARRONDISSEMENT AIN CHOCK · nord</span></td><td class="num">273</td><td class="num">222</td><td class="num">95</td><td class="num">13 804</td><td class="num" style="color:#33695B">-3%</td></tr><tr><td><span class="zn">COMMUNE D'AGADIR · sud</span></td><td class="num">269</td><td class="num">285</td><td class="num">86</td><td class="num">12 574</td><td class="num" style="color:#D9481F">+36%</td></tr><tr><td><span class="zn">COMMUNE OULED AZZOUZ · nord 2</span></td><td class="num">258</td><td class="num">234</td><td class="num">97</td><td class="num">13 765</td><td class="num" style="color:#1F2A28">+11%</td></tr><tr><td><span class="zn">COMMUNE DE MEKNES · est</span></td><td class="num">250</td><td class="num">100</td><td class="num">78</td><td class="num">6 429</td><td class="num" style="color:#D9481F">+43%</td></tr><tr><td><span class="zn">COMMUNE DE MARTIL · centre</span></td><td class="num">233</td><td class="num">43</td><td class="num">11</td><td class="num">9 549</td><td class="num" style="color:#1F2A28">+15%</td></tr><tr><td><span class="zn">COMMUNE DE MECHOUAR-KASBA · est</span></td><td class="num">232</td><td class="num">306</td><td class="num">62</td><td class="num">22 665</td><td class="num" style="color:#D9481F">+50%</td></tr><tr><td><span class="zn">COMMUNE DE TEMARA · est</span></td><td class="num">229</td><td class="num">136</td><td class="num">74</td><td class="num">11 607</td><td class="num" style="color:#D9481F">+42%</td></tr></tbody></table></div>
+</div>
+<div class="section">
+  <div class="eyeb">TENSION · AFFICHÉ vs TRANSACTION (AU QUARTIER EXACT)</div>
+  <h2>Où les vendeurs sont devant le marché</h2>
+  <div class="note">Écart médian entre le prix affiché (Mubawab) et le prix de transaction Yakeey du quartier
+  EXACT de chaque annonce (point-dans-polygone, ≥25 annonces comparées, confiance Yakeey ≥2). Un écart fort =
+  survalorisation ou marché qui n'absorbe pas à ces prix. Piège pour un promoteur qui construit là.</div>
+  <div class="card"><table><thead><tr><th class="num">Zone</th><th class="num">Affiché MAD/m²</th><th class="num">Écart médian</th><th class="num">Annonces</th><th class="num">Comparées</th></tr></thead><tbody><tr><td><span class="zn">ARRONDISSEMENT DE MGHOGHA · nord</span></td><td class="num">16 218</td><td class="num" style="color:#D9481F">+142%</td><td class="num">189</td><td class="num">139</td></tr><tr><td><span class="zn">ARRONDISSEMENT AL FIDA · nord</span></td><td class="num">20 853</td><td class="num" style="color:#D9481F">+127%</td><td class="num">123</td><td class="num">112</td></tr><tr><td><span class="zn">ARRONDISSEMENT D'ENNAKHIL · nord</span></td><td class="num">17 010</td><td class="num" style="color:#D9481F">+103%</td><td class="num">86</td><td class="num">81</td></tr><tr><td><span class="zn">ARRONDISSEMENT DE MARRAKECH-MEDINA · est</span></td><td class="num">21 364</td><td class="num" style="color:#D9481F">+87%</td><td class="num">215</td><td class="num">144</td></tr><tr><td><span class="zn">ARRONDISSEMENT DE MENARA · est</span></td><td class="num">12 646</td><td class="num" style="color:#D9481F">+84%</td><td class="num">131</td><td class="num">116</td></tr><tr><td><span class="zn">ARRONDISSEMENT DE SOUANI · nord</span></td><td class="num">17 000</td><td class="num" style="color:#D9481F">+75%</td><td class="num">461</td><td class="num">357</td></tr><tr><td><span class="zn">ARRONDISSEMENT DE GUELIZ · est</span></td><td class="num">18 675</td><td class="num" style="color:#D9481F">+73%</td><td class="num">1 122</td><td class="num">966</td></tr><tr><td><span class="zn">COMMUNE DE MDIQ · est</span></td><td class="num">22 361</td><td class="num" style="color:#D9481F">+71%</td><td class="num">34</td><td class="num">29</td></tr><tr><td><span class="zn">COMMUNE D'ESSAOUIRA · nord</span></td><td class="num">12 481</td><td class="num" style="color:#D9481F">+70%</td><td class="num">86</td><td class="num">35</td></tr><tr><td><span class="zn">ARRONDISSEMENT DE TANGER-MEDINA · est</span></td><td class="num">24 000</td><td class="num" style="color:#D9481F">+69%</td><td class="num">88</td><td class="num">70</td></tr><tr><td><span class="zn">COMMUNE D'AGADIR · sud 3</span></td><td class="num">14 364</td><td class="num" style="color:#D9481F">+65%</td><td class="num">38</td><td class="num">27</td></tr><tr><td><span class="zn">ARRONDISSEMENT DE BNI MAKADA · nord</span></td><td class="num">9 963</td><td class="num" style="color:#D9481F">+61%</td><td class="num">89</td><td class="num">72</td></tr></tbody></table></div>
+</div>
+<div class="section">
+  <div class="eyeb">SIGNAL INVERSE · AFFICHÉ SOUS LE NOTARIAL</div>
+  <h2>Où l'affiché passe sous le prix de transaction</h2>
+  <div class="note">Zones où le prix demandé est SOUS le notarial du quartier : soit des marchés qui montent
+  (Yakeey en retard sur les transactions récentes), soit des vendeurs pressés. À regarder de près pour entrer.</div>
+  <div class="card"><table><thead><tr><th class="num">Zone</th><th class="num">Affiché MAD/m²</th><th class="num">Écart médian</th><th class="num">Annonces</th></tr></thead><tbody><tr><td><span class="zn">COMMUNE DE MEHDYA · nord 2</span></td><td class="num">6 842</td><td class="num" style="color:#33695B">-45%</td><td class="num">16</td></tr><tr><td><span class="zn">ARRONDISSEMENT ANFA · nord</span></td><td class="num">19 200</td><td class="num" style="color:#33695B">-19%</td><td class="num">403</td></tr><tr><td><span class="zn">ARRONDISSEMENT MAARIF · nord</span></td><td class="num">16 369</td><td class="num" style="color:#33695B">-3%</td><td class="num">1 158</td></tr><tr><td><span class="zn">ARRONDISSEMENT AIN CHOCK · nord</span></td><td class="num">13 804</td><td class="num" style="color:#33695B">-3%</td><td class="num">273</td></tr><tr><td><span class="zn">ARRONDISSEMENT MERS SULTAN · nord</span></td><td class="num">12 847</td><td class="num" style="color:#33695B">-2%</td><td class="num">433</td></tr><tr><td><span class="zn">ARRONDISSEMENT ESSOUKHOUR ESSAWEDA · nord</span></td><td class="num">11 051</td><td class="num" style="color:#33695B">-2%</td><td class="num">193</td></tr><tr><td><span class="zn">ARRONDISSEMENT SBATA · est</span></td><td class="num">9 767</td><td class="num" style="color:#33695B">-1%</td><td class="num">32</td></tr></tbody></table></div>
+</div>
+<div class="section">
+  <div class="eyeb">MÉTHODE · POURQUOI LA GRANULARITÉ CHANGE TOUT</div>
+  <h2>Comparé au bon prix</h2>
+  <div class="note">Avant, chaque zone était comparée au prix d'UN quartier (celui de son centroïde), ce qui faussait
+  l'écart : Mers Sultan affichait +62% de survalorisation en réalité inexistante (-2% au quartier exact). Ici,
+  chaque annonce est comparée au prix Yakeey de SON quartier précis. La granularité Yakeey (1 368 quartiers avec
+  polygone + niveau de confiance) est enfin utilisée pleinement.</div>
+</div>
+
+<div class="footer">ALPHASENSE IMMO · MARCHÉ &amp; LIQUIDITÉ · DOCUMENT DE TRAVAIL INTERNE</div>
+</body></html>
