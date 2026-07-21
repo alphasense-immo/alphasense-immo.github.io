@@ -134,7 +134,7 @@ html { -webkit-text-size-adjust:100%; }
   <h1>Marché &amp; Liquidité</h1>
   <p class="q">Le marché n'a pas une dimension mais plusieurs : appartement à la vente et à la location, terrain,
   maison. Chacun son prix, sa liquidité, et le rendement que ça dégage.</p>
-  <div class="cartouche"><div><b>Sources</b>Mubawab (affiché) · Yakeey (notarial)</div><div><b>Segments</b>appart V/L · terrain · maison</div><div><b>Granularité</b>quartier exact (point-dans-polygone)</div><div><b>Usage</b>document de travail interne</div></div>
+  <div class="cartouche"><div><b>Sources</b>Mubawab · Yakeey · Airbnb</div><div><b>Segments</b>appart V/L · terrain · maison · Airbnb</div><div><b>Granularité</b>quartier exact (point-dans-polygone)</div><div><b>Usage</b>document de travail interne</div></div>
 </header>
 
 <div class="kpis">
@@ -143,14 +143,16 @@ html { -webkit-text-size-adjust:100%; }
   <div class="kpi"><div class="v">13 915</div><div class="l">appart location</div></div>
   <div class="kpi"><div class="v">5 883</div><div class="l">terrain</div></div>
   <div class="kpi"><div class="v">1 845</div><div class="l">maison</div></div>
+  <div class="kpi"><div class="v">58 983</div><div class="l">Airbnb (courte durée)</div></div>
 </div>
 <div class="section">
   <div class="eyeb">CARTE À SEGMENTS · CHAQUE QUARTIER, LE PRIX DE SON MARCHÉ</div>
   <h2>Le marché a plusieurs dimensions, pas une</h2>
   <div class="note">Bascule en haut à droite : appartement vente (prix notarial Yakeey), appartement location
-  (loyer au m²), terrain, maison, et <b>rendement locatif brut</b> (loyer ×12 ÷ prix de vente). Chaque quartier
-  se recolore selon le segment ; le cercle = la liquidité du segment. Le terrain n'a pas de prix notarial (Yakeey
-  n'en publie pas), on y montre l'affiché. Centré sur Casablanca, dézoomable sur tout le Maroc.</div>
+  (loyer au m²), terrain, maison, <b>Airbnb (prix/nuit courte durée)</b> et <b>rendement locatif brut</b>
+  (loyer ×12 ÷ prix de vente). Chaque quartier se recolore selon le segment ; le cercle = la densité du segment.
+  Le terrain n'a pas de prix notarial (Yakeey n'en publie pas), on y montre l'affiché. Centré sur Casablanca,
+  dézoomable sur tout le Maroc (l'Airbnb est surtout à Marrakech et sur la côte).</div>
   <div class="card" style="padding:6px;"><iframe src="marche_map.html" class="mapframe" style="height:520px" loading="lazy"></iframe></div>
 </div>
 <div class="section">
@@ -184,6 +186,16 @@ html { -webkit-text-size-adjust:100%; }
   <div class="note">Yakeey ne publie pas de prix de transaction pour le foncier nu. On montre donc la liquidité
   (nombre d'annonces) et l'affiché médian au m², sans écart. Zones d'au moins 10 annonces de terrain.</div>
   <div class="card"><table><thead><tr><th>Zone</th><th class="num">Annonces terrain</th><th class="num">Affiché MAD/m²</th><th class="num">Appt vente (contexte)</th></tr></thead><tbody><tr><td><span class="zn">COMMUNE DE TAMESLOUHTE · est</span></td><td class="num">180</td><td class="num">1876.2</td><td class="num">27</td></tr><tr><td><span class="zn">ARRONDISSEMENT DE TANGER-MEDINA · nord</span></td><td class="num">134</td><td class="num">4292.3</td><td class="num">475</td></tr><tr><td><span class="zn">ARRONDISSEMENT DE SOUISSI · nord</span></td><td class="num">132</td><td class="num">6429.7</td><td class="num">47</td></tr><tr><td><span class="zn">COMMUNE OULED SALEH · nord</span></td><td class="num">122</td><td class="num">5855.3</td><td class="num">220</td></tr><tr><td><span class="zn">COMMUNE DE TAMESLOUHTE · nord 2</span></td><td class="num">118</td><td class="num">3166.7</td><td class="num">48</td></tr><tr><td><span class="zn">ARRONDISSEMENT ANFA · nord</span></td><td class="num">98</td><td class="num">17000.0</td><td class="num">403</td></tr><tr><td><span class="zn">COMMUNE D'OUAHAT SIDI BRAHIM · est</span></td><td class="num">98</td><td class="num">5000.0</td><td class="num">174</td></tr><tr><td><span class="zn">ARRONDISSEMENT MAARIF · nord</span></td><td class="num">97</td><td class="num">19359.1</td><td class="num">1 158</td></tr><tr><td><span class="zn">COMMUNE OULED AZZOUZ · nord 2</span></td><td class="num">97</td><td class="num">6552.3</td><td class="num">258</td></tr><tr><td><span class="zn">COMMUNE D'ESSAOUIRA · nord</span></td><td class="num">96</td><td class="num">800.0</td><td class="num">86</td></tr><tr><td><span class="zn">ARRONDISSEMENT AIN CHOCK · nord</span></td><td class="num">95</td><td class="num">10124.3</td><td class="num">273</td></tr><tr><td><span class="zn">COMMUNE D'AGADIR · sud</span></td><td class="num">86</td><td class="num">14352.9</td><td class="num">269</td></tr></tbody></table></div>
+</div>
+<div class="section">
+  <div class="eyeb">COURTE DURÉE · LE MARCHÉ AIRBNB PAR ZONE</div>
+  <h2>Location courte durée (Airbnb)</h2>
+  <div class="note">Densité Airbnb (logements en courte durée) et prix médian par nuit, par zone (source Airbnb :
+  71 953 logements scrapés au Maroc, 58 983 rattachés à une zone). Dernière colonne : combien de nuits Airbnb pour égaler
+  un mois de loyer longue durée classique (loyer LT médian ÷ prix nuit) : plus c'est bas, plus la courte durée est
+  lucrative face au locatif classique, donc plus la pression Airbnb sur le parc est forte. Zones d'au moins 10
+  logements Airbnb. Prix = annonces disponibles à une date donnée (hors saisonnalité).</div>
+  <div class="card"><table><thead><tr><th>Zone</th><th class="num">Logements Airbnb</th><th class="num">Prix/nuit MAD</th><th class="num">Loyer LT MAD/mois</th><th class="num">Nuits = 1 mois LT</th></tr></thead><tbody><tr><td><span class="zn">ARRONDISSEMENT DE MARRAKECH-MEDINA · est</span></td><td class="num">5 238</td><td class="num">1 220</td><td class="num">12 000</td><td class="num" style="color:#33695B">9.8</td></tr><tr><td><span class="zn">ARRONDISSEMENT DE GUELIZ · est</span></td><td class="num">4 354</td><td class="num">731</td><td class="num">9 000</td><td class="num" style="color:#1F2A28">12.3</td></tr><tr><td><span class="zn">COMMUNE D'AGADIR · sud</span></td><td class="num">2 865</td><td class="num">685</td><td class="num">6 000</td><td class="num" style="color:#33695B">8.8</td></tr><tr><td><span class="zn">ARRONDISSEMENT DE SOUANI · nord</span></td><td class="num">2 378</td><td class="num">918</td><td class="num">11 750</td><td class="num" style="color:#1F2A28">12.8</td></tr><tr><td><span class="zn">ARRONDISSEMENT SIDI BELYOUT · nord</span></td><td class="num">2 047</td><td class="num">742</td><td class="num">11 000</td><td class="num" style="color:#1F2A28">14.8</td></tr><tr><td><span class="zn">COMMUNE D'AGADIR · sud 3</span></td><td class="num">1 997</td><td class="num">558</td><td class="num">·</td><td class="num">·</td></tr><tr><td><span class="zn">ARRONDISSEMENT MAARIF · nord</span></td><td class="num">1 903</td><td class="num">685</td><td class="num">8 300</td><td class="num" style="color:#1F2A28">12.1</td></tr><tr><td><span class="zn">COMMUNE DE MARTIL · centre</span></td><td class="num">1 775</td><td class="num">685</td><td class="num">·</td><td class="num">·</td></tr><tr><td><span class="zn">COMMUNE DE MECHOUAR-KASBA · est</span></td><td class="num">1 481</td><td class="num">1 172</td><td class="num">14 000</td><td class="num" style="color:#33695B">11.9</td></tr><tr><td><span class="zn">COMMUNE D'ESSAOUIRA · nord</span></td><td class="num">1 416</td><td class="num">628</td><td class="num">4 300</td><td class="num" style="color:#33695B">6.8</td></tr><tr><td><span class="zn">ARRONDISSEMENT DE FES-MEDINA · est</span></td><td class="num">1 124</td><td class="num">570</td><td class="num">·</td><td class="num">·</td></tr><tr><td><span class="zn">ARRONDISSEMENT DE HASSAN · nord</span></td><td class="num">1 067</td><td class="num">711</td><td class="num">9 500</td><td class="num" style="color:#1F2A28">13.4</td></tr><tr><td><span class="zn">ARRONDISSEMENT DE TANGER-MEDINA · nord</span></td><td class="num">992</td><td class="num">668</td><td class="num">8 500</td><td class="num" style="color:#1F2A28">12.7</td></tr><tr><td><span class="zn">ARRONDISSEMENT DE MENARA · est</span></td><td class="num">937</td><td class="num">714</td><td class="num">7 500</td><td class="num" style="color:#33695B">10.5</td></tr><tr><td><span class="zn">COMMUNE DE CHEFCHAOUEN · centre</span></td><td class="num">853</td><td class="num">514</td><td class="num">·</td><td class="num">·</td></tr></tbody></table></div>
 </div>
 
 <div class="footer">ALPHASENSE IMMO · MARCHÉ &amp; LIQUIDITÉ · DOCUMENT DE TRAVAIL INTERNE</div>
